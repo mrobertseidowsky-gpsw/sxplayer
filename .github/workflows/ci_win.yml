@@ -17,6 +17,9 @@ jobs:
       with:
         python-version: '3.x'
 
+    - name: Install ffmpeg
+      run: pip install ffmpeg
+
     - name: Install Meson
       run: pip install meson ninja
 
@@ -26,4 +29,4 @@ jobs:
     - name: test
       run: meson test -C builddir -v
 
-     
+             
