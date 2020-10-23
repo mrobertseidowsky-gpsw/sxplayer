@@ -1,0 +1,21 @@
+name: 'tests Windows'
+
+on:
+  push:
+    branches:
+      - 'master'
+  pull_request:
+
+jobs:
+  build_libs:
+
+    runs-on: windows-latest
+
+    steps:
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v1
+    - uses: BSFishy/meson-build@v1.0.1
+      with:
+        action: test
+        
