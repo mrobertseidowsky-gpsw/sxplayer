@@ -24,7 +24,7 @@ jobs:
       run: pip install meson ninja
 
     - name: Setup Meson
-      run: meson setup builddir
+      run: meson setup builddir --backend vs
 
     - name: test
       run: meson test -C builddir -v
