@@ -22,4 +22,8 @@ jobs:
 
     - name: Setup Meson
       run: meson setup --buildtype release builddir
+
+    - name: test
+      run: meson test -C builddir -v
+
      
