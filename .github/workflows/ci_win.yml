@@ -41,7 +41,6 @@ jobs:
         echo $PKG_CONFIG_PATH
         ls -l C:\ProgramData\chocolatey\lib\ffmpeg\tools
         echo $PKG_CONFIG_PATH
-        set PKG_CONFIG_PATH=C:\ProgramData\chocolatey\lib\ffmpeg\tools;
         pkg-config --list-all
          
     - name: Setup Meson
@@ -49,7 +48,7 @@ jobs:
       run: |
         # Open Visual Studio Command Prompt
         call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -no_logo -arch=x86
-        meson  setup builddir --backend vs
+        meson  setup builddir --pkg-config-path "C:\ProgramData\chocolatey\lib\ffmpeg\tools"  --backend vs
 
  
   
