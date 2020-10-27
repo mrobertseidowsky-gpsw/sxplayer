@@ -33,15 +33,15 @@ jobs:
       shell: cmd
       run: |
         pip3 install choco
-        choco install ffmpeg
+        choco install ffmpeg # Chocolatey is a package manager for Windows  build FFmpeg 
 
     - name: PKG_CONFIG_PATH
       shell: cmd
       run: |
         echo $PKG_CONFIG_PATH
-        ls C:\ProgramData\chocolatey\lib\ffmpeg\tools
-        export PKG_CONFIG_PATH="C:\ProgramData\chocolatey\lib\ffmpeg\tools"
+        ls -l C:\ProgramData\chocolatey\lib\ffmpeg\tools
         echo $PKG_CONFIG_PATH
+        set PKG_CONFIG_PATH=C:\ProgramData\chocolatey\lib\ffmpeg\tools;
         pkg-config --list-all
          
     - name: Setup Meson
@@ -49,7 +49,7 @@ jobs:
       run: |
         # Open Visual Studio Command Prompt
         call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -no_logo -arch=x86
-        meson  setup builddir 
+        meson  setup builddir --backend vs
 
  
   
