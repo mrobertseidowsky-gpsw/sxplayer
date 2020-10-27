@@ -13,7 +13,7 @@ jobs:
 
     steps: 
     - uses: actions/checkout@v2
-    - uses: actions/setup-python@v1
+    - uses: actions/setup-python@v2
       with:
         python-version: '3.x'
 
@@ -32,9 +32,13 @@ jobs:
     - name: PKG_CONFIG_PATH
       shell: cmd
       run: |
+        pip3 install choco
+        choco install ffmpeg
+
+    - name: PKG_CONFIG_PATH
+      shell: cmd
+      run: |
         echo $PKG_CONFIG_PATH
-        locate ffmpeg
-        where pkg-config
         pkg-config --list-all
          
     - name: Setup Meson
@@ -42,4 +46,7 @@ jobs:
       run: |
         # Open Visual Studio Command Prompt
         call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -no_logo -arch=x86
-        meson build --backend vs
+        meson  setup builddir 
+
+
+        
