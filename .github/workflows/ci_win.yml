@@ -29,16 +29,16 @@ jobs:
     - name: ffmpeg with chocolate
       shell: cmd
       run: |
-        pip3 install choco
-        choco install ffmpeg # Chocolatey is a package manager for Windows  build FFmpeg 
+        choco install --pre ffmpeg # Chocolatey is a package manager for Windows  build FFmpeg 
         ffmpeg --help
 
     - name: PKG_CONFIG_PATH
       shell: cmd
       run: |
         echo $PKG_CONFIG_PATH
-        ls -l C:\ProgramData\chocolatey\lib\ffmpeg\tools
-        SET PKG_CONFIG_PATH=%PKG_CONFIG_PATH%"C:\ProgramData\chocolatey\lib\ffmpeg\tools";
+        where pkg-config
+        ls -al C:\ProgramData\chocolatey\lib\ffmpeg\tools
+        set PKG_CONFIG_PATH=C:\ProgramData\chocolatey\lib\ffmpeg\tools\installed\x86-windows;%PKG_CONFIG_PATH%
         echo $PKG_CONFIG_PATH
         pkg-config --list-all
          
