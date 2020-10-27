@@ -23,9 +23,6 @@ jobs:
         name: Windows_Meson_Testlog
         path: build/meson-logs/testlog.txt
 
-    - name: Install ffmpeg
-      run: pip install ffmpeg
-
     - name: Install Meson
       run: pip3 install -U meson ninja
 
