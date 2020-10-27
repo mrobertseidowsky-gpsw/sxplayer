@@ -38,7 +38,7 @@ jobs:
         echo $PKG_CONFIG_PATH
         where pkg-config
         ls -al C:\ProgramData\chocolatey\lib\ffmpeg\tools
-        set PKG_CONFIG_PATH=C:\ProgramData\chocolatey\lib\ffmpeg\tools\installed\x86-windows;%PKG_CONFIG_PATH%
+        set PKG_CONFIG_PATH=C:\ProgramData\chocolatey\lib\ffmpeg\tools\;%PKG_CONFIG_PATH%
         echo $PKG_CONFIG_PATH
         pkg-config --list-all
          
