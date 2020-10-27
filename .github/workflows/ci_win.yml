@@ -29,11 +29,14 @@ jobs:
     - name: Install Meson
       run: pip install meson ninja
 
-    - name: Configure
+    - name: PKG_CONFIG_PATH
       shell: cmd
       run: |
         echo $PKG_CONFIG_PATH
         pkg-config --list-all
-        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -no_logo -arch=x86
+         
+    - name: Configure
+      shell: cmd
+      run: |
+        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -no_logo -arch=${{ matrix.config.arch }}
         meson setup build
-   
