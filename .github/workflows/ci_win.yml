@@ -29,7 +29,7 @@ jobs:
     - name: ffmpeg with chocolate
       shell: cmd
       run: |
-        choco install ffmpeg # Chocolatey is a package manager for Windows  build FFmpeg 
+        choco install ffmpeg libavformat-dev libavfilter-dev libavdevice-dev # Chocolatey is a package manager for Windows  build FFmpeg 
         ffmpeg --help
         where ffmpeg
        
@@ -38,7 +38,8 @@ jobs:
     - name: PKG_CONFIG_PATH
       shell: cmd
       run: |
-        ls -al C:\ProgramData\chocolatey\lib\ffmpeg\ffmpeg.nupkg
+        ls -al C:\ProgramData\Chocolatey\bin\ffmpeg.exe
+        pkg-config --list-all
          
     - name: Setup Meson
       shell: cmd
@@ -46,6 +47,6 @@ jobs:
         # Open Visual Studio Command Prompt Open x64 Native Tools Command Prompt for VS2019
         # call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -no_logo -arch=x86
         cd D:\a\sxplayer\sxplayer
-        meson setup --pkg-config-path C:\ProgramData\chocolatey\lib\ffmpeg\ffmpeg.nupkg builddir 
+        meson setup --pkg-config-path C:\ProgramData\Chocolatey\bin\ffmpeg.exe builddir 
 
  
