@@ -29,7 +29,7 @@ jobs:
     - name: Install Meson
       run: pip3 install -U meson ninja
 
-    - name: PKG_CONFIG_PATH
+    - name: ffmpeg with chocolate
       shell: cmd
       run: |
         pip3 install choco
@@ -38,6 +38,9 @@ jobs:
     - name: PKG_CONFIG_PATH
       shell: cmd
       run: |
+        echo $PKG_CONFIG_PATH
+        ls C:\ProgramData\chocolatey\lib\ffmpeg\tools
+        export PKG_CONFIG_PATH="C:\ProgramData\chocolatey\lib\ffmpeg\tools"
         echo $PKG_CONFIG_PATH
         pkg-config --list-all
          
@@ -48,5 +51,5 @@ jobs:
         call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -no_logo -arch=x86
         meson  setup builddir 
 
-
-        
+ 
+  
