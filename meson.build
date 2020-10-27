@@ -50,8 +50,8 @@ endif
 lib_deps = [
   cc.find_library('m', required: false),
   dependency('threads'),
-  dependency('libavformat', version: '>= 58.12.100'),
   dependency('libavfilter', version: '>= 7.16.100'),
+  dependency('libavformat', version: '>= 58.12.100'),
   dependency('libavcodec', version: '>= 58.18.100'),
   dependency('libavutil', version: '>= 56.14.100'),
 ]
