@@ -35,8 +35,9 @@ jobs:
         echo $PKG_CONFIG_PATH
         pkg-config --list-all
          
-    - name: Configure
+    - name: Setup Meson
       shell: cmd
       run: |
-        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -no_logo -arch=${{ matrix.config.arch }}
-        meson setup build
+        # Open Visual Studio Command Prompt
+        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -no_logo -arch=x86
+        meson setup builddir
