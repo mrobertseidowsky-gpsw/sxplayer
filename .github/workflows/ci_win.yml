@@ -29,11 +29,9 @@ jobs:
     - name: Install Meson
       run: pip install meson ninja
 
-    - name: Setup Meson
-      run: meson setup builddir 
-
-    - name: test
-      run: meson test -C builddir -v
-
-             
-      
+    - name: Configure
+      shell: cmd
+      run: |
+        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -no_logo -arch=x86
+  
+   
