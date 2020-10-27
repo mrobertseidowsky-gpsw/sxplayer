@@ -27,7 +27,7 @@ jobs:
       run: pip install ffmpeg
 
     - name: Install Meson
-      run: pip install meson ninja
+      run: pip3 install -U meson ninja
 
     - name: PKG_CONFIG_PATH
       shell: cmd
@@ -35,12 +35,11 @@ jobs:
         echo $PKG_CONFIG_PATH
         locate ffmpeg
         where pkg-config
-        where ffmpeg
-        
+        pkg-config --list-all
          
     - name: Setup Meson
       shell: cmd
       run: |
         # Open Visual Studio Command Prompt
         call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -no_logo -arch=x86
-        meson setup builddir --backend=vs2019
+        meson build
