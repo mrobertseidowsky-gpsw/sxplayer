@@ -34,6 +34,7 @@ jobs:
       run: |
         pip3 install choco
         choco install ffmpeg # Chocolatey is a package manager for Windows  build FFmpeg 
+        ffmpeg --help
 
     - name: PKG_CONFIG_PATH
       shell: cmd
