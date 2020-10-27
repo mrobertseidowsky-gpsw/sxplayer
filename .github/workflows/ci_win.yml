@@ -18,10 +18,10 @@ jobs:
         python-version: '3.x'
 
     - uses: actions/upload-artifact@v1
-    if: failure()
-    with:
-      name: Windows_Meson_Testlog
-      path: build/meson-logs/testlog.txt
+      if: failure()
+      with:
+        name: Windows_Meson_Testlog
+        path: build/meson-logs/testlog.txt
 
     - name: Install ffmpeg
       run: pip install ffmpeg
@@ -36,4 +36,4 @@ jobs:
       run: meson test -C builddir -v
 
              
-             
+      
