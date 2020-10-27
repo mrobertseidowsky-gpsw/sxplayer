@@ -21,7 +21,7 @@ jobs:
       if: failure()
       with:
         name: Windows_Meson_Testlog
-        path: build/meson-logs/testlog.txt
+        path: D:\a\sxplayer\sxplayer\builddir\meson-logs\meson-log.txt
 
     - name: Install Meson
       run: pip3 install -U meson ninja
@@ -48,5 +48,4 @@ jobs:
         # call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -no_logo -arch=x86
         cd D:\a\sxplayer\sxplayer
         meson setup --pkg-config-path C:\ProgramData\Chocolatey\bin\ffmpeg.exe builddir 
-
- 
+        
