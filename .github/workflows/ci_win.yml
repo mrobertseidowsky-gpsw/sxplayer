@@ -38,9 +38,7 @@ jobs:
     - name: PKG_CONFIG_PATH
       shell: cmd
       run: |
-        # where pkg-config
         ls -al C:\ProgramData\chocolatey\lib\ffmpeg\ffmpeg.nupkg
-        # pkg-config --list-all 
          
     - name: Setup Meson
       shell: cmd
