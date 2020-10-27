@@ -31,6 +31,7 @@ jobs:
       run: |
         choco install --pre ffmpeg # Chocolatey is a package manager for Windows  build FFmpeg 
         ffmpeg --help
+        where ffmpeg
 
     - name: PKG_CONFIG_PATH
       shell: cmd
@@ -46,8 +47,8 @@ jobs:
       shell: cmd
       run: |
         # Open Visual Studio Command Prompt
-        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -no_logo -arch=x86
-        meson  setup builddir  --backend vs
+        # call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -no_logo -arch=x86
+        PKG_CONFIG_PATH="C:\ProgramData\chocolatey\lib\ffmpeg\tools" meson  setup builddir
 
  
   
