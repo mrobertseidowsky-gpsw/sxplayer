@@ -33,6 +33,7 @@ jobs:
       shell: cmd
       run: |
         echo $PKG_CONFIG_PATH
+        locate ffmpeg
         pkg-config --list-all
          
     - name: Setup Meson
