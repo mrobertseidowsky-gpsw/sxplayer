@@ -32,7 +32,10 @@ jobs:
         choco install ffmpeg # Chocolatey is a package manager for Windows  build FFmpeg 
         ffmpeg --help
         where ffmpeg
-        locate ffmpeg | grep '\.pc'
+        choco install winlocate
+        Updatedb.bat -a
+        Locate.bat ffmpeg
+        Locate.bat ffmpeg| grep '\.pc'
 
 
     - name: PKG_CONFIG_PATH
