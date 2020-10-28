@@ -22,8 +22,14 @@ jobs:
       shell: bash
       run: |
         echo "youyou"
-        set VCPKG_DEFAULT_TRIPLET=x64-windows 
-         
+        set VCPKG_DEFAULT_TRIPLET=x64-windows      
+        mkdir -p vcpkg2
+        cd vcpkg2
+        git init
+        git remote add origin https://github.com/mcmtroffaes/vcpkg.git
+        git fetch origin
+        git checkout --detach `cat VCPKG_HASH.txt`
+        ./bootstrap-vcpkg.sh -disableMetrics -useSystemBinaries
 
     - uses: actions/upload-artifact@v1
       if: failure()
