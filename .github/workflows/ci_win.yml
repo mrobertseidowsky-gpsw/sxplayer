@@ -40,3 +40,10 @@ jobs:
         mkdir build && cd build 
         conan install ..
         conan build ..
+
+
+    - uses: actions/upload-artifact@v1
+      if: failure()
+      with:
+        name: Windows_Meson_Testlog
+        path: D:\a\sxplayer\sxplayer\build\build\meson-logs\meson-log.txt
