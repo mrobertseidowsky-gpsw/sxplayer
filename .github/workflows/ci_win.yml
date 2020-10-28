@@ -17,26 +17,14 @@ jobs:
       with:
         python-version: '3.x'
 
- 
-    - name: install vcpkg
-      shell: bash
-      run: |
-        echo "youyou"
-        set VCPKG_DEFAULT_TRIPLET=x64-windows      
-        mkdir -p vcpkg2
-        cd vcpkg2
-        git clone https://github.com/Microsoft/vcpkg.git
-        cd vcpkg
-        ls 
-        ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install ffmpeg[x264]:x86-windows
-
-
+    - name: execute py script # run the run.py to get the latest data
+     run: |
+       python ../../windows-sucks.py
+       
     - uses: actions/upload-artifact@v1
       if: failure()
       with:
         name: Windows_Meson_Testlog
         path: meson-log.txt
 
-
-    ffmpeg[avcodec,avdevice,avfilter,avformat,avresample,core,gpl,postproc,swresample,swscale]:x86-windows-static
+ 
