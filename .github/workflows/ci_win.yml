@@ -25,10 +25,8 @@ jobs:
         set VCPKG_DEFAULT_TRIPLET=x64-windows      
         mkdir -p vcpkg2
         cd vcpkg2
-        git init
-        git remote add origin https://github.com/mcmtroffaes/vcpkg.git
-        git fetch origin
-        ./bootstrap-vcpkg.sh -disableMetrics -useSystemBinaries
+        git clone https://github.com/Microsoft/vcpkg.git
+        ./bootstrap-vcpkg.bat -disableMetrics -useSystemBinaries
 
     - uses: actions/upload-artifact@v1
       if: failure()
