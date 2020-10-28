@@ -6,11 +6,11 @@ class HelloConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     generators = "pkg_config" #visual_studio
     exports_sources = "./*"
-    requires = "ffmpeg/4.1-r7@sight/stable"
+    requires = ""
 
     def build(self):
         meson = Meson(self, backend="ninja") #vs
-        meson.configure()
+        meson.configure(source_folder=".", build_folder=".", pkg_config_paths=".")
         meson.build()
 
     def package(self):

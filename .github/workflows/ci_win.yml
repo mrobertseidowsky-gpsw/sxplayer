@@ -17,24 +17,23 @@ jobs:
       with:
         python-version: '3.x'
 
- 
-    - name: FFmpeg pc creation https://docs.conan.io/en/latest/reference/build_helpers/meson.html
+    # Download and build vcpkg, without installing any port. If content is cached already, it is a no-op.
+    - uses: lukka/run-vcpkg@v4
+      with:
+        setupOnly: true
+    # Now that vcpkg is installed, it is being used to run desired arguments.
+    
+    - name: install vcpkg
       shell: cmd
       run: |
-        pip3 install conan --upgrade
-        pip3 install meson ninja
-        conan remote add conan-sight https://conan.ircad.fr/artifactory/api/conan/sight
-        where ffmpeg
-        where pkg-config
-        conan create . user/testing
-        mkdir build && cd build 
-        conan install ..
-        where ffmpeg.pc
-        conan build ..
+        set VCPKG_DEFAULT_TRIPLET=x64-windows
+        $VCPKG_ROOT/vcpkg @$vcpkgResponseFile
+        $VCPKG_ROOT/vcpkg install boost:linux-x64
+      shell: bash
         
 
     - uses: actions/upload-artifact@v1
       if: failure()
       with:
         name: Windows_Meson_Testlog
-        path: D:\a\sxplayer\sxplayer\build\meson-logs\meson-log.txt
+        path: meson-log.txt
