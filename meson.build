@@ -10,8 +10,6 @@ project(
   ).stdout().strip(),
 )
 
-includeFolder = include_directories('include')
-
 
 conf_data = configuration_data()
 version_array = meson.project_version().split('.')
