@@ -22,6 +22,7 @@ jobs:
       shell: cmd
       run: |
         ls D:\vcpkg\x86-windows\lib\pkg-config
+        ls D:\vcpkg\installed\x86-windows\lib\pkg-config
         where ffmpeg
         where pkg-config
         echo %PKG_CONFIG_PATH%
