@@ -172,19 +172,19 @@ if os.path.exists(PREFIX_DIR) == False:
 # """ % (PREFIX_DIR, DOWNLOAD_DIR, PREFIX_DIR))
 
 
-# build ffmpeg
-prepare_package("http://ffmpeg.org/releases/ffmpeg-0.10.tar.bz2")
-my_exec("""
-    export PATH=/bin:/usr/bin:%s/bin:$PATH
-    cd %s/ffmpeg-0.10
-    ./configure \
-        --prefix=%s --enable-gpl --enable-nonfree \
-        --disable-ffserver \
-        --disable-shared --enable-static \
-        --extra-cflags='-static -I%s/include' \
-        --extra-ldflags='-L%s/lib' \
-        --enable-libx264 --enable-libfaac --enable-libmp3lame --enable-pthreads --enable-libvpx --enable-libxvid \
-        --enable-libvorbis --enable-libtheora
-    make
-    make install
-""" % (PREFIX_DIR, DOWNLOAD_DIR, PREFIX_DIR, PREFIX_DIR, PREFIX_DIR))
+# # build ffmpeg
+# prepare_package("http://ffmpeg.org/releases/ffmpeg-0.10.tar.bz2")
+# my_exec("""
+#     export PATH=/bin:/usr/bin:%s/bin:$PATH
+#     cd %s/ffmpeg-0.10
+#     ./configure \
+#         --prefix=%s --enable-gpl --enable-nonfree \
+#         --disable-ffserver \
+#         --disable-shared --enable-static \
+#         --extra-cflags='-static -I%s/include' \
+#         --extra-ldflags='-L%s/lib' \
+#         --enable-libx264 --enable-libfaac --enable-libmp3lame --enable-pthreads --enable-libvpx --enable-libxvid \
+#         --enable-libvorbis --enable-libtheora
+#     make
+#     make install
+# """ % (PREFIX_DIR, DOWNLOAD_DIR, PREFIX_DIR, PREFIX_DIR, PREFIX_DIR))
