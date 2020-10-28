@@ -17,17 +17,19 @@ jobs:
       with:
         python-version: '3.x'
 
-    # Restore from cache the previously built ports. If cache-miss, download, build vcpkg.
-    - name: Restore from cache and install vcpkg
-      # Download and build vcpkg, without installing any port. If content is cached already, it is a no-op.
-      uses: lukka/run-vcpkg@v4
+    - name: Prepare vcpkg
+      uses: lukka/run-vcpkg@v2
+      id: runvcpkg
       with:
-        setupOnly: true
-    # Now that vcpkg is installed, it is being used to run desired arguments.
-    - run: |
-        $VCPKG_ROOT/vcpkg @$vcpkgResponseFile
-        $VCPKG_ROOT/vcpkg install boost:linux-x64
-        $VCPKG_ROOT/vcpkg install ffmpeg:x86-windows
-      shell: bash
-      
-      
+        vcpkgArguments: ffmpeg
+        vcpkgDirectory: ${{ runner.workspace }}/vcpkg/
+        vcpkgGitCommitId: ffa7fd27cfa29f206d1fd2ccfc722cad4aaeef3d
+        vcpkgTriplet: x64-windows
+
+    - name: ffmpeg
+      shell: cmd
+      run: |
+        where ffmpeg
+        where pkg-config
+                
+        
