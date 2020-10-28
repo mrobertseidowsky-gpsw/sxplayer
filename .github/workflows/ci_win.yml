@@ -28,7 +28,7 @@ jobs:
         git clone https://github.com/Microsoft/vcpkg.git
         cd vcpkg
         ls 
-        ./bootstrap-vcpkg.bat -disableMetrics -useSystemBinaries
+        ./bootstrap-vcpkg.bat -disableMetrics
 
     - uses: actions/upload-artifact@v1
       if: failure()
