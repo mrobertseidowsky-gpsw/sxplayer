@@ -30,13 +30,18 @@ jobs:
     - name: PKG_CONFIG_PATH
       shell: cmd
       run: |
+        where libavfilter
         ls -al C:\ProgramData\Chocolatey\bin\ffmpeg.exe
-        ls -al C:\ProgramData\chocolatey\lib\ffmpeg
+        ls -al C:\ProgramData\chocolatey\lib\ffmpeg\tools\ffmpeg
         tree C:\ProgramData\chocolatey\lib\ffmpeg
+        tree C:\ProgramData\chocolatey\lib\ffmpeg\tools\ffmpeg
         where pkg-config
         pkg-config --list-all
-        cat C:\Strawberry\perl\bin\pkg-config.BAT
-         
+        echo C:\Strawberry\perl\bin\pkg-config.BAT
+        echo $PKG_CONFIG
+        echo $PKG_CONFIG_PATH
+        where fribidi
+        
     - name: Setup Meson
       shell: cmd
       run: |
