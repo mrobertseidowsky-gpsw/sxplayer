@@ -30,9 +30,10 @@ jobs:
     - name: Install and configure vc-pkg
       shell: cmd
       run: |
-        D:\
+        C:
+        cd \
         git clone https://github.com/Microsoft/vcpkg.git
         cd vcpkg
         .\bootstrap-vcpkg.bat
         .\vcpkg integrate install
-        .\vcpkg install zlib libsodium protobuf
+        .\vcpkg install ffmpeg:x64-windows
