@@ -28,7 +28,6 @@ jobs:
         git init
         git remote add origin https://github.com/mcmtroffaes/vcpkg.git
         git fetch origin
-        git checkout --detach `cat VCPKG_HASH.txt`
         ./bootstrap-vcpkg.sh -disableMetrics -useSystemBinaries
 
     - uses: actions/upload-artifact@v1
