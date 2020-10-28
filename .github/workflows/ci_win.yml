@@ -27,6 +27,7 @@ jobs:
     - run: |
         $VCPKG_ROOT/vcpkg @$vcpkgResponseFile
         $VCPKG_ROOT/vcpkg install boost:linux-x64
+        $VCPKG_ROOT/vcpkg install ffmpeg:x86-windows
       shell: bash
       
       
