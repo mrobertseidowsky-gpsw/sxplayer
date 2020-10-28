@@ -6,7 +6,7 @@ class HelloConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     generators = "pkg_config"
     exports_sources = "src/*"
-    requires = "libavfilter"
+    requires = "ffmpeg/4.2@bincrafters/stable"
 
     def build(self):
         meson = Meson(self)
