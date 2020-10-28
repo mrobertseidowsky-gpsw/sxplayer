@@ -25,10 +25,6 @@ jobs:
         pip3 install meson ninja
         #conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
         conan remote add conan-sight https://conan.ircad.fr/artifactory/api/conan/sight
-        conan profile update compiler=gcc default
-        conan profile update compiler.version=7 default
-        conan profile update compiler.libcxx=libstdc++
-        export CONAN_SYSREQUIRES_SUDO=0
         where ffmpeg
         where pkg-config
         echo %PKG_CONFIG_PATH%
@@ -39,11 +35,17 @@ jobs:
         # Now local build
         mkdir build && cd build 
         conan install ..
-        conan build ..
+        where ffmpeg.pc
+        pkg-config --list-all
 
+    - name: build
+      shell: cmd
+      run: |
+        conan build ..
+        
 
     - uses: actions/upload-artifact@v1
       if: failure()
       with:
         name: Windows_Meson_Testlog
-        path: D:\a\sxplayer\sxplayer\build\build\meson-logs\meson-log.txt
+        path: D:\a\sxplayer\sxplayer\build\meson-logs\meson-log.txt
