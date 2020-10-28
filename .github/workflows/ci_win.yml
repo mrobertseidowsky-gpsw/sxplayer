@@ -17,19 +17,12 @@ jobs:
       with:
         python-version: '3.x'
 
-    # Download and build vcpkg, without installing any port. If content is cached already, it is a no-op.
-    - uses: lukka/run-vcpkg@v4
-      with:
-        setupOnly: true
-    # Now that vcpkg is installed, it is being used to run desired arguments.
-    
+ 
     - name: install vcpkg
       shell: bash
       run: |
         echo "youyou"
-        set VCPKG_DEFAULT_TRIPLET=x64-windows
-        $VCPKG_ROOT/vcpkg @$vcpkgResponseFile
-        $VCPKG_ROOT/vcpkg install boost:linux-x64
+        set VCPKG_DEFAULT_TRIPLET=x64-windows 
          
 
     - uses: actions/upload-artifact@v1
