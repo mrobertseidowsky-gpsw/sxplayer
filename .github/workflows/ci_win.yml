@@ -34,7 +34,8 @@ jobs:
         cd D:\a\sxplayer\sxplayer
         ls
         conan create . user/testing
+        ls 
         # Now local build
         mkdir build && cd build 
         conan install ..
-       
+        conan build ..
