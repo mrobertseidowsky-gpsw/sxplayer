@@ -17,19 +17,12 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Prepare vcpkg
-      uses: lukka/run-vcpkg@v2
-      id: runvcpkg
-      with:
-        vcpkgArguments: ffmpeg
-        vcpkgDirectory: ${{ runner.workspace }}/vcpkg/
-        vcpkgGitCommitId: ffa7fd27cfa29f206d1fd2ccfc722cad4aaeef3d
-        vcpkgTriplet: x64-windows
 
     - name: ffmpeg
       shell: cmd
       run: |
+        ls D:\vcpkg\x86-windows\lib\pkg-config
         where ffmpeg
         where pkg-config
-                
-        
+        echo %PKG_CONFIG_PATH%
+    
