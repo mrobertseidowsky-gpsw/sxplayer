@@ -4,13 +4,13 @@ class HelloConan(ConanFile):
     name = "sxplayer"
     version = "0.1"
     settings = "os", "compiler", "build_type", "arch"
-    generators = "pkg_config"
+    generators = "pkg_config" #visual_studio
     exports_sources = "./*"
     requires = "ffmpeg/4.1-r7@sight/stable"
 
     def build(self):
-        meson = Meson(self, backend="ninja")
-        meson.configure(source_folder=".", build_folder=".")
+        meson = Meson(self, backend="ninja") #vs
+        meson.configure()
         meson.build()
 
     def package(self):
