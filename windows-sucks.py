@@ -70,106 +70,106 @@ if os.path.exists(PREFIX_DIR) == False:
     my_exec("sudo mkdir -p '%s' ; sudo chmod 777 '%s'" % (PREFIX_DIR, PREFIX_DIR))
 
 
-# build yasm
-prepare_package("http://www.tortall.net/projects/yasm/releases/yasm-1.2.0.tar.gz")
-my_exec("""
-    export PATH=/bin:/usr/bin:%s/bin:$PATH
-    cd %s/yasm-1.2.0
-    ./configure --prefix=%s
-    make
-    make install
-""" % (PREFIX_DIR, DOWNLOAD_DIR, PREFIX_DIR))
+# # build yasm
+# prepare_package("http://www.tortall.net/projects/yasm/releases/yasm-1.2.0.tar.gz")
+# my_exec("""
+#     export PATH=/bin:/usr/bin:%s/bin:$PATH
+#     cd %s/yasm-1.2.0
+#     ./configure --prefix=%s
+#     make
+#     make install
+# """ % (PREFIX_DIR, DOWNLOAD_DIR, PREFIX_DIR))
 
 
-# build x264
-prepare_package("ftp://ftp.videolan.org/pub/x264/snapshots/x264-snapshot-20120302-2245-stable.tar.bz2")
-my_exec("""
-    export PATH=/bin:/usr/bin:%s/bin:$PATH
-    cd %s/x264-snapshot-20120302-2245-stable
-    ./configure --prefix=%s --enable-static --extra-cflags='-I%s/include' --extra-ldflags='-L%s/lib'
-    make
-    make install
-""" % (PREFIX_DIR, DOWNLOAD_DIR, PREFIX_DIR, PREFIX_DIR, PREFIX_DIR))
+# # build x264
+# prepare_package("ftp://ftp.videolan.org/pub/x264/snapshots/x264-snapshot-20120302-2245-stable.tar.bz2")
+# my_exec("""
+#     export PATH=/bin:/usr/bin:%s/bin:$PATH
+#     cd %s/x264-snapshot-20120302-2245-stable
+#     ./configure --prefix=%s --enable-static --extra-cflags='-I%s/include' --extra-ldflags='-L%s/lib'
+#     make
+#     make install
+# """ % (PREFIX_DIR, DOWNLOAD_DIR, PREFIX_DIR, PREFIX_DIR, PREFIX_DIR))
 
 
-# build faac
-# also fix a compilation bug
-prepare_package("http://downloads.sourceforge.net/faac/faac-1.28.tar.gz")
-my_exec("""
-    export PATH=/bin:/usr/bin:%s/bin:$PATH
-    cd %s/faac-1.28
-    sed 's/^char\ \*strcasestr/\/\/char\ \*strcasestr/' common/mp4v2/mpeg4ip.h > common/mp4v2/mpeg4ip.h~
-    mv common/mp4v2/mpeg4ip.h~ common/mp4v2/mpeg4ip.h
-    ./configure --prefix=%s
-    make
-    make install
-""" % (PREFIX_DIR, DOWNLOAD_DIR, PREFIX_DIR))
+# # build faac
+# # also fix a compilation bug
+# prepare_package("http://downloads.sourceforge.net/faac/faac-1.28.tar.gz")
+# my_exec("""
+#     export PATH=/bin:/usr/bin:%s/bin:$PATH
+#     cd %s/faac-1.28
+#     sed 's/^char\ \*strcasestr/\/\/char\ \*strcasestr/' common/mp4v2/mpeg4ip.h > common/mp4v2/mpeg4ip.h~
+#     mv common/mp4v2/mpeg4ip.h~ common/mp4v2/mpeg4ip.h
+#     ./configure --prefix=%s
+#     make
+#     make install
+# """ % (PREFIX_DIR, DOWNLOAD_DIR, PREFIX_DIR))
 
 
-# build libmp3lame
-prepare_package("http://downloads.sourceforge.net/lame/lame-3.99.5.tar.gz")
-my_exec("""
-    export PATH=/bin:/usr/bin:%s/bin:$PATH
-    cd %s/lame-3.99.5
-    ./configure --prefix=%s
-    make
-    make install
-""" % (PREFIX_DIR, DOWNLOAD_DIR, PREFIX_DIR))
+# # build libmp3lame
+# prepare_package("http://downloads.sourceforge.net/lame/lame-3.99.5.tar.gz")
+# my_exec("""
+#     export PATH=/bin:/usr/bin:%s/bin:$PATH
+#     cd %s/lame-3.99.5
+#     ./configure --prefix=%s
+#     make
+#     make install
+# """ % (PREFIX_DIR, DOWNLOAD_DIR, PREFIX_DIR))
 
 
-# build libogg
-prepare_package("http://downloads.xiph.org/releases/ogg/libogg-1.3.0.tar.gz")
-my_exec("""
-    export PATH=/bin:/usr/bin:%s/bin:$PATH
-    cd %s/libogg-1.3.0
-    ./configure --prefix=%s
-    make
-    make install
-""" % (PREFIX_DIR, DOWNLOAD_DIR, PREFIX_DIR))
+# # build libogg
+# prepare_package("http://downloads.xiph.org/releases/ogg/libogg-1.3.0.tar.gz")
+# my_exec("""
+#     export PATH=/bin:/usr/bin:%s/bin:$PATH
+#     cd %s/libogg-1.3.0
+#     ./configure --prefix=%s
+#     make
+#     make install
+# """ % (PREFIX_DIR, DOWNLOAD_DIR, PREFIX_DIR))
 
 
-# build libvorbis
-prepare_package("http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.2.tar.bz2")
-my_exec("""
-    export PATH=/bin:/usr/bin:%s/bin:$PATH
-    cd %s/libvorbis-1.3.2
-    ./configure --prefix=%s --with-ogg=%s
-    make
-    make install
-""" % (PREFIX_DIR, DOWNLOAD_DIR, PREFIX_DIR, PREFIX_DIR))
+# # build libvorbis
+# prepare_package("http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.2.tar.bz2")
+# my_exec("""
+#     export PATH=/bin:/usr/bin:%s/bin:$PATH
+#     cd %s/libvorbis-1.3.2
+#     ./configure --prefix=%s --with-ogg=%s
+#     make
+#     make install
+# """ % (PREFIX_DIR, DOWNLOAD_DIR, PREFIX_DIR, PREFIX_DIR))
 
 
-# build libtheora
-prepare_package("http://downloads.xiph.org/releases/theora/libtheora-1.1.1.tar.bz2")
-my_exec("""
-    export PATH=/bin:/usr/bin:%s/bin:$PATH
-    cd %s/libtheora-1.1.1
-    ./configure --prefix=%s --with-ogg=%s --with-vorbis=%s
-    make
-    make install
-""" % (PREFIX_DIR, DOWNLOAD_DIR, PREFIX_DIR, PREFIX_DIR, PREFIX_DIR))
+# # build libtheora
+# prepare_package("http://downloads.xiph.org/releases/theora/libtheora-1.1.1.tar.bz2")
+# my_exec("""
+#     export PATH=/bin:/usr/bin:%s/bin:$PATH
+#     cd %s/libtheora-1.1.1
+#     ./configure --prefix=%s --with-ogg=%s --with-vorbis=%s
+#     make
+#     make install
+# """ % (PREFIX_DIR, DOWNLOAD_DIR, PREFIX_DIR, PREFIX_DIR, PREFIX_DIR))
 
 
-# build libvpx-v1.0.0.tar.bz2
-prepare_package("http://webm.googlecode.com/files/libvpx-v1.0.0.tar.bz2")
-my_exec("""
-    export PATH=/bin:/usr/bin:%s/bin:$PATH
-    cd %s/libvpx-v1.0.0
-    ./configure --prefix=%s
-    make
-    make install
-""" % (PREFIX_DIR, DOWNLOAD_DIR, PREFIX_DIR))
+# # build libvpx-v1.0.0.tar.bz2
+# prepare_package("http://webm.googlecode.com/files/libvpx-v1.0.0.tar.bz2")
+# my_exec("""
+#     export PATH=/bin:/usr/bin:%s/bin:$PATH
+#     cd %s/libvpx-v1.0.0
+#     ./configure --prefix=%s
+#     make
+#     make install
+# """ % (PREFIX_DIR, DOWNLOAD_DIR, PREFIX_DIR))
 
 
-# build libxvid
-prepare_package("http://downloads.xvid.org/downloads/xvidcore-1.3.2.tar.bz2")
-my_exec("""
-    export PATH=/bin:/usr/bin:%s/bin:$PATH
-    cd %s/xvidcore/build/generic
-    ./configure --prefix=%s
-    make
-    make install
-""" % (PREFIX_DIR, DOWNLOAD_DIR, PREFIX_DIR))
+# # build libxvid
+# prepare_package("http://downloads.xvid.org/downloads/xvidcore-1.3.2.tar.bz2")
+# my_exec("""
+#     export PATH=/bin:/usr/bin:%s/bin:$PATH
+#     cd %s/xvidcore/build/generic
+#     ./configure --prefix=%s
+#     make
+#     make install
+# """ % (PREFIX_DIR, DOWNLOAD_DIR, PREFIX_DIR))
 
 
 # build ffmpeg
