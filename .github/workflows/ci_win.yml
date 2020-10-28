@@ -17,17 +17,9 @@ jobs:
       with:
         python-version: '3.x'
 
+    steps:
+      - run: conan create .
 
-    - name: ffmpeg
-      shell: cmd
-      run: |
-        where ffmpeg
-        where pkg-config
-        echo %PKG_CONFIG_PATH%
-        cd D:\a\sxplayer\sxplayer
-        ls
-        conan create . user/testing
-        # Now local build
-        mkdir build && cd build
-        conan install ..
-        conan build ..
+      - uses: grisumbras/locate-conan-package@latest
+        id: locate_package
+        
