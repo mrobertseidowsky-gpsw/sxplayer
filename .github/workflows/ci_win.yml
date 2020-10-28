@@ -18,12 +18,13 @@ jobs:
         python-version: '3.x'
 
  
-    - name: ffmpeg
+    - name: ffmpeg https://docs.conan.io/en/latest/reference/build_helpers/meson.html
       shell: cmd
       run: |
         pip3 install conan --upgrade
         pip3 install meson ninja
-        conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+        #conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+        conan remote add conan-sight https://conan.ircad.fr/artifactory/api/conan/sight
         conan profile update compiler=gcc default
         conan profile update compiler.version=7 default
         conan profile update compiler.libcxx=libstdc++
