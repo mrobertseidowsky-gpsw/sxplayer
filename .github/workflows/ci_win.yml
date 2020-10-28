@@ -36,4 +36,5 @@ jobs:
         conan create . user/testing
         # Now local build
         mkdir build && cd build
-       
+        conan install ..
+        conan build ..
