@@ -4,7 +4,7 @@ class HelloConan(ConanFile):
     name = "sxplayer"
     version = "0.1"
     settings = "os", "compiler", "build_type", "arch"
-    generators = "visual_studio"
+    generators = "pkg_config" #
     exports_sources = "src/*"
     requires = "ffmpeg/4.2@bincrafters/stable", "libpng/1.6.37@bincrafters/stable", "openjpeg/2.3.1@bincrafters/stable"
 
