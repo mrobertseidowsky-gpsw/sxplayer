@@ -10,7 +10,7 @@ class HelloConan(ConanFile):
 
     def build(self):
         meson = Meson(self, backend="ninja")
-        meson.configure(source_folder=".", build_folder="build", pkg_config_paths=".")
+        meson.configure(source_folder=".", build_folder=".", pkg_config_paths=".")
         meson.build()
 
     def package(self):
