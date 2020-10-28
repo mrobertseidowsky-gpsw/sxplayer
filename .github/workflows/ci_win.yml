@@ -27,32 +27,12 @@ jobs:
         ffmpeg --help
         where ffmpeg
        
-    - name: PKG_CONFIG_PATH
+    - name: Install and configure vc-pkg
       shell: cmd
       run: |
-        where libavfilter
-        where libavfilter.pc
-        ls -al C:\ProgramData\Chocolatey\bin\ffmpeg.exe
-        ls -al C:\ProgramData\chocolatey\lib\ffmpeg\tools\ffmpeg
-        tree C:\ProgramData\chocolatey\lib\ffmpeg
-        tree C:\ProgramData\chocolatey\lib\ffmpeg\tools\ffmpeg
-        where pkg-config
-        pkg-config --list-all
-        echo C:\Strawberry\perl\bin\pkg-config.BAT
-        echo $PKG_CONFIG
-        echo $PKG_CONFIG_PATH
-        where fribidi
-        
-    - name: Setup Meson
-      shell: cmd
-      run: |
-        # Open Visual Studio Command Prompt Open x64 Native Tools Command Prompt for VS2019
-        # call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -no_logo -arch=x86
-        cd D:\a\sxplayer\sxplayer
-        meson setup builddir 
-        
-    - uses: actions/upload-artifact@v1
-      if: failure()
-      with:
-        name: Windows_Meson_Testlog
-        path: D:\a\sxplayer\sxplayer\builddir\meson-logs\meson-log.txt
+        D:\
+        git clone https://github.com/Microsoft/vcpkg.git
+        cd vcpkg
+        .\bootstrap-vcpkg.bat
+        .\vcpkg integrate install
+        .\vcpkg install zlib libsodium protobuf
