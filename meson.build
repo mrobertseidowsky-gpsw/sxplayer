@@ -10,6 +10,9 @@ project(
   ).stdout().strip(),
 )
 
+includeFolder = include_directories('include')
+
+
 conf_data = configuration_data()
 version_array = meson.project_version().split('.')
 conf_data.set('version_major', version_array[0])
@@ -53,7 +56,7 @@ lib_deps = [
   dependency('libavfilter', version: '>= 7.16.100'),
   dependency('libavformat', version: '>= 58.12.100'),
   dependency('libavcodec', version: '>= 58.18.100'),
-  dependency('libavutil', version: '>= 56.14.100'),
+  dependency('libavutil', version: '>= 56.14.100'), #cpp.find_library
 ]
 
 vaapi_dep = dependency('libva', version: '>= 1.1.0', required: get_option('vaapi'))
@@ -93,9 +96,12 @@ if host_system == 'darwin'
   lib_src += files('decoder_vt.c')
 endif
 
+includeFolder = include_directories('include')
+
 libsxplayer = library(
   'sxplayer',
   lib_src,
+  include_directories: includeFolder,
   dependencies: lib_deps,
   install: true,
   install_rpath: install_rpath,
