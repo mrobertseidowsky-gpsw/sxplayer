@@ -15,16 +15,29 @@ jobs:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
       with:
-        python-version: '2.x'
+        python-version: '3.x'
 
-    - name: execute py script # run the run.py to get the latest data
+ 
+    - name: install vcpkg
+      shell: bash
       run: |
-        python windows-sucks.py
-       
+        echo "youyou"
+        set VCPKG_DEFAULT_TRIPLET=x64-windows      
+        mkdir -p vcpkg2
+        cd vcpkg2
+        git clone https://github.com/Microsoft/vcpkg.git
+        cd vcpkg
+        ls 
+        ./bootstrap-vcpkg.bat -disableMetrics
+        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
+        where ffmpeg
+        where libavfilter
+        meson setup builddir 
+        meson test -C builddir -v --backend vs
+        pkg-config --list-all
+
     - uses: actions/upload-artifact@v1
       if: failure()
       with:
         name: Windows_Meson_Testlog
         path: meson-log.txt
-
- 
