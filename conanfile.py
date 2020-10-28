@@ -9,7 +9,7 @@ class HelloConan(ConanFile):
     requires = "ffmpeg/4.1-r7@sight/stable"
 
     def build(self):
-        meson = Meson(self, backend="vs")
+        meson = Meson(self, backend="ninja")
         meson.configure(source_folder=".", build_folder="build", pkg_config_paths="build")
         meson.build()
 
