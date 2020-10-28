@@ -18,8 +18,8 @@ jobs:
         python-version: '3.x'
 
     - name: execute py script # run the run.py to get the latest data
-     run: |
-       python ../../windows-sucks.py
+      run: |
+        python ../../windows-sucks.py
        
     - uses: actions/upload-artifact@v1
       if: failure()
