@@ -29,10 +29,14 @@ jobs:
         cd vcpkg
         ls 
         ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install ffmpeg[avformat]:x86-windows-static
+        vcpkg install ffmpeg[x264]:x86-windows
+
 
     - uses: actions/upload-artifact@v1
       if: failure()
       with:
         name: Windows_Meson_Testlog
         path: meson-log.txt
+
+
+    ffmpeg[avcodec,avdevice,avfilter,avformat,avresample,core,gpl,postproc,swresample,swscale]:x86-windows-static
