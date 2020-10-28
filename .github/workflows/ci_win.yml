@@ -26,27 +26,7 @@ jobs:
         C:
         cd \
         git clone https://github.com/Microsoft/vcpkg.git
-        cd vcpkg
+        ls 
         .\bootstrap-vcpkg.bat
-        echo "youyou"
-        .\vcpkg integrate install
-        echo "youyou"
-        .\vcpkg install ffmpeg:x64-windows
-        echo "youyou"
-        where ffmpeg
-        set PKG_CONFIG_PATH=%PKG_CONFIG_PATH%;D:\Data\vcpkg\packages\ffmpeg_x86-windows\lib\pkgconfig
-
-
-    - name: Setup Meson
-      shell: cmd
-      run: |
-        # Open Visual Studio Command Prompt Open x64 Native Tools Command Prompt for VS2019
-        # call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -no_logo -arch=x86
-        cd D:\a\sxplayer\sxplayer
-        meson setup builddir 
-        
-    - uses: actions/upload-artifact@v1
-      if: failure()
-      with:
-        name: Windows_Meson_Testlog
-        path: D:\a\sxplayer\sxplayer\builddir\meson-logs\meson-log.txt
+        Write-Host "youyou"
+       
