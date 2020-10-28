@@ -96,12 +96,10 @@ if host_system == 'darwin'
   lib_src += files('decoder_vt.c')
 endif
 
-includeFolder = include_directories('include')
 
 libsxplayer = library(
   'sxplayer',
   lib_src,
-  include_directories: includeFolder,
   dependencies: lib_deps,
   install: true,
   install_rpath: install_rpath,
