@@ -30,7 +30,6 @@ jobs:
         mkdir build && cd build 
         conan install ..
         where ffmpeg.pc
-        pkg-config --list-all
         conan build ..
         
 
