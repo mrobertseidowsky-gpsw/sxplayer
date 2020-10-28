@@ -31,6 +31,7 @@ jobs:
       shell: cmd
       run: |
         where libavfilter
+        where libavfilter.pc
         ls -al C:\ProgramData\Chocolatey\bin\ffmpeg.exe
         ls -al C:\ProgramData\chocolatey\lib\ffmpeg\tools\ffmpeg
         tree C:\ProgramData\chocolatey\lib\ffmpeg
