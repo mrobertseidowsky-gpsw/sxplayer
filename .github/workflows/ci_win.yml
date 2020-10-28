@@ -17,25 +17,25 @@ jobs:
       with:
         python-version: '3.x'
 
-
-
-    - name: Install Meson
+    - name: Install Meson and ninja
       run: pip3 install -U meson ninja
 
-    - name: ffmpeg with chocolate
+    - name: Install Ffmpeg with Chocolatey (package manager for Windows)
       shell: cmd
       run: |
-        choco install ffmpeg  # Chocolatey is a package manager for Windows  build FFmpeg 
+        choco install ffmpeg
         ffmpeg --help
         where ffmpeg
        
-
-
     - name: PKG_CONFIG_PATH
       shell: cmd
       run: |
         ls -al C:\ProgramData\Chocolatey\bin\ffmpeg.exe
+        ls -al C:\ProgramData\chocolatey\lib\ffmpeg
+        tree C:\ProgramData\chocolatey\lib\ffmpeg
+        where pkg-config
         pkg-config --list-all
+        cat C:\Strawberry\perl\bin\pkg-config.BAT
          
     - name: Setup Meson
       shell: cmd
@@ -43,7 +43,7 @@ jobs:
         # Open Visual Studio Command Prompt Open x64 Native Tools Command Prompt for VS2019
         # call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -no_logo -arch=x86
         cd D:\a\sxplayer\sxplayer
-        meson setup --pkg-config-path C:\ProgramData\Chocolatey\bin\ffmpeg.exe builddir 
+        meson setup builddir 
         
     - uses: actions/upload-artifact@v1
       if: failure()
