@@ -9,3 +9,4 @@ option('player', type: 'feature', value: 'auto',
 option('cpp-header', type: 'boolean', value: false,
        description: 'install a C++ compat header (discouraged)')
 option('tests', type: 'boolean', value: true)
+
