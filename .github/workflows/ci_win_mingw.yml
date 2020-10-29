@@ -31,6 +31,7 @@ jobs:
         run: |
           # Open Visual Studio Command Prompt Open x64 Native Tools Command Prompt for VS2019
           call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -no_logo -arch=x86
+          $env:CHERE_INVOKING = 'yes'
           meson setup builddir --backend=vs
               
       - name: Build
