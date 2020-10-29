@@ -27,10 +27,10 @@ jobs:
           C:\msys64\usr\bin\bash -lc "pacman -S --noconfirm --needed mingw-w64-x86_64-meson"
       
       - name: Setup
-        shell: cmd
         run: |
           $env:CHERE_INVOKING = 'yes'
           set VSDEVCMD=C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat
-          call "%VSDEVCMD%" -arch=x86 && meson setup builddir -v --backend vs2019
+          "%VSDEVCMD%" -arch=x86 
+          meson setup builddir -v --backend vs2019
           
  
