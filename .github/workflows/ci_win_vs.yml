@@ -14,7 +14,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
- 
       - uses: msys2/setup-msys2@v2
         with:
           msystem: MINGW64 # Start a 64 bit Mingw environment
@@ -32,7 +31,6 @@ jobs:
         run: |
           $env:CHERE_INVOKING = 'yes'
           set VSDEVCMD=C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat
-          call "%VSDEVCMD%" -arch=%PROTOBUF_ARCH%
-          call "meson setup builddir -v --backend vs2019"
-          call "meson setup compile -C builddir -v --backend vs2019"
+          call "%VSDEVCMD%" -arch=x86 && meson setup builddir -v --backend vs2019
+          
  
