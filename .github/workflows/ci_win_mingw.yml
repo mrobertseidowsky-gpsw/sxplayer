@@ -23,11 +23,9 @@ jobs:
         run: |
           C:\msys64\usr\bin\bash -lc "pacman -S --noconfirm --needed git make"
           C:\msys64\usr\bin\bash -lc "pacman -S --noconfirm --needed mingw-w64-x86_64-{toolchain,ffmpeg}"
-          C:\msys64\usr\bin\bash -lc "pacman -S --noconfirm python3"
+          C:\msys64\usr\bin\bash -lc "pacman -S --noconfirm --needed mingw-w64-x86_64-python3-pip"
+          C:\msys64\usr\bin\bash -lc "pip3 install meson"
       - name: Build
         run: |
-          $env:CHERE_INVOKING = 'yes'  # Preserve the current working directory
-          C:\msys64\usr\bin\bash -lc "git clone https://github.com/mesonbuild/meson.git"
-          C:\msys64\usr\bin\bash -lc "cd meson && ./run_tests.py --backend=ninja"
           C:\msys64\usr\bin\bash -lc "meson setup builddir"
           C:\msys64\usr\bin\bash -lc "meson compile -C builddir"
