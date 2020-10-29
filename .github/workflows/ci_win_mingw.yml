@@ -27,10 +27,12 @@ jobs:
           C:\msys64\usr\bin\bash -lc "pacman -S --noconfirm --needed mingw-w64-x86_64-meson"
 
       - name: Setup
+        shell: cmd
         run: |
-          $env:CHERE_INVOKING = 'yes'
-          C:\msys64\usr\bin\bash -lc "meson setup builddir --backend=vs"
-            
+          # Open Visual Studio Command Prompt Open x64 Native Tools Command Prompt for VS2019
+          call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -no_logo -arch=x86
+          meson setup builddir --backend=vs
+              
       - name: Build
         run: |
           $env:CHERE_INVOKING = 'yes'
