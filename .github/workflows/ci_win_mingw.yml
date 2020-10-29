@@ -34,11 +34,11 @@ jobs:
       - name: Build
         run: |
           $env:CHERE_INVOKING = 'yes'
-          C:\msys64\usr\bin\bash -lc "meson compile -C builddir -v --backend vs2019"
+          C:\msys64\usr\bin\bash -lc "meson compile -C builddir -v"
 
       - name: Test
         run: |
           $env:CHERE_INVOKING = 'yes' 
-          C:\msys64\usr\bin\bash -lc "meson test -C builddir -v --backend vs2019"
+          C:\msys64\usr\bin\bash -lc "meson test -C builddir -v"
  
    
