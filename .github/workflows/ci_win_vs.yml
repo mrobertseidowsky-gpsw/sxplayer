@@ -27,9 +27,9 @@ jobs:
           C:\msys64\usr\bin\bash -lc "pacman -S --noconfirm --needed mingw-w64-x86_64-meson"
 
       - uses: ilammy/msvc-dev-cmd@v1
-
+      
       - name: Setup
         run: |
           $env:CHERE_INVOKING = 'yes'
-          meson setup builddir -v
+          meson setup builddir -v --backend vs2019              
           
