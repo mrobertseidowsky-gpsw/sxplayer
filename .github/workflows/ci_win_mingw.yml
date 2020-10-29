@@ -29,17 +29,17 @@ jobs:
       - name: Setup
         run: |
           $env:CHERE_INVOKING = 'yes'  # Preserve the current working directory
-          C:\msys64\usr\bin\bash -lc "meson setup builddir"
+          C:\msys64\usr\bin\bash -lc "meson setup builddir -v --backend=vs2019"
             
       - name: Build
         run: |
           $env:CHERE_INVOKING = 'yes'  # Preserve the current working directory
-          C:\msys64\usr\bin\bash -lc "meson compile -C builddir "
+          C:\msys64\usr\bin\bash -lc "meson compile -C builddir -v --backend=vs2019"
 
       - name: Test
         run: |
           $env:CHERE_INVOKING = 'yes'  # Preserve the current working directory
-          C:\msys64\usr\bin\bash -lc "meson test -C builddir -v"
+          C:\msys64\usr\bin\bash -lc "meson test -C builddir -v --backend=vs2019"
 
       - uses: actions/upload-artifact@v1
         if: failure()
