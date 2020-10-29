@@ -29,7 +29,7 @@ jobs:
 
       - name: CHERE_INVOKING
         run: |
-          echo "CHERE_INVOKING='yes'" >> $GITHUB_ENV
+          echo "::set-env name=CHERE_INVOKING::'yes'"
           
       - name: Setup
         run: |
