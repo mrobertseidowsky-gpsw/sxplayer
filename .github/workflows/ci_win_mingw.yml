@@ -33,10 +33,12 @@ jobs:
             
       - name: Build
         run: |
+          $env:CHERE_INVOKING = 'yes'  # Preserve the current working directory
           C:\msys64\usr\bin\bash -lc "meson compile -C builddir "
 
       - name: Test
         run: |
+          $env:CHERE_INVOKING = 'yes'  # Preserve the current working directory
           C:\msys64\usr\bin\bash -lc "meson test -C builddir -v"
 
       - uses: actions/upload-artifact@v1
