@@ -17,17 +17,30 @@ jobs:
       - uses: msys2/setup-msys2@v2
         with:
           msystem: MINGW64 # Start a 64 bit Mingw environment
+          CHERE_INVOKING: 'yes' # Preserve the current working directory
           update: true
 
       - name: Install dependencies
         run: |
           C:\msys64\usr\bin\bash -lc "pacman -S --noconfirm --needed git make"
           C:\msys64\usr\bin\bash -lc "pacman -S --noconfirm --needed mingw-w64-x86_64-{toolchain,ffmpeg}"
-          C:\msys64\usr\bin\bash -lc "pacman -S --noconfirm --needed mingw-w64-x86_64-meson"
           C:\msys64\usr\bin\bash -lc "pacman -S --noconfirm mingw-w64-x86_64-python3-pip"
+          C:\msys64\usr\bin\bash -lc "pacman -S --noconfirm --needed mingw-w64-x86_64-meson"
+
+      - name: Setup
+        run: |
+          C:\msys64\usr\bin\bash -lc "meson setup builddir --backend=vs2019"
+            
       - name: Build
         run: |
-          $env:CHERE_INVOKING = 'yes'  # Preserve the current working directory
-          C:\msys64\usr\bin\bash -lc "meson setup builddir"
-          C:\msys64\usr\bin\bash -lc "meson compile -C builddir"
-          C:\msys64\usr\bin\bash -lc "meson test"
+          C:\msys64\usr\bin\bash -lc "meson compile -C builddir "
+
+      - name: Test
+        run: |
+          C:\msys64\usr\bin\bash -lc "meson test -C builddir -v"
+
+      - uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: Windows_Meson_Testlog
+          path: D:/a/sxplayer/sxplayer/builddir/meson-logs/meson-log.txt
