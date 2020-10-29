@@ -32,7 +32,8 @@ jobs:
         vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
         ls 
         pip install meson
-        cd ..
+        cd ../..
+        ls
         meson setup builddir 
         meson test -C builddir -v --backend vs
         pkg-config --list-all
