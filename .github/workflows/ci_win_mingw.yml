@@ -27,6 +27,5 @@ jobs:
           C:\msys64\usr\bin\bash -lc "pacman -S --noconfirm mingw-w64-x86_64-python3-pip"
       - name: Build
         run: |
-          $env:CHERE_INVOKING = 'yes'  # Preserve the current working directory
           C:\msys64\usr\bin\bash -lc "meson setup builddir"
           C:\msys64\usr\bin\bash -lc "meson compile -C builddir"
