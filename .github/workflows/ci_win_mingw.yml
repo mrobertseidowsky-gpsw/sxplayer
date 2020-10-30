@@ -27,11 +27,10 @@ jobs:
           C:\msys64\usr\bin\bash -lc "pacman -S --noconfirm mingw-w64-x86_64-python3-pip"
           C:\msys64\usr\bin\bash -lc "pacman -S --noconfirm --needed mingw-w64-x86_64-meson"
 
-      - name: CHERE_INVOKING
+      - name: Env variable
         run: |
-          echo "CHERE_INVOKING='yes'" >> $GITHUB_ENV
-          C:\msys64\usr\bin\bash -lc "echo $CHERE_INVOKING"
-          
+          $env:CHERE_INVOKING = 'yes'  # Preserve the current working directory
+
       - name: Setup
         run: |
           C:\msys64\usr\bin\bash -lc "meson setup builddir"
