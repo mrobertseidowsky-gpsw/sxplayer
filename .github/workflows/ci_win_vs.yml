@@ -19,7 +19,7 @@ jobs:
       - name: Run a one-line script
         shell: cmd
         run: |
-          call BuildFFmpeg.ps1
+          call ".\BuildFFmpeg.ps1"
 
 
           
