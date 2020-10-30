@@ -19,28 +19,11 @@ jobs:
 
     - uses: msys2/setup-msys2@v2
 
-    - name: install vcpkg
-      shell: bash
-      run: |
-        set VCPKG_DEFAULT_TRIPLET=x64-windows      
-        mkdir -p vcpkg2
-        cd vcpkg2
-        git clone https://github.com/Microsoft/vcpkg.git
-        cd vcpkg
-        ls 
-        ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
-        ls 
-        vcpkg list
-        pip install meson
-        cd ../..
-        vcpkg owns ffmpeg
-
+ 
     - uses: ilammy/msvc-dev-cmd@v1
     - name: Build something 
       run: |
         meson setup --help
-        meson setup builddir --backend vs --pkg-config-path D:/a/sxplayer/sxplayer/vcpkg2/vcpkg/installed/x86-windows/lib/pkgconfig/
 
     - uses: actions/upload-artifact@v1
       with:
