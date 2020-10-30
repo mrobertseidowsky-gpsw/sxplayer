@@ -46,5 +46,5 @@ jobs:
     - uses: actions/upload-artifact@v1
       with:
         name: libavcodec
-        path: ./vcpkg2/vcpkg/installed/x86-windows-static/lib/pkgconfig/
+        path: ./vcpkg2/vcpkg/installed/x86-windows/lib/pkgconfig/
            
