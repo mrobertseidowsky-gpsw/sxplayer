@@ -14,7 +14,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - uses: msys2/setup-msys2@v2
       
       - name: Run a one-line script
-        run: windows.sh
+        run: |
+          ls
+          C:\msys64\usr\bin\bash -lc "windows.sh"
+
           
