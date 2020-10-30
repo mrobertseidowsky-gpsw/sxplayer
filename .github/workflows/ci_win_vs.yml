@@ -23,8 +23,23 @@ jobs:
       shell: bash
       run: |
         echo "youyou"
+        set VCPKG_DEFAULT_TRIPLET=x64-windows      
+        mkdir -p vcpkg2
+        cd vcpkg2
+        git clone https://github.com/Microsoft/vcpkg.git
+        cd vcpkg
+        ls 
+        ./bootstrap-vcpkg.bat -disableMetrics
+        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
+        ls 
+        vcpkg list
+        pip install meson
+        cd ../..
+        ls
         find . -name '*ffmpeg*'
-        
+        find . -name '*libavcodec*'
+        find . -name '*.pc*'
+        meson setup builddir --backend vs
     - uses: actions/upload-artifact@v1
       if: failure()
       with:
