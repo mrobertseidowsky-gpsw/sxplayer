@@ -16,17 +16,38 @@ jobs:
     - uses: actions/setup-python@v2
       with:
         python-version: '3.x'
- 
 
-    - name: Install Dependencies
-      run: |
-        pip install --upgrade meson
+    - uses: msys2/setup-msys2@v2
 
-    - uses: ilammy/msvc-dev-cmd@v1
-      with:
-        arch: x86
-        
-    - name: shellcheck
-      shell: cmd
+    - name: install vcpkg
+      shell: bash
       run: |
+        set VCPKG_DEFAULT_TRIPLET=x64-windows      
+        mkdir -p vcpkg2
+        cd vcpkg2
+        git clone https://github.com/Microsoft/vcpkg.git
+        cd vcpkg
+        ls 
+        ./bootstrap-vcpkg.bat -disableMetrics
+        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
+        ls 
+        vcpkg list
+        pip install meson
+        cd ../..
+        ls
+        cd C:
+        ls  
+        find . -name '*ffmpeg*'
+        find . -name '*libavformat*'
+        find . -name '*.pc*'
+        cd D:
+        ls  
+        find . -name '*ffmpeg*'
+        find . -name '*libavformat*'
+        find . -name '*.pc*'
+        vcpkg owns ffmpeg
+        set VCINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019"
+        ls
+        meson setup --help
         meson setup builddir --backend vs
+    
