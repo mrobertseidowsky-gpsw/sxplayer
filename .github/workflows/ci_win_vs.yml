@@ -20,8 +20,7 @@ jobs:
     - uses: msys2/setup-msys2@v2
 
     - uses: ilammy/msvc-dev-cmd@v1
-    - name: Build something  
+    - name: install vcpkg
+      shell: bash
       run: |
-        meson setup builddir --backend vs
- 
- 
+        meson setup builddir --backend vs 
