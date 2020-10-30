@@ -19,11 +19,11 @@ jobs:
 
     - uses: msys2/setup-msys2@v2
 
- 
+
     - uses: ilammy/msvc-dev-cmd@v1
     - name: Build something 
       run: |
-        meson setup --help
+        meson setup builddir --backend vs
 
     - uses: actions/upload-artifact@v1
       with:
