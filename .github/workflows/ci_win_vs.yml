@@ -36,7 +36,6 @@ jobs:
         pip install meson
         cd ../..
         ls
-        where ffmpeg
         pkg-config --list-all
         C:\msys64\usr\bin\bash -lc "meson setup builddir --backend vs"
 
