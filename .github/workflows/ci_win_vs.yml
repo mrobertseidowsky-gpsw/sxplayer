@@ -34,18 +34,6 @@ jobs:
         vcpkg list
         pip install meson
         cd ../..
-        ls
-        cd C:
-        ls  
-        find . -name '*ffmpeg*'
-        find . -name '*libavformat*'
-        find . -name '*.pc*'
-        cd D:
-        ls  
-        find . -name '*ffmpeg*'
-        find . -name '*libavformat*'
-        find . -name '*.pc*'
-        vcpkg owns ffmpeg
         set VCINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019"
         ls
         meson setup --help
