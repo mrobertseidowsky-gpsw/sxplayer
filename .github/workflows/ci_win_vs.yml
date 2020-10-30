@@ -14,24 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: msys2/setup-msys2@v2
       
-      - name: Install 1
-        run: |
-          C:\msys64\usr\bin\bash -lc "pacman --noconfirm  -Syu"
-
-      - name: Install 2
-        run: |
-          C:\msys64\usr\bin\bash -lc "pacman --noconfirm  -Su"
+      - name: Run a one-line script
+        run: powershell BuildFFmpeg.ps1
           
-      - name: Install 3
-        run: |
-          C:\msys64\usr\bin\bash -lc "pacman --noconfirm -S msys/pkg-config"
-
-      - name: Install 4
-        run: |
-          $env:MSYS2_PATH_TYPE='inherit'
-          $env:CHERE_INVOKING='yes'
-          $env:MSYSTEM='MSYS'
-          C:\msys64\usr\bin\bash -lc "wget http://www.tortall.net/projects/yasm/releases/yasm-1.3.0-win64.exe'"
-          ls
