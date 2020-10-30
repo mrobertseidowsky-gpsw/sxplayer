@@ -15,12 +15,16 @@ jobs:
       - uses: actions/checkout@v2
 
       - uses: msys2/setup-msys2@v2
+      
+      - name: Install ffmpeg
+        run: |
+          C:\msys64\usr\bin\bash -lc "pacman -S --noconfirm -R ffmpeg4.0"
+          where ffmpeg
 
       - name: Install dependencies
         run: |
-          C:\msys64\usr\bin\bash -lc "pacman -S --noconfirm --needed git make python3-pip ffmpeg meson"
-          where ffmpeg
-
+          C:\msys64\usr\bin\bash -lc "pacman -S --noconfirm --needed git make python3-pip meson"
+          
       - name: Setup
         run: |
           $env:CHERE_INVOKING = 'yes'
