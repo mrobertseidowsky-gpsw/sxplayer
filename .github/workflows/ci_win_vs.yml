@@ -28,28 +28,9 @@ jobs:
         cd vcpkg2
         git clone https://github.com/Microsoft/vcpkg.git
         cd vcpkg
-        ls 
-        ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
-        ls 
-        vcpkg list
-        pip install meson
-        cd ../..
-        ls
-        cd C:
-        ls  
-        find . -name '*ffmpeg*'
-        find . -name '*libavformat*'
-        find . -name '*.pc*'
-        cd D:
-        ls  
-        find . -name '*ffmpeg*'
-        find . -name '*libavformat*'
-        find . -name '*.pc*'
-
+        
     - uses: actions/upload-artifact@v1
-      if: failure()
       with:
-        name: Windows_Meson_Testlog
-        path: meson-log.txt
-           
+        name: get
+        path: ./vcpkg2/vcpkg
+      
