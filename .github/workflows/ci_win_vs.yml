@@ -19,12 +19,15 @@ jobs:
       - name: Install ffmpeg
         run: |
           C:\msys64\usr\bin\bash -lc "pacman -Su"
-          C:\msys64\usr\bin\bash -lc "pacman -S --noconfirm -R ffmpeg4.0"
+
+      - name: Install ffmpeg
+        run: |
+          C:\msys64\usr\bin\bash -lc "pacman --noconfirm -R ffmpeg4.0"
           where ffmpeg
 
       - name: Install dependencies
         run: |
-          C:\msys64\usr\bin\bash -lc "pacman -S --noconfirm --needed git make python3-pip meson"
+          C:\msys64\usr\bin\bash -lc "pacman --noconfirm --needed git make python3-pip meson"
           
       - name: Setup
         run: |
