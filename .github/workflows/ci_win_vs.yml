@@ -18,6 +18,7 @@ jobs:
       
       - name: Install ffmpeg
         run: |
+          C:\msys64\usr\bin\bash -lc "pacman -Su"
           C:\msys64\usr\bin\bash -lc "pacman -S --noconfirm -R ffmpeg4.0"
           where ffmpeg
 
