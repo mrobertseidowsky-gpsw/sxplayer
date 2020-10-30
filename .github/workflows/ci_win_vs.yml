@@ -22,8 +22,14 @@ jobs:
     - name: install vcpkg
       shell: bash
       run: |
-        cd .
-        ls
+        cd C:
+        ls  
+        find . -name '*ffmpeg*'
+        find . -name '*libavcodec*'
+        find . -name '*libavformat*'
+        find . -name '*.pc*'
+        cd D:
+        ls  
         find . -name '*ffmpeg*'
         find . -name '*libavcodec*'
         find . -name '*libavformat*'
