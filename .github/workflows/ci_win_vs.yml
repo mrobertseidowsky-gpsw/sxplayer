@@ -19,15 +19,10 @@ jobs:
 
     - uses: msys2/setup-msys2@v2
 
-
-    - uses: ilammy/msvc-dev-cmd@v1
-    - name: Build something 
-      run: |
-        meson setup builddir --backend vs
-
-    - uses: actions/upload-artifact@v1
-      with:
-        name: libcurl
-        path: ./vcpkg2/vcpkg/installed/x86-windows/lib/pkgconfig/
+      - name: shellcheck
+        shell: cmd
+        run: |
+          call "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Visual Studio 2019\Visual Studio Tools\Developer Command Prompt for VS 2019.lnk"
+          meson --help
  
  
