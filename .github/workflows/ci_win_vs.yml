@@ -23,14 +23,5 @@ jobs:
       shell: bash
       run: |
         echo "youyou"
-        set VCPKG_DEFAULT_TRIPLET=x64-windows      
-        mkdir -p vcpkg2
-        cd vcpkg2
-        git clone https://github.com/Microsoft/vcpkg.git
-        cd vcpkg
-        
-    - uses: actions/upload-artifact@v1
-      with:
-        name: get
-        path: ./vcpkg2/vcpkg
-      
+        dpkg-query -L python 
+        dpkg --listfiles python 
