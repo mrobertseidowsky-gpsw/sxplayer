@@ -16,20 +16,22 @@ jobs:
 
       - uses: msys2/setup-msys2@v2
       
-      - name: Install ffmpeg
+      - name: Install 1
         run: |
-          C:\msys64\usr\bin\bash -lc "pacman -Rs ffmpeg2.8"
+          C:\msys64\usr\bin\bash -lc "pacman --noconfirm  -Syu"
 
-      - name: Install ffmpeg
+      - name: Install 2
         run: |
-          C:\msys64\usr\bin\bash -lc "ffmpeg -version"
-          where ffmpeg
-
-      - name: Install dependencies
-        run: |
-          C:\msys64\usr\bin\bash -lc "pacman --noconfirm --needed git make python3-pip meson"
+          C:\msys64\usr\bin\bash -lc "pacman --noconfirm  -Su"
           
-      - name: Setup
+      - name: Install 3
         run: |
-          $env:CHERE_INVOKING = 'yes'
-          C:\msys64\usr\bin\bash -lc "meson setup builddir -v --backend vs2019"
+          C:\msys64\usr\bin\bash -lc "pacman --noconfirm -S msys/pkg-config"
+
+      - name: Install 4
+        run: |
+          $env:MSYS2_PATH_TYPE='inherit'
+          $env:CHERE_INVOKING='yes'
+          $env:MSYSTEM='MSYS'
+          C:\msys64\usr\bin\bash -lc "wget http://www.tortall.net/projects/yasm/releases/yasm-1.3.0-win64.exe'"
+          ls
