@@ -23,5 +23,4 @@ jobs:
       - name: Install dependencies
         shell: bash
         run: |
-          pacman -S --noconfirm --needed git make"
-         
+          pacman -S --noconfirm --needed git make
