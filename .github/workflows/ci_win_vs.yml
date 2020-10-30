@@ -18,7 +18,7 @@ jobs:
       
       - name: Install ffmpeg
         run: |
-          C:\msys64\usr\bin\bash -lc "pacman -Rs ffmpeg4.0"
+          C:\msys64\usr\bin\bash -lc "pacman -Rs ffmpeg2.8"
 
       - name: Install ffmpeg
         run: |
