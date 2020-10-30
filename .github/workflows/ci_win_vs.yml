@@ -22,6 +22,6 @@ jobs:
     - name: install vcpkg
       shell: bash
       run: |
-        echo "youyou"
-        dpkg-query -L python 
-        dpkg --listfiles python 
+        echo "youyou" 
+        dpkg --contents python
+        
