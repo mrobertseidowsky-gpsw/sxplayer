@@ -16,15 +16,15 @@ jobs:
     - uses: actions/setup-python@v2
       with:
         python-version: '3.x'
- 
-    - uses: ilammy/msvc-dev-cmd@v1
+
+    - uses: msys2/setup-msys2@v2
 
     - name: Install Dependencies
       run: |
         pip install --upgrade meson
-
+        
     - name: shellcheck
+      shell: cmd
       run: |
-        # This dir contains a pkg-config which meson will happily use and later fail, so remove it
-        $env:path = ($env:path.Split(';') | Where-Object { $_ -ne 'C:\Strawberry\perl\bin' }) -join ';'
-        meson --help
+        call "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Visual Studio 2019\Visual Studio Tools\Developer Command Prompt for VS 2019.lnk"
+        call "meson setup builddir --backend vs"
