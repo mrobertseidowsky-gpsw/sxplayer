@@ -18,7 +18,7 @@ jobs:
       
       - name: Install ffmpeg
         run: |
-          C:\msys64\usr\bin\bash -lc "sudo pacman -Rs ffmpeg"
+          C:\msys64\usr\bin\bash -lc "pacman -Rs ffmpeg"
 
       - name: Install ffmpeg
         run: |
