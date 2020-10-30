@@ -19,10 +19,9 @@ jobs:
 
     - uses: msys2/setup-msys2@v2
 
-    - name: shellcheck
-      shell: cmd
+    - uses: ilammy/msvc-dev-cmd@v1
+    - name: Build something  
       run: |
-        call "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Visual Studio 2019\Visual Studio Tools\Developer Command Prompt for VS 2019.lnk"
-        call "meson setup builddir --backend vs"
+        meson setup builddir --backend vs
  
  
