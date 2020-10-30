@@ -19,11 +19,18 @@ jobs:
 
     - uses: msys2/setup-msys2@v2
 
+    - name: Install Ffmpeg with Chocolatey (package manager for Windows)
+      shell: cmd
+      run: |
+        choco install ffmpeg
+        ffmpeg --help
+        
     - name: install vcpkg
       shell: bash
       run: |
         find . -name '*ffmpeg*'
         find . -name '*libavcodec*'
+        find . -name '*libavformat*'
         find . -name '*.pc*'
         
     - uses: actions/upload-artifact@v1
