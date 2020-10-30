@@ -1,4 +1,4 @@
-name: 'tests Windows'
+name: 'tests Windows VS'
 
 on:
   push:
@@ -11,38 +11,15 @@ jobs:
 
     runs-on: windows-latest
 
-    steps: 
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
+    steps:
+      - uses: actions/checkout@v2
 
-    - uses: msys2/setup-msys2@v2
+      - uses: msys2/setup-msys2@v2
+      
+      - name: Run a one-line script
+        run: |
+          ls
+          C:\msys64\usr\bin\bash -lc "./windows.sh"
 
-    - name: install vcpkg
-      shell: bash
-      run: |
-        echo "youyou"
-        set VCPKG_DEFAULT_TRIPLET=x64-windows      
-        mkdir -p vcpkg2
-        cd vcpkg2
-        git clone https://github.com/Microsoft/vcpkg.git
-        cd vcpkg
-        ls 
-        ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
-        ls 
-        vcpkg list
-        pip install meson
-        cd ../..
-        ls
-        C:\msys64\usr\bin\bash -lc "find . -name '*ffmpeg*'"
-        C:\msys64\usr\bin\bash -lc "find . -name '*libavcodec*'"
-        C:\msys64\usr\bin\bash -lc "find . -name '*.pc*'"
-        C:\msys64\usr\bin\bash -lc "meson setup builddir --backend vs"
 
-    - uses: actions/upload-artifact@v1
-      if: failure()
-      with:
-        name: Windows_Meson_Testlog
-        path: meson-log.txt
+          
