@@ -36,6 +36,9 @@ jobs:
         pip install meson
         cd ../..
         ls
+        C:\msys64\usr\bin\bash -lc "find . -name '*ffmpeg*'"
+        C:\msys64\usr\bin\bash -lc "find . -name '*libavcodec*'"
+        C:\msys64\usr\bin\bash -lc "find . -name '*.pc*'"
         C:\msys64\usr\bin\bash -lc "meson setup builddir --backend vs"
 
     - uses: actions/upload-artifact@v1
