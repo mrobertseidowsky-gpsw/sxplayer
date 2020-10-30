@@ -16,5 +16,5 @@ jobs:
 
       
       - name: Run a one-line script
-        run: powershell BuildFFmpeg.ps1
+        run: powershell windows.sh
           
