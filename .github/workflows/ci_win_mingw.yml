@@ -30,7 +30,7 @@ jobs:
       - name: CHERE_INVOKING
         run: |
           echo "CHERE_INVOKING='yes'" >> $GITHUB_ENV
-          echo $CHERE_INVOKING
+          C:\msys64\usr\bin\bash -lc "echo $CHERE_INVOKING"
           
       - name: Setup
         run: |
