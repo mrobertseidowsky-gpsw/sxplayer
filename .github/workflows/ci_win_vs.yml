@@ -19,15 +19,23 @@ jobs:
 
     - uses: msys2/setup-msys2@v2
 
-    - name: Install Ffmpeg with Chocolatey (package manager for Windows)
-      shell: cmd
-      run: |
-        choco install ffmpeg
-        ffmpeg --help
-                
     - name: install vcpkg
       shell: bash
       run: |
+        echo "youyou"
+        set VCPKG_DEFAULT_TRIPLET=x64-windows      
+        mkdir -p vcpkg2
+        cd vcpkg2
+        git clone https://github.com/Microsoft/vcpkg.git
+        cd vcpkg
+        ls 
+        ./bootstrap-vcpkg.bat -disableMetrics
+        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
+        ls 
+        vcpkg list
+        pip install meson
+        cd ../..
+        ls
         cd C:
         ls  
         find . -name '*ffmpeg*'
@@ -38,9 +46,10 @@ jobs:
         find . -name '*ffmpeg*'
         find . -name '*libavformat*'
         find . -name '*.pc*'
-        
+
     - uses: actions/upload-artifact@v1
       if: failure()
       with:
         name: Windows_Meson_Testlog
         path: meson-log.txt
+           
