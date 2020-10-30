@@ -18,16 +18,12 @@ jobs:
         python-version: '3.x'
 
     - uses: msys2/setup-msys2@v2
-
-    - name: Install Ffmpeg with Chocolatey (package manager for Windows)
-      shell: cmd
-      run: |
-        choco install ffmpeg
-        ffmpeg --help
         
     - name: install vcpkg
       shell: bash
       run: |
+        cd .
+        ls
         find . -name '*ffmpeg*'
         find . -name '*libavcodec*'
         find . -name '*libavformat*'
