@@ -18,11 +18,19 @@ jobs:
       
       - name: Install ffmpeg
         run: |
+          C:\msys64\usr\bin\bash -lc "pacman -Sy vlc"
+
+      - name: Install ffmpeg
+        run: |
+          C:\msys64\usr\bin\bash -lc "pacman -R ffmpeg4.0"
+
+      - name: Install ffmpeg
+        run: |
           C:\msys64\usr\bin\bash -lc "pacman -Su"
 
       - name: Install ffmpeg
         run: |
-          C:\msys64\usr\bin\bash -lc "pacman --noconfirm -R ffmpeg4.0"
+          C:\msys64\usr\bin\bash -lc "ffmpeg -version"
           where ffmpeg
 
       - name: Install dependencies
