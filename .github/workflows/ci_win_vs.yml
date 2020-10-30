@@ -19,6 +19,7 @@ jobs:
       - name: Run a one-line script
         run: |
           ls
-          C:\msys64\usr\bin\bash -lc "BuildFFmpeg.ps1"
+          C:\msys64\usr\bin\bash -lc "windows.sh"
+
 
           
