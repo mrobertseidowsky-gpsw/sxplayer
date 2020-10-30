@@ -1,4 +1,4 @@
-name: 'tests Windows VS'
+name: 'tests Windows'
 
 on:
   push:
@@ -11,15 +11,23 @@ jobs:
 
     runs-on: windows-latest
 
-    steps:
-      - uses: actions/checkout@v2
+    steps: 
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
 
-      - uses: msys2/setup-msys2@v2
-      
-      - name: Run a one-line script
-        shell: cmd
-        run: |
-          call ".\BuildFFmpeg.ps1"
+    - uses: msys2/setup-msys2@v2
 
-
-          
+    - name: install vcpkg
+      shell: bash
+      run: |
+        echo "youyou"
+        pip install meson
+        meson --help
+        
+    - uses: actions/upload-artifact@v1
+      if: failure()
+      with:
+        name: Windows_Meson_Testlog
+        path: meson-log.txt
