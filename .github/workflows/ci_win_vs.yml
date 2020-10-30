@@ -22,6 +22,15 @@ jobs:
     - name: install vcpkg
       shell: bash
       run: |
-        echo "youyou" 
-        dpkg --contents python
+        echo "youyou"         
+        set VCPKG_DEFAULT_TRIPLET=x64-windows      
+        mkdir -p vcpkg2
+        cd vcpkg2
+        git clone https://github.com/Microsoft/vcpkg.git
+        cd vcpkg
+        ls 
+        ./bootstrap-vcpkg.bat -disableMetrics
+        
+        vcpkg install curl[ssl]:x86-windows
+        vcpkg owns  curl 
         
