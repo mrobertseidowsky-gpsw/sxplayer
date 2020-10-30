@@ -30,7 +30,21 @@ jobs:
         cd vcpkg
         ls 
         ./bootstrap-vcpkg.bat -disableMetrics
-        
-        vcpkg install curl[ssl]:x86-windows
-        vcpkg owns  curl 
-        
+        vcpkg install ffmpeg[avcodec,avdevice,avfilter,avformat,avutil,swresample,swscale]:x86-windows
+        ls 
+        vcpkg list
+        pip install meson
+        cd ../..
+        ls
+        find . -name '*ffmpeg*'
+        find . -name '*libavcodec*'
+        find . -name '*.pc*'
+        vcpkg owns ffmpeg
+        set VCINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019\
+        meson setup builddir --backend vs
+
+    - uses: actions/upload-artifact@v1
+      with:
+        name: libavcodec
+        path: ./vcpkg2/vcpkg/installed/x86-windows-static/lib/pkgconfig/
+           
