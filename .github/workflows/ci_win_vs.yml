@@ -34,22 +34,11 @@ jobs:
         vcpkg list
         pip install meson
         cd ../..
-        ls
-        cd C:
-        ls  
-        find . -name '*ffmpeg*'
-        find . -name '*libavformat*'
-        find . -name '*.pc*'
-        cd D:
-        ls  
-        find . -name '*ffmpeg*'
-        find . -name '*libavformat*'
-        find . -name '*.pc*'
         vcpkg owns ffmpeg
         set VCINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019"
         ls
         meson setup --help
-        meson setup builddir --backend vs
+        meson setup builddir --backend vs --pkg-config-path D:/a/sxplayer/sxplayer/vcpkg2/vcpkg/installed/x86-windows/lib/pkgconfig/
 
     - uses: actions/upload-artifact@v1
       with:
