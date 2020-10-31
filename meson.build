@@ -50,10 +50,10 @@ endif
 lib_deps = [
   cc.find_library('m', required: false),
   dependency('threads'),
-  meson.get_compiler('name').find_library('libavcodec', version: '>= 58.18.100'),
-  meson.get_compiler('name').find_library('libavformat', version: '>= 58.12.100'),
-  meson.get_compiler('name').find_library('libavfilter', version: '>= 7.16.100'),
-  meson.get_compiler('name').find_library('libavutil', version: '>= 56.14.100'),
+  meson.get_compiler('c').find_library('libavcodec', version: '>= 58.18.100'),
+  meson.get_compiler('c').find_library('libavformat', version: '>= 58.12.100'),
+  meson.get_compiler('c').find_library('libavfilter', version: '>= 7.16.100'),
+  meson.get_compiler('c').find_library('libavutil', version: '>= 56.14.100'),
 
 ]
 
