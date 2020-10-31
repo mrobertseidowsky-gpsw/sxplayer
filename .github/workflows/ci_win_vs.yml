@@ -22,14 +22,14 @@ jobs:
     - name: install vcpkg
       shell: bash
       run: |
-        pacman -Syu
-        pacman -S meson
-        pacman -S gcc
-        pacman -S diffutils
-        pacman -S coreutils
-        pacman -S pkg-config
-        pacman -S tar
-        pacman -S yasm
+        pacman --noconfirm --needed -Syu
+        pacman --noconfirm --needed -S meson
+        pacman --noconfirm --needed -S gcc
+        pacman --noconfirm --needed -S diffutils
+        pacman --noconfirm --needed -S coreutils
+        pacman --noconfirm --needed -S pkg-config
+        pacman --noconfirm --needed -S tar
+        pacman --noconfirm --needed -S yasm
 
     - name: install vcpkg
       shell: bash
