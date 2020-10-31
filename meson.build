@@ -50,10 +50,10 @@ endif
 lib_deps = [
   cc.find_library('m', required: false),
   dependency('threads'),
-  meson.get_compiler('c').find_library('libavcodec', dirs:'D:/a/sxplayer/sxplayer/vcpkg2/vcpkg/packages/ffmpeg_x86-windows-static/lib', required: true),
-  meson.get_compiler('c').find_library('libavformat', dirs:'D:/a/sxplayer/sxplayer/vcpkg2/vcpkg/packages/ffmpeg_x86-windows-static/lib', required: true),
-  meson.get_compiler('c').find_library('libavfilter', dirs:'D:/a/sxplayer/sxplayer/vcpkg2/vcpkg/packages/ffmpeg_x86-windows-static/lib', required: true),
-  meson.get_compiler('c').find_library('libavutil', dirs:'D:/a/sxplayer/sxplayer/vcpkg2/vcpkg/packages/ffmpeg_x86-windows-static/lib', required: true),
+  meson.get_compiler('c').find_library('libavcodec', dirs:'vcpkg2/vcpkg/packages/ffmpeg_x86-windows-static/lib', required: true),
+  meson.get_compiler('c').find_library('libavformat', dirs:'vpkg2/vcpkg/packages/ffmpeg_x86-windows-static/lib', required: true),
+  meson.get_compiler('c').find_library('libavfilter', dirs:'vcpkg2/vcpkg/packages/ffmpeg_x86-windows-static/lib', required: true),
+  meson.get_compiler('c').find_library('libavutil', dirs:'vcpkg2/vcpkg/packages/ffmpeg_x86-windows-static/lib', required: true),
 ]
 
 vaapi_dep = dependency('libva', version: '>= 1.1.0', required: get_option('vaapi'))
