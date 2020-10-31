@@ -34,5 +34,5 @@ jobs:
         vcpkg list
         pip install meson
         cd ../..
-        VSINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019" meson setup builddir --backend vs --pkg-config-path ./vcpkg2/vcpkg/installed/x86-windows/lib/pkgconfig/
+        VSINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019" meson setup builddir --backend vs
     
