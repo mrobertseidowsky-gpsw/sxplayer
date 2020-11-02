@@ -18,10 +18,6 @@ jobs:
         python-version: '3.x'
 
     - uses: msys2/setup-msys2@v2
-
-    - name: install vcpkg
-      run: |
-        C:\msys64\usr\bin\bash -lc "pacman -S --noconfirm gcc pkg-config diffutils coreutils meson tar"
  
 
     - name: install vcpkg
@@ -34,10 +30,12 @@ jobs:
         cd vcpkg
         ls 
         ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg integrate install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
+        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
         ls 
         vcpkg list
-        pip install meson 
         cd ../..
-        VSINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019" PKG_CONFIG_PATH="vcpkg2/vcpkg/packages/ffmpeg_x86-windows-static/lib/pkgconfig" meson setup builddir --backend vs
-    
+        cd D:
+        ls  
+        find . -name '*libavformat*'
+        find . -name '*.so*'
+        
