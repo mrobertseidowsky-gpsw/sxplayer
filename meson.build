@@ -49,13 +49,10 @@ endif
 # Dependencies, sometimes shared with the tools and tests
 #
 
-myLib_dep = declare_dependency(link_args : ['-LD:/a/sxplayer/sxplayer/vcpkg/packages/ffmpeg_x86-windows-static/lib', '-lavformat'],
-                               include_directories : ['D:/a/sxplayer/sxplayer/vcpkg/installed/x86-windows-static/include'])
-
 lib_deps = [
   cc.find_library('m', required: false),
   dependency('threads'),
-  myLib_dep,
+  dependency('libavformat', version: '>= 58.12.100'),
 ]
 
  
