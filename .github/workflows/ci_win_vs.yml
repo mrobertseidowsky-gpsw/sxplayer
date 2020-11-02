@@ -23,4 +23,4 @@ jobs:
       shell: bash
       run: |
         set VSINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019";
-        meson setup builddir --backend vs
+        C:\msys64\usr\bin\bash -lc "meson setup builddir --backend vs"
