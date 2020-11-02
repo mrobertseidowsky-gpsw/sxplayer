@@ -48,12 +48,11 @@ endif
 #
 # Dependencies, sometimes shared with the tools and tests
 #
-
+ 
 lib_deps = [
   cc.find_library('m', required: false),
   dependency('threads'),
-  myLib_dep
-    dependency('libavformat', version: '>= 58.12.100', static: true),
+  cc.find_library('libavformat', dirs : meson.current_source_dir() + 'vcpkg/installed/x86-windows-static/lib/')
 ]
 
  
