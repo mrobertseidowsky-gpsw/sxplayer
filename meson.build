@@ -47,17 +47,17 @@ endif
 # Dependencies, sometimes shared with the tools and tests
 #
 declare_dependency(
-    include_directories: 'D:/a/sxplayer/sxplayer/vcpkg/installed/x86-windows-static', 
+    include_directories: 'D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static', 
     link_with: 'libavformat libavfilter libavcodec libavutil')
 
 
 lib_deps = [
   cc.find_library('m', required: false),
   dependency('threads'),
-  cc.find_library('libavformat'),
-  cc.find_library('libavfilter'),
-  cc.find_library('libavcodec'),
-  cc.find_library('libavutil'),
+  dependency('libavformat', version: '>= 58.12.100'),
+  dependency('libavfilter', version: '>= 7.16.100'),
+  dependency('libavcodec', version: '>= 58.18.100'),
+  dependency('libavutil', version: '>= 56.14.100'),
 ]
 
 vaapi_dep = dependency('libva', version: '>= 1.1.0', required: get_option('vaapi'))
