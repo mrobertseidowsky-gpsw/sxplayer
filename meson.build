@@ -52,7 +52,7 @@ endif
 lib_deps = [
   cc.find_library('m', required: false),
   dependency('threads'),
-  dependency('libavformat', version: '>= 58.12.100'),
+  dependency('libavformat', version: '>= 58.12.100', static: true),
 ]
 
  
