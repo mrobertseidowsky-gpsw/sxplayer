@@ -39,5 +39,5 @@ jobs:
         vcpkg list
         pip install meson 
         cd ../..
-        VSINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019" PKG_CONFIG_PATH="D:\a\sxplayer\sxplayer\vcpkg2\vcpkg\packages\ffmpeg_x86-windows-static\lib\pkgconfig" meson setup builddir --backend vs
+        VSINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019" PKG_CONFIG_PATH="vcpkg2/vcpkg/packages/ffmpeg_x86-windows-static/lib/pkgconfig" meson setup builddir --backend vs
     
