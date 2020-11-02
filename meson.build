@@ -52,7 +52,7 @@ endif
 lib_deps = [
   cc.find_library('m', required: false),
   dependency('threads'),
-  dependency('libavformat', version: '>= 58.12.100', static: true),
+  cc.find_library('libavformat', dirs: 'D:/a/sxplayer/sxplayer/vcpkg2/vcpkg/installed/x86-windows-static/lib', required: true)
 ]
 
  
