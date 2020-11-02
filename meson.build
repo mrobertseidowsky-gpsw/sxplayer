@@ -47,7 +47,7 @@ endif
 # Dependencies, sometimes shared with the tools and tests
 #
 declare_dependency(
-    include_directories: 'D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static', 
+    include_directories: 'D:/a/sxplayer/sxplayer/vcpkg/installed/x86-windows-static', 
     link_with: 'libavformat libavfilter libavcodec libavutil')
 
 
