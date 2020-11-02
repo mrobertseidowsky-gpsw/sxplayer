@@ -50,16 +50,14 @@ endif
 projectDir = meson.current_source_dir() # MESON_SOURCE_ROOT
 buildDir = meson.current_build_dir() # MESON_BUILD_ROOT
 lib1Path = join_paths(projectDir, '/vcpkg2/vcpkg/packages/ffmpeg_x86-windows-static/lib')
-cc = meson.get_compiler('c')
-
 
 lib_deps = [
   cc.find_library('m', required: false),
   dependency('threads'),
-  cc.find_library('libavformat'),
-  cc.find_library('libavfilter'),
-  cc.find_library('libavcodec'),
-  cc.find_library('libavutil'),
+  cc.find_library('libavformat', dirs : meson.current_source_dir()),
+  cc.find_library('libavfilter', dirs : meson.current_source_dir()),
+  cc.find_library('libavcodec', dirs : meson.current_source_dir()),
+  cc.find_library('libavutil', dirs : meson.current_source_dir()),
 ]
 
 
