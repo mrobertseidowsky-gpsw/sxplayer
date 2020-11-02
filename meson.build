@@ -49,11 +49,7 @@ endif
 
 lib_deps = [
   cc.find_library('m', required: false),
-  dependency('threads'),
-  dependency('libavformat', version: '>= 58.12.100'),
-  dependency('libavfilter', version: '>= 7.16.100'),
-  dependency('libavcodec', version: '>= 58.18.100'),
-  dependency('libavutil', version: '>= 56.14.100'),
+  dependency('threads')
 ]
 
 vaapi_dep = dependency('libva', version: '>= 1.1.0', required: get_option('vaapi'))
