@@ -34,7 +34,7 @@ jobs:
         cd vcpkg
         ls 
         ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
+        vcpkg integrate install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
         ls 
         vcpkg list
         pip install meson 
