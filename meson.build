@@ -49,7 +49,7 @@ endif
 
 projectDir = meson.current_source_dir() # MESON_SOURCE_ROOT
 buildDir = meson.current_build_dir() # MESON_BUILD_ROOT
-lib1Path = join_paths(projectDir, '/vcpkg2/vcpkg/installed/x86-windows-static/lib/')
+lib1Path = join_paths(projectDir, '/vcpkg2/vcpkg/packages/ffmpeg_x86-windows-static/lib')
 
 lib_deps = [
   cc.find_library('m', required: false),
