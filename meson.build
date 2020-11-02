@@ -19,6 +19,13 @@ conf_data.set('version_micro', version_array[2])
 host_system = host_machine.system()
 cc = meson.get_compiler('c')
 
+bin_dep = declare_dependency(
+  dependencies : cc.find_library('avcodec', dirs : meson.current_source_dir()),
+  include_directories : include_directories('/vcpkg2/vcpkg/installed/x86-windows-static/lib'))
+
+bob_dep = subproject('avcodec').get_variable('bin_dep')
+
+
 install_rpath = get_option('rpath') ? get_option('prefix') / get_option('libdir') : ''
 
 # This trim prefix is used to make __FILE__ starts from the source dir with
@@ -47,22 +54,11 @@ endif
 # Dependencies, sometimes shared with the tools and tests
 #
 
-projectDir = meson.current_source_dir() # MESON_SOURCE_ROOT
-lib1Path = join_paths(projectDir, 'vcpkg2/vcpkg/packages/ffmpeg_x86-windows-static/lib')
-
-message(lib1Path)
-
-bin_dep_avformat = declare_dependency(
-  dependencies : cc.find_library('libavformat', dirs : meson.current_source_dir()),
-  include_directories : include_directories('vcpkg2/vcpkg'))
-
-bob_dep_avformat = subproject('libavformat').get_variable('bin_dep_avformat')
-
 
 lib_deps = [
   cc.find_library('m', required: false),
   dependency('threads'),
-  bob_dep_avformat,
+  bob_dep,
 ]
 
 
