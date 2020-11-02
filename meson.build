@@ -19,8 +19,6 @@ conf_data.set('version_micro', version_array[2])
 host_system = host_machine.system()
 cc = meson.get_compiler('c')
 
-mbc_inc = include_directories('vcpkg2/vcpkg/packages/ffmpeg_x86-windows-static/lib')
-
  
 
 install_rpath = get_option('rpath') ? get_option('prefix') / get_option('libdir') : ''
@@ -51,14 +49,17 @@ endif
 # Dependencies, sometimes shared with the tools and tests
 #
 
+myLib_dep = declare_dependency(link_args : ['-LD:/a/sxplayer/sxplayer/vcpkg/packages/ffmpeg_x86-windows-static/lib', '-llibavformat'],
+                               include_directories : ['D:/a/sxplayer/sxplayer/vcpkg/installed/x86-windows-static/include'])
+
 
 lib_deps = [
   cc.find_library('m', required: false),
   dependency('threads'),
-  dependency('libavformat', version: '>= 58.12.100', static: true),
+  myLib_dep,
 ]
 
-
+ 
 
 vaapi_dep = dependency('libva', version: '>= 1.1.0', required: get_option('vaapi'))
 if vaapi_dep.found()
