@@ -55,7 +55,7 @@ myLib_dep = declare_dependency(link_args : ['-LD:/a/sxplayer/sxplayer/vcpkg/pack
 lib_deps = [
   cc.find_library('m', required: false),
   dependency('threads'),
-  cc.find_library('libavformat'),
+  myLib_dep,
 ]
 
  
