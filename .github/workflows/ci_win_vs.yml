@@ -23,4 +23,8 @@ jobs:
       shell: bash
       run: |
         pip install meson 
-        VSINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2017" meson setup builddir --backend vs
+        where pkg-config
+        set PATH=D:\Programs\pkgconfig;%PATH%
+        echo %PATH%
+        echo $PATH
+        VSINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019" meson setup builddir --backend vs
