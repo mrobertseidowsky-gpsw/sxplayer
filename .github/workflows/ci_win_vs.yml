@@ -32,11 +32,4 @@ jobs:
         ./bootstrap-vcpkg.bat -disableMetrics
         vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]
         vcpkg list
-        pip install meson 
-        cd D:
-        ls  
-        find . -name '*ffmpeg*'
-        find . -name '*libavformat*'
-        find . -name '*.pc*'
-        find . -name '*.lib*'
-        
+        echo $PKG_CONFIG_PATH
