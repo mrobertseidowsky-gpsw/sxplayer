@@ -9,7 +9,7 @@ project(
     find_program('python'), '-c', 'import sys;print(open(sys.argv[1]).read())', files('VERSION')
   ).stdout().strip(),
 )
- 
+
 conf_data = configuration_data()
 version_array = meson.project_version().split('.')
 conf_data.set('version_major', version_array[0])
@@ -50,11 +50,10 @@ endif
 lib_deps = [
   cc.find_library('m', required: false),
   dependency('threads'),
-  find_library('libavcodec', version: '>= 58.18.100'),
-  find_library('libavformat', version: '>= 58.12.100'),
-  find_library('libavfilter', version: '>= 7.16.100'),
-  find_library('libavutil', version: '>= 56.14.100'),
-
+  dependency('libavformat', version: '>= 58.12.100'),
+  dependency('libavfilter', version: '>= 7.16.100'),
+  dependency('libavcodec', version: '>= 58.18.100'),
+  dependency('libavutil', version: '>= 56.14.100'),
 ]
 
 vaapi_dep = dependency('libva', version: '>= 1.1.0', required: get_option('vaapi'))
@@ -93,7 +92,7 @@ lib_link_args = cc.get_supported_link_arguments([
 if host_system == 'darwin'
   lib_src += files('decoder_vt.c')
 endif
- 
+
 libsxplayer = library(
   'sxplayer',
   lib_src,
@@ -131,7 +130,6 @@ player_deps = lib_deps + [
   dependency('glew', required: get_option('player')),
 ]
 if host_system == 'darwin'
-
   player_deps += dependency('appleframeworks', modules: ['OpenGL'], required: get_option('player'))
 endif
 player_deps_found = true
@@ -154,7 +152,6 @@ endif
 # Tests
 #
 
-
 if get_option('tests')
   test_prog = executable(
     'test-prog',
@@ -170,4 +167,3 @@ if get_option('tests')
     timeout: 24*60*60,
   )
 endif
- 
