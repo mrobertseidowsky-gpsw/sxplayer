@@ -52,13 +52,17 @@ lib1Path = join_paths(projectDir, 'vcpkg2/vcpkg/packages/ffmpeg_x86-windows-stat
 
 message(lib1Path)
 
+bin_dep_avformat = declare_dependency(
+  dependencies : cc.find_library('libavformat', dirs : meson.current_source_dir()),
+  include_directories : include_directories('vcpkg2/vcpkg'))
+
+bob_dep_avformat = subproject('libavformat').get_variable('bin_dep_avformat')
+
+
 lib_deps = [
   cc.find_library('m', required: false),
   dependency('threads'),
-  cc.find_library('libavformat', dirs:[lib1Path]),
-  cc.find_library('libavfilter', dirs:[lib1Path]),
-  cc.find_library('libavcodec', dirs:[lib1Path]),
-  cc.find_library('libavutil', dirs:[lib1Path]),
+  bob_dep_avformat
 ]
 
 
