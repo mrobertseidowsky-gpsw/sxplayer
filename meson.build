@@ -21,6 +21,13 @@ cc = meson.get_compiler('c')
 
 library_X  = cc.find_library('avcodec')
  
+depX = declare_dependency(link_args : 
+             [ '-Wl,--whole-archive'
+             , 'D:/a/sxplayer/sxplayer/vcpkg2/vcpkg/packages/ffmpeg_x86-windows-static/lib/avcodec.lib'
+             , '-Wl,--no-whole-archive'
+             ],
+             dependencies : [library_X]
+)
 
 install_rpath = get_option('rpath') ? get_option('prefix') / get_option('libdir') : ''
 
@@ -54,7 +61,7 @@ endif
 lib_deps = [
   cc.find_library('m', required: false),
   dependency('threads'),
-  library_X,
+  depX,
 ]
 
 
