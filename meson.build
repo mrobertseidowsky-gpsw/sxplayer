@@ -19,12 +19,8 @@ conf_data.set('version_micro', version_array[2])
 host_system = host_machine.system()
 cc = meson.get_compiler('c')
 
-bin_dep = declare_dependency(
-  dependencies : cc.find_library('avcodec', dirs : meson.current_source_dir()),
-  include_directories : include_directories('/vcpkg2/vcpkg/installed/x86-windows-static/lib'))
-
-bob_dep = subproject('avcodec').get_variable('bin_dep')
-
+library_X  = cc.find_library('avcodec')
+ 
 
 install_rpath = get_option('rpath') ? get_option('prefix') / get_option('libdir') : ''
 
@@ -58,7 +54,7 @@ endif
 lib_deps = [
   cc.find_library('m', required: false),
   dependency('threads'),
-  bob_dep,
+  library_X,
 ]
 
 
