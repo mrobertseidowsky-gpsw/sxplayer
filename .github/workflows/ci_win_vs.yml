@@ -30,4 +30,4 @@ jobs:
         vcpkg list
         cd ..
         pip install meson 
-        VSINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019" LIB="D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib" meson setup builddir --backend vs
+        LIB="D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib" VSINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019" meson setup builddir --backend vs
