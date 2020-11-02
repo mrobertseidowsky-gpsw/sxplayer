@@ -47,13 +47,17 @@ endif
 # Dependencies, sometimes shared with the tools and tests
 #
 
+projectDir = meson.current_source_dir() # MESON_SOURCE_ROOT
+buildDir = meson.current_build_dir() # MESON_BUILD_ROOT
+lib1Path = join_paths(projectDir, '/vcpkg2/vcpkg/packages/ffmpeg_x86-windows-static/lib/')
+
 lib_deps = [
   cc.find_library('m', required: false),
   dependency('threads'),
-  dependency('libavformat', version: '>= 58.12.100'),
-  dependency('libavfilter', version: '>= 7.16.100'),
-  dependency('libavcodec', version: '>= 58.18.100'),
-  dependency('libavutil', version: '>= 56.14.100'),
+  meson.get_compiler('c').find_library('libavformat', dirs : lib1Path),
+  meson.get_compiler('c').find_library('libavfilter', dirs : lib1Path),
+  meson.get_compiler('c').find_library('libavcodec', dirs : lib1Path),
+  meson.get_compiler('c').find_library('libavutil', dirs : lib1Path),
 ]
 
 
