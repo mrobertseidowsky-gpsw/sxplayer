@@ -22,12 +22,5 @@ jobs:
     - name: install vcpkg
       shell: bash
       run: |
-        set VCPKG_DEFAULT_TRIPLET=x64-windows      
-        git clone https://github.com/Microsoft/vcpkg.git
-        cd vcpkg
-        ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
-        vcpkg list
-        cd ..
-        pip install meson 
-        VSINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019" LIB=%LIB%;D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib meson setup builddir --backend vs
+        set VSINSTALLDIR=%VSINSTALLDIR%;C:\Program Files (x86)\Microsoft Visual Studio\2019;
+        meson setup builddir --backend vs
