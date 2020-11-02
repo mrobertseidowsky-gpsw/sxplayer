@@ -19,8 +19,6 @@ conf_data.set('version_micro', version_array[2])
 host_system = host_machine.system()
 cc = meson.get_compiler('c')
 
- 
-
 install_rpath = get_option('rpath') ? get_option('prefix') / get_option('libdir') : ''
 
 # This trim prefix is used to make __FILE__ starts from the source dir with
@@ -52,9 +50,11 @@ endif
 lib_deps = [
   cc.find_library('m', required: false),
   dependency('threads'),
+  dependency('libavformat', version: '>= 58.12.100'),
+  dependency('libavfilter', version: '>= 7.16.100'),
+  dependency('libavcodec', version: '>= 58.18.100'),
+  dependency('libavutil', version: '>= 56.14.100'),
 ]
-
- 
 
 vaapi_dep = dependency('libva', version: '>= 1.1.0', required: get_option('vaapi'))
 if vaapi_dep.found()
