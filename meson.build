@@ -57,7 +57,7 @@ lib_deps = [
   cc.find_library('m', required: false),
   dependency('threads'),
   myLib_dep
-  cc.find_library('libavformat'),
+  dependency('libavformat', version: '>= 58.12.100'),
 ]
 
  
