@@ -20,6 +20,8 @@ jobs:
     - uses: msys2/setup-msys2@v2
  
     - name: install vcpkg
+      shell: bash
       run: |
+        pip install meson
         set VSINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019";
-        C:\msys64\usr\bin\bash -lc "meson setup builddir --backend vs"
+        meson setup builddir --backend vs
