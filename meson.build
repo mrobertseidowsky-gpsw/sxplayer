@@ -62,7 +62,7 @@ bob_dep_avformat = subproject('libavformat').get_variable('bin_dep_avformat')
 lib_deps = [
   cc.find_library('m', required: false),
   dependency('threads'),
-  bob_dep_avformat
+  bob_dep_avformat,
 ]
 
 
