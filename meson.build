@@ -48,7 +48,7 @@ endif
 #
 
 projectDir = meson.current_source_dir() # MESON_SOURCE_ROOT
-lib1Path = join_paths(projectDir, 'sxplayer/vcpkg2/vcpkg/installed/x86-windows-static/debug/lib/')
+lib1Path = join_paths(projectDir, 'vcpkg2/vcpkg/installed/x86-windows-static/debug/lib/')
 
 message(lib1Path)
 
