@@ -22,5 +22,5 @@ jobs:
     - name: install vcpkg
       shell: bash
       run: |
-        set VSINSTALLDIR=%VSINSTALLDIR%;C:\Program Files (x86)\Microsoft Visual Studio\2019;
+        set VSINSTALLDIR=%VSINSTALLDIR%;"C:\Program Files (x86)\Microsoft Visual Studio\2019";
         meson setup builddir --backend vs
