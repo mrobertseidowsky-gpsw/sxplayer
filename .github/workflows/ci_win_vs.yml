@@ -30,8 +30,13 @@ jobs:
         git clone https://github.com/Microsoft/vcpkg.git
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
+        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]
         vcpkg list
         pip install meson 
-        cd ..
-        VSINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019" meson setup builddir --backend vs
+        cd D:
+        ls  
+        find . -name '*ffmpeg*'
+        find . -name '*libavformat*'
+        find . -name '*.pc*'
+        find . -name '*.lib*'
+        
