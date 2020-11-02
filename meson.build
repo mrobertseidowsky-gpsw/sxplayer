@@ -52,7 +52,6 @@ endif
 lib_deps = [
   cc.find_library('m', required: false),
   dependency('threads'),
-  cc.find_library('libavformat', dirs : meson.current_source_dir() + 'vcpkg/installed/x86-windows-static/lib/')
 ]
 
  

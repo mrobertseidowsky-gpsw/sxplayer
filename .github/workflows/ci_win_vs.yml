@@ -18,18 +18,9 @@ jobs:
         python-version: '3.x'
 
     - uses: msys2/setup-msys2@v2
-
-    - name: install vcpkg
-      run: |
-        C:\msys64\usr\bin\bash -lc "pacman -S --noconfirm gcc pkg-config diffutils coreutils meson tar"
-
+ 
     - name: install vcpkg
       shell: bash
       run: |
-        set VCPKG_DEFAULT_TRIPLET=x64-windows      
-        git clone https://github.com/Microsoft/vcpkg.git
-        cd vcpkg
-        ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]
-        vcpkg list
-        echo $PKG_CONFIG_PATH
+        pip install meson 
+        VSINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019" meson setup builddir --backend vs
