@@ -55,10 +55,10 @@ message(lib1Path)
 lib_deps = [
   cc.find_library('m', required: false),
   dependency('threads'),
-  cc.find_library('libavformat', dirs:lib1Path),
-  cc.find_library('libavfilter', dirs:lib1Path),
-  cc.find_library('libavcodec', dirs:lib1Path),
-  cc.find_library('libavutil', dirs:lib1Path),
+  cc.find_library('libavformat', dirs:[lib1Path]),
+  cc.find_library('libavfilter', dirs:[lib1Path]),
+  cc.find_library('libavcodec', dirs:[lib1Path]),
+  cc.find_library('libavutil', dirs:[lib1Path]),
 ]
 
 
