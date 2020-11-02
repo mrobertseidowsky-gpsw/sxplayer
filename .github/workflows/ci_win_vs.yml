@@ -30,7 +30,7 @@ jobs:
         git clone https://github.com/Microsoft/vcpkg.git
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]
+        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
         vcpkg list
         pip install meson 
         cd ..
