@@ -55,6 +55,10 @@ declare_dependency(
 lib_deps = [
   cc.find_library('m', required: false),
   dependency('threads'),
+  cc.find_library('libavformat'),
+  cc.find_library('libavfilter'),
+  cc.find_library('libavcodec'),
+  cc.find_library('libavutil'),
 ]
 
 vaapi_dep = dependency('libva', version: '>= 1.1.0', required: get_option('vaapi'))
