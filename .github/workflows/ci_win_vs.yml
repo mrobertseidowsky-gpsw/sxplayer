@@ -19,6 +19,8 @@ jobs:
       run: |
         set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static
         echo %PKG_CONFIG_PATH%
-        VCINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019" meson setup builddir --backend vs
+        set VCINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019"
+        echo %VCINSTALLDIR%
+        meson setup builddir --backend vs
   
         
