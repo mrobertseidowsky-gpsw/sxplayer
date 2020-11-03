@@ -18,6 +18,14 @@ jobs:
         python-version: '3.x'
 
     - name: install vcpkg
+      shell: bash
+      run: |
+        git clone https://github.com/Microsoft/vcpkg.git
+        cd vcpkg
+        ./bootstrap-vcpkg.bat -disableMetrics
+        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
+        
+    - name: install vcpkg
       shell: cmd
       run: |
         set PKG_CONFIG_PATH="D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static"
