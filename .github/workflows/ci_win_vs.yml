@@ -19,5 +19,16 @@ jobs:
     - name: install vcpkg
       shell: bash
       run: |
-        pip install meson 
-        VSINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019" meson setup builddir --backend vs
+        git clone https://github.com/Microsoft/vcpkg.git
+        cd vcpkg
+        ./bootstrap-vcpkg.bat -disableMetrics
+        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
+        vcpkg list
+        pkg-config --list-all
+        cd D:
+        find . -name '*ffmpeg*'
+        find . -name '*libavformat*'
+        find . -name '*.pc*'
+        find . -name '*.lib*'
+        vcpkg owns ffmpeg
+        
