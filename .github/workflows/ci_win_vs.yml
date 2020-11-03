@@ -19,8 +19,6 @@ jobs:
     - name: install vcpkg
       shell: bash
       run: |
-        choco install pkgconfiglite
+        choco install pkgconfiglite 
         pkg-config --variable pc_path pkg-config
-        echo $PKG_CONFIG_PATH
         env::var("PKG_CONFIG_PATH")
-        
