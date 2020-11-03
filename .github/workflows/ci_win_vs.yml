@@ -28,16 +28,6 @@ jobs:
     - name: install vcpkg
       shell: cmd
       run: |
-        echo %LIB%
-        set LIB="D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig";%LIB%;
-        echo %LIB%
-        set LIB="D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows-static\lib\pkgconfig";%LIB%;
-        echo %LIB%
-        echo %LIBPATH%
-        set LIBPATH="D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig";%LIBPATH%;
-        echo %LIBPATH%
-        set LIBPATH="D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows-static\lib\pkgconfig";%LIBPATH%;
-        echo %LIBPATH%
         echo %PKG_CONFIG_PATH%
         set PKG_CONFIG_PATH="D:\a\sxplayer\sxplayer\packages\ffmpeg_x86-windows-static\lib\pkgconfig";%PKG_CONFIG_PATH%;
         echo %PKG_CONFIG_PATH%
