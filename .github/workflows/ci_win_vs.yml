@@ -28,13 +28,21 @@ jobs:
     - name: install vcpkg
       shell: cmd
       run: |
+        echo %PATH%  
+        set PATH="D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows-static\lib\pkgconfig";%PATH%
+        echo %PATH%
+        echo %LIB%
         set LIB=%LIB%;D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib;
         echo %LIB%
+        echo %LIBPATH%
+        set LIBPATH=%LIBPATH%;D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib;
+        echo %LIBPATH%
         set PKG_CONFIG_PATH="D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static"
         echo %PKG_CONFIG_PATH%
         set VSINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019"
         echo %VSINSTALLDIR%
         pip install meson
+        pkg-config --variable pc_path pkg-config
         meson setup builddir --backend vs
 
     - uses: actions/upload-artifact@v1
