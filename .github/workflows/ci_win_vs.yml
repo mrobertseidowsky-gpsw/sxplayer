@@ -1,0 +1,23 @@
+name: 'tests Windows VS'
+
+on:
+  push:
+    branches:
+      - 'master'
+  pull_request:
+
+jobs:
+  windows:
+
+    runs-on: windows-latest
+
+    steps: 
+    - uses: actions/checkout@v2
+
+    - uses: msys2/setup-msys2@v2
+ 
+    - name: install vcpkg
+      shell: bash
+      run: |
+        pip install meson 
+        VSINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019" meson setup builddir --backend vs
