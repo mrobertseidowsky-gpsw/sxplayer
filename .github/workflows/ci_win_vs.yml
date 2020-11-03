@@ -24,7 +24,6 @@ jobs:
         echo %PKG_CONFIG_PATH%
         set VCINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019"
         echo %VCINSTALLDIR%
-        refreshenv
         pip install meson
         meson setup builddir --backend vs
 
