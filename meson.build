@@ -57,11 +57,6 @@ lib_deps = [
   dependency('libavutil', version: '>= 56.14.100'),
 ]
 
-vaapi_dep = dependency('libva', version: '>= 1.1.0', required: get_option('vaapi'))
-if vaapi_dep.found()
-  lib_deps += vaapi_dep
-  add_project_arguments('-DHAVE_VAAPI_HWACCEL=1', language: 'c')
-endif
 
 if host_system == 'darwin'
   lib_deps += dependency('appleframeworks', modules: ['CoreFoundation', 'VideoToolbox', 'CoreMedia', 'QuartzCore'])
