@@ -17,6 +17,10 @@ jobs:
     - name: install vcpkg
       shell: cmd
       run: |
+        set PKG_CONFIG_PATH="D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static"
+        echo %PKG_CONFIG_PATH%
+        set VCINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019"
+        echo %VCINSTALLDIR%
         choco install meson
         meson setup builddir --backend vs
   
