@@ -19,6 +19,7 @@ jobs:
     - name: install vcpkg
       shell: cmd
       run: |
-        choco install pkgconfiglite 
+        set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static;%PKG_CONFIG_PATH
         echo %PKG_CONFIG_PATH%
+        
         
