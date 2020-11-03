@@ -51,10 +51,10 @@ endif
 lib_deps = [
   cc.find_library('m', required: false),
   dependency('threads'),
-  cc.find_library('libavformat', dirs : meson.current_source_dir() + 'vcpkg/packages/ffmpeg_x86-windows-static/lib')
-  cc.find_library('libavfilter', dirs : meson.current_source_dir() + 'vcpkg/packages/ffmpeg_x86-windows-static/lib')
-  cc.find_library('libavcodec', dirs : meson.current_source_dir() + 'vcpkg/packages/ffmpeg_x86-windows-static/lib')
-  cc.find_library('libavutil'), dirs : meson.current_source_dir() + 'vcpkg/packages/ffmpeg_x86-windows-static/lib')
+  dependency('libavformat', version: '>= 58.12.100'),
+  dependency('libavfilter', version: '>= 7.16.100'),
+  dependency('libavcodec', version: '>= 58.18.100'),
+  dependency('libavutil', version: '>= 56.14.100'),
 ]
 
 vaapi_dep = dependency('libva', version: '>= 1.1.0', required: get_option('vaapi'))
