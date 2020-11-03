@@ -22,3 +22,5 @@ jobs:
         choco install pkgconfiglite 
         pkg-config --variable pc_path pkg-config
         env::var("PKG_CONFIG_PATH")
+        $env:PKG_CONFIG_PATH = "C:$env:HOMEPATH\AppData\Local\Programs\radare2\lib\pkgconfig"
+        env::var("PKG_CONFIG_PATH")
