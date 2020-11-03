@@ -13,7 +13,10 @@ jobs:
 
     steps: 
     - uses: actions/checkout@v2 
- 
+    - uses: actions/setup-python@v1
+      with:
+        python-version: '3.x'
+
     - name: install vcpkg
       shell: cmd
       run: |
@@ -22,11 +25,12 @@ jobs:
         set VCINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019"
         echo %VCINSTALLDIR%
         refreshenv
-
-    - name: install vcpkg
-      shell: bash
-      run: |      
-        choco install meson
+        pip install meson
         meson setup builddir --backend vs
+
+    - uses: actions/upload-artifact@v1
+      if: failure()
+      with:
+        name: Windows_Meson_Testlog
+        path: builddir/meson-logs/testlog.txt
   
-        
