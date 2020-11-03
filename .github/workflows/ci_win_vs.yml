@@ -23,12 +23,6 @@ jobs:
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
         vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
-        vcpkg list
-        pkg-config --list-all
-        cd D:
-        find . -name '*ffmpeg*'
-        find . -name '*libavformat*'
-        find . -name '*.pc*'
-        find . -name '*.lib*'
-        vcpkg owns ffmpeg
-        
+        where pkg-config
+        echo %PKG_CONFIG_PATH%
+    
