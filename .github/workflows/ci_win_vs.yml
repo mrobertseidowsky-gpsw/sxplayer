@@ -19,10 +19,8 @@ jobs:
     - name: install vcpkg
       shell: bash
       run: |
-        git clone https://github.com/Microsoft/vcpkg.git
-        cd vcpkg
-        ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
-        where pkg-config
         echo %PKG_CONFIG_PATH%
-    
+        set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static;%PKG_CONFIG_PATH
+        echo %PKG_CONFIG_PATH%
+        VCINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019" meson setup builddir --backend vs
+ 
