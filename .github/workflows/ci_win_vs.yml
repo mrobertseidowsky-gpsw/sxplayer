@@ -21,6 +21,11 @@ jobs:
         echo %PKG_CONFIG_PATH%
         set VCINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019"
         echo %VCINSTALLDIR%
+        refreshenv
+
+    - name: install vcpkg
+      shell: bash
+      run: |      
         choco install meson
         meson setup builddir --backend vs
   
