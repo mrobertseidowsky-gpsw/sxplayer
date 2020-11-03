@@ -19,6 +19,6 @@ jobs:
     - name: install vcpkg
       shell: cmd
       run: |
+        choco install pkgconfiglite 
         echo %PKG_CONFIG_PATH%
-  
         
