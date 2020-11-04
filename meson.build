@@ -119,11 +119,7 @@ pkg.generate(
 #
 # Player
 #
-
-player_deps = lib_deps + [
-  dependency('glfw3', required: get_option('player')),
-  dependency('glew', required: get_option('player')),
-]
+ 
 if host_system == 'darwin'
   player_deps += dependency('appleframeworks', modules: ['OpenGL'], required: get_option('player'))
 endif
