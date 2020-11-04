@@ -88,6 +88,7 @@ lib_src = files(
 
 lib_link_args = cc.get_supported_link_arguments([
   '-Wl,--version-script,@0@'.format(meson.current_source_dir() / 'libsxplayer.symexport'),  # GNU ld
+  '-Wl,-exported_symbols_list,@0@'.format(meson.current_source_dir() / 'libsxplayer.darwin.symexport'),  # Darwin
 ])
 
 if host_system == 'darwin'
@@ -128,12 +129,11 @@ pkg.generate(
 
 player_deps = lib_deps
 
-if host_system != 'windows'
-  player_deps += [
-    dependency('glfw3', required: get_option('player')),
-    dependency('glew', required: get_option('player')),
-  ]
-endif
+player_deps += [
+  dependency('glfw3', required: get_option('player')),
+  dependency('glew', required: get_option('player')),
+]
+
 
 if host_system == 'darwin'
   player_deps += dependency('appleframeworks', modules: ['OpenGL'], required: get_option('player'))

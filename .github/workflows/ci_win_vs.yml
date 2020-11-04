@@ -16,8 +16,9 @@ jobs:
     - uses: actions/setup-python@v1
       with:
         python-version: '3.x'
+    - uses: msys2/setup-msys2@v2
 
-    - name: install vcpkg
+    - name: install dependencies
       shell: bash
       run: |
         git clone https://github.com/Microsoft/vcpkg.git
@@ -36,9 +37,14 @@ jobs:
         set VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2019
         echo %VSINSTALLDIR%
         pip install meson
-        set CHERE_INVOKING=1
-        meson setup --backend vs -C builddir
-        meson compile -C builddir
-        meson test -C builddir
+      
+    - name: Setup
+      run: |
+        $env:CHERE_INVOKING = 'yes'
+        C:\msys64\usr\bin\bash -lc "meson setup builddir --backend vs"
 
-       
+    - name: Build
+      run: |
+        $env:CHERE_INVOKING = 'yes'
+        C:\msys64\usr\bin\bash -lc "meson compile -C builddir"
+ 
