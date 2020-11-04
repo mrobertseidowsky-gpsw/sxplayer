@@ -17,6 +17,8 @@ jobs:
       with:
         python-version: '3.x'
 
+    - uses: msys2/setup-msys2@v2
+
     - name: install vcpkg
       shell: bash
       run: |
@@ -36,14 +38,20 @@ jobs:
         set VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2019
         echo %VSINSTALLDIR%
         pip install meson
-        set CHERE_INVOKING='yes'
-        meson setup builddir --backend vs
-        meson compile -C builddir --backend vs
-        meson test -C builddir --backend vs
 
-    - uses: actions/upload-artifact@v1
-      if: failure()
-      with:
-        name: Windows_Meson_Testlog
-        path: builddir/meson-logs/testlog.txt
-  
+      - name: Setup
+        run: |
+          $env:CHERE_INVOKING = 'yes'
+          C:\msys64\usr\bin\bash -lc "meson setup builddir --backend vs"
+
+      - name: Build
+        run: |
+          $env:CHERE_INVOKING = 'yes'
+          C:\msys64\usr\bin\bash -lc "meson compile -C builddir"
+
+      - name: Test
+        run: |
+          $env:CHERE_INVOKING = 'yes'
+          C:\msys64\usr\bin\bash -lc "meson test -C builddir"
+
+       
