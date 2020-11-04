@@ -18,7 +18,14 @@ jobs:
         python-version: '3.x'
     - uses: msys2/setup-msys2@v2
 
-   
+    - name: install dependencies
+      shell: bash
+      run: |
+        git clone https://github.com/Microsoft/vcpkg.git
+        cd vcpkg
+        ./bootstrap-vcpkg.bat -disableMetrics
+        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
+
     - name: install vcpkg
       shell: cmd
       run: |
