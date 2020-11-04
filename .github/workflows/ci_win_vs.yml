@@ -32,10 +32,6 @@ jobs:
         set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig;%PKG_CONFIG_PATH%;
         set VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2015
         pip install meson
-        mkdir builddir
-        meson setup builddir --backend vs
-        ls
-        ls builddir
-        meson compile -C builddir
-        
+        meson . builddir --backend vs
+       
         
