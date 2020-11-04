@@ -24,6 +24,7 @@ jobs:
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
         vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
+        vcpkg install libva
 
     - name: install vcpkg
       shell: cmd
@@ -43,7 +44,7 @@ jobs:
         echo %PKG_CONFIG_PATH%
         set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig;%PKG_CONFIG_PATH%;
         echo %PKG_CONFIG_PATH%
-        set VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2019 
+        set VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2017
         echo %VSINSTALLDIR%
         pip install meson
         meson setup builddir --backend vs
