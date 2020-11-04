@@ -24,21 +24,7 @@ jobs:
         git clone https://github.com/Microsoft/vcpkg.git
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
-
-    - name: install vcpkg
-      shell: cmd
-      run: |
-        echo %PKG_CONFIG_PATH%
-        set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\packages\ffmpeg_x86-windows-static\lib\pkgconfig;%PKG_CONFIG_PATH%;
-        echo %PKG_CONFIG_PATH%
-        set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig;%PKG_CONFIG_PATH%;
-        echo %PKG_CONFIG_PATH%
-        set VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2015
-        echo %VSINSTALLDIR%
-        set CHERE_INVOKING=1
-        echo %CHERE_INVOKING%
-        pip install meson
-        meson setup builddir --backend vs
-        meson compile -C builddir
-        
+        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static      
+        export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:D:\a\sxplayer\sxplayer\packages\ffmpeg_x86-windows-static\lib\pkgconfig
+        export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig
+        C:\msys64\usr\bin\bash -lc "VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2019  meson setup builddir --backend vs"
