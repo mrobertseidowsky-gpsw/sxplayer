@@ -18,14 +18,6 @@ jobs:
         python-version: '3.x'
     - uses: msys2/setup-msys2@v2
 
-    - name: install dependencies
-      shell: bash
-      run: |
-        git clone https://github.com/Microsoft/vcpkg.git
-        cd vcpkg
-        ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
-
     - name: install vcpkg
       shell: cmd
       run: |
@@ -36,15 +28,7 @@ jobs:
         echo %PKG_CONFIG_PATH%
         set VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2019
         echo %VSINSTALLDIR%
+        set CHERE_INVOKING=1
+        echo %CHERE_INVOKING%
         pip install meson
-      
-    - name: Setup
-      run: |
-        $env:CHERE_INVOKING = 'yes'
-        C:\msys64\usr\bin\bash -lc "meson setup builddir --backend vs"
-
-    - name: Build
-      run: |
-        $env:CHERE_INVOKING = 'yes'
-        C:\msys64\usr\bin\bash -lc "meson compile -C builddir"
- 
+        meson setup builddir --backend vs
