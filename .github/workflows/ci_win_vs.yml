@@ -37,7 +37,7 @@ jobs:
         echo %VSINSTALLDIR%
         pip install meson
         set CHERE_INVOKING=1
-        meson setup --backend vs builddir
+        meson setup --backend vs -C builddir
         meson compile -C builddir
         meson test -C builddir
 
