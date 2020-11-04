@@ -5,7 +5,6 @@ project(
   license: 'LGPL-2.1',
   # We don't use `cat` here for portability concerns. The VERSION file is
   # managed by the `make-release.sh` script
-  # See https://github.com/mesonbuild/meson/issues/7890 for more information
   version: run_command(
     find_program('python'), '-c', 'import sys;print(open(sys.argv[1]).read())', files('VERSION')
   ).stdout().strip(),
@@ -56,7 +55,14 @@ lib_deps = [
   dependency('libavcodec', version: '>= 58.18.100'),
   dependency('libavutil', version: '>= 56.14.100'),
 ]
- 
+
+if host_system != 'windows'
+  vaapi_dep = dependency('libva', version: '>= 1.1.0', required: get_option('vaapi'))
+  if vaapi_dep.found()
+    lib_deps += vaapi_dep
+    add_project_arguments('-DHAVE_VAAPI_HWACCEL=1', language: 'c')
+  endif
+endif
 
 if host_system == 'darwin'
   lib_deps += dependency('appleframeworks', modules: ['CoreFoundation', 'VideoToolbox', 'CoreMedia', 'QuartzCore'])
@@ -119,7 +125,16 @@ pkg.generate(
 #
 # Player
 #
- 
+
+player_deps = lib_deps
+
+if host_system != 'windows'
+  player_deps += [
+    dependency('glfw3', required: get_option('player')),
+    dependency('glew', required: get_option('player')),
+  ]
+endif
+
 if host_system == 'darwin'
   player_deps += dependency('appleframeworks', modules: ['OpenGL'], required: get_option('player'))
 endif
