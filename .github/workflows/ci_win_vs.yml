@@ -24,7 +24,6 @@ jobs:
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
         vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
-        vcpkg install libva
 
     - name: install vcpkg
       shell: cmd
