@@ -38,6 +38,5 @@ jobs:
         pip install meson
         set CHERE_INVOKING=1
         meson setup builddir --backend vs
-        meson test -C builddir
 
        
