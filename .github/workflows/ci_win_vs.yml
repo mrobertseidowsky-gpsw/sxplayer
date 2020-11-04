@@ -30,7 +30,7 @@ jobs:
       shell: cmd
       run: |
         echo %PKG_CONFIG_PATH%
-        set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig;%PKG_CONFIG_PATH%;
+        set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\packages\ffmpeg_x86-windows-static\lib\pkgconfig;%PKG_CONFIG_PATH%;
         echo %PKG_CONFIG_PATH%
         set VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2015
         echo %VSINSTALLDIR%
