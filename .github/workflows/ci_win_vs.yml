@@ -28,3 +28,4 @@ jobs:
         export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:D:\a\sxplayer\sxplayer\packages\ffmpeg_x86-windows-static\lib\pkgconfig
         export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig
         C:\msys64\usr\bin\bash -lc "VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2019  meson setup builddir --backend vs"
+        C:\msys64\usr\bin\bash -lc "meson compile -C builddir"
