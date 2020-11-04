@@ -47,11 +47,11 @@ jobs:
       - name: Build
         run: |
           $env:CHERE_INVOKING = 'yes'
-          C:\msys64\usr\bin\bash -lc "meson compile -C builddir"
+          C:\msys64\usr\bin\bash -lc "meson compile -C builddir --backend vs""
 
       - name: Test
         run: |
           $env:CHERE_INVOKING = 'yes'
-          C:\msys64\usr\bin\bash -lc "meson test -C builddir"
+          C:\msys64\usr\bin\bash -lc "meson test -C builddir --backend vs""
 
        
