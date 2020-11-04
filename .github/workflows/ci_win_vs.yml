@@ -38,8 +38,8 @@ jobs:
         pip install meson
         set CHERE_INVOKING='yes'
         meson setup builddir --backend vs
-        meson compile -C builddir
-        meson test -C builddir
+        meson compile -C builddir --backend vs
+        meson test -C builddir --backend vs
 
     - uses: actions/upload-artifact@v1
       if: failure()
