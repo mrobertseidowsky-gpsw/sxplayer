@@ -30,12 +30,11 @@ jobs:
       shell: cmd
       run: |
         "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson setup builddir --backend vs --pkg-config-path "D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig"
-        ls
-
+      
     - name: Build
       shell: cmd
       run: |
-        set PLATFORM=""
+        set PLATFORM=1
         meson compile -C builddir -v
 
     - name: Test
