@@ -34,4 +34,5 @@ jobs:
         mkdir builddir
         set CC=clang-cl
         set CXX=clang-cl
+        set CC_LD=lld
         meson setup builddir --backend vs
