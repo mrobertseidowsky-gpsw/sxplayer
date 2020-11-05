@@ -31,6 +31,6 @@ jobs:
         set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig;%PKG_CONFIG_PATH%;
         set VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2019
         pip install meson
-        CC=clang meson setup builddir --backend vs  --buildtype plain --errorlogs -v  
+        meson setup builddir --backend vs  --buildtype plain --errorlogs -v  
         ls
         cat D:\a\sxplayer\sxplayer\build\meson-logs\meson-log.txt
