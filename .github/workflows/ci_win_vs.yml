@@ -28,8 +28,10 @@ jobs:
     - name: install vcpkg
       shell: cmd
       run: |
+        pip install meson ninja
         set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig;%PKG_CONFIG_PATH%;
         set VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2017
-        pip install meson ninja
         mkdir builddir
-        meson setup builddir --backend vs -v
+        set CC=clang-cl
+        set CXX=clang-cl
+        meson setup builddir --backend vs
