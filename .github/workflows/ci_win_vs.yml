@@ -36,7 +36,7 @@ jobs:
       shell: cmd
       run: |
         set PLATFORM=""
-        meson compile -C builddir
+        meson compile -C builddir -v
 
     - name: Test
       shell: cmd
