@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v2 
     - uses: actions/setup-python@v1
       with:
-        python-version: '3.5'
+        python-version: '3.x'
 
     - name: install dependencies
       shell: bash
@@ -24,7 +24,7 @@ jobs:
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
         vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
-        pip install meson
+        pip install meson pthread
 
     - name: Setup
       shell: cmd
@@ -35,11 +35,11 @@ jobs:
       shell: cmd
       run: |
         set PLATFORM="nothing"
-        meson compile -C builddir -v
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson compile -C builddir -v
 
     - name: Test
       shell: cmd
       run: |
-        meson test -C builddir
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson test -C builddir
 
  
