@@ -34,7 +34,8 @@ jobs:
     - name: Setup
       shell: cmd
       run: |
-        VSCMD && meson setup builddir --backend vs --pkg-config-path "D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig"
+        set FFMPEGPATH="D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig"
+        VSCMD && meson setup builddir --backend vs --pkg-config-path FFMPEGPATH
       
     - name: Build
       shell: cmd
