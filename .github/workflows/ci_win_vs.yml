@@ -32,6 +32,6 @@ jobs:
         set VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2019
         py -3 -m pip install meson
         meson builddir --backend=vs
-        cd builddir
-        msbuild mesa.sln /m
+        ls 
+        vs -C builddir
         cat D:\a\sxplayer\sxplayer\build\meson-logs\meson-log.txt
