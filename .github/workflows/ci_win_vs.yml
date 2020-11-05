@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v2 
     - uses: actions/setup-python@v1
       with:
-        python-version: '3.x'
+        python-version: '3.8'
 
     - name: install dependencies
       shell: bash
@@ -31,4 +31,4 @@ jobs:
         set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig;%PKG_CONFIG_PATH%;
         set VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2019
         pip install meson
-        meson setup builddir --backend vs  --buildtype plain
+        meson setup builddir --backend vs
