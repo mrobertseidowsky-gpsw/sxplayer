@@ -30,4 +30,4 @@ jobs:
       run: |
         set VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2019
         pip install meson ninja
-        meson setup builddir --backend vs --build.pkg-config-path "D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig"
+        meson setup builddir --backend vs --pkg-config-path "D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig"
