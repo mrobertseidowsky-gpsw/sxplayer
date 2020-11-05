@@ -34,7 +34,7 @@ jobs:
     - name: Build
       shell: cmd
       run: |
-        set PLATFORM=1
+        set PLATFORM="nothing"
         set PATH=C:\hostedtoolcache\windows\Python\3.7.9\x64;%PATH%
         meson compile -C builddir -v
 
