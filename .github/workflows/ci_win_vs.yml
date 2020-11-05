@@ -16,21 +16,12 @@ jobs:
     - uses: actions/setup-python@v1
       with:
         python-version: '3.7'
-
-    - name: install dependencies
-      shell: bash
-      run: | 
-        curl -fsSL -o LLVM10.exe https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/LLVM-10.0.0-win64.exe
-        7z x LLVM10.exe -y -o"C:/Program Files/LLVM"
+ 
     - name: install vcpkg
       shell: cmd
       run: |
         pip install meson
         set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig;%PKG_CONFIG_PATH%;
-        set VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2019
+        set VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2017
         mkdir builddir
-        set CC=clang
-        set CXX=clang++
-        set CC_LD=lld
-        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat" -no_logo -arch=x86 && meson setup builddir --backend vs
- 
+        "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools\VsDevCmd.bat" -no_logo -arch=x86 && meson setup builddir --backend vs
