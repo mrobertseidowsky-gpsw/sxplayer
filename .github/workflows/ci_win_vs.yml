@@ -26,5 +26,6 @@ jobs:
         ./bootstrap-vcpkg.bat -disableMetrics
         vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static      
         export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:D:\a\sxplayer\sxplayer\packages\ffmpeg_x86-windows-static\lib\pkgconfig
-        export VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2019
-        meson setup builddir --backend vs
+        export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig
+        VSINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2019" meson setup builddir --backend vs
+        cat D:\a\sxplayer\sxplayer\build\meson-logs\meson-log.txt
