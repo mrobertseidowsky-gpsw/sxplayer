@@ -35,7 +35,7 @@ jobs:
       shell: cmd
       run: |
         set PLATFORM="nothing"
-        meson compile -C builddir -v
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson compile -C builddir -v
 
     - name: Test
       shell: cmd
