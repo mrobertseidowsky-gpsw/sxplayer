@@ -32,4 +32,4 @@ jobs:
         set VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2019
         pip install meson ninja
         mkdir builddir
-        meson setup builddir --backend vs
+        meson setup builddir --backend vs -v
