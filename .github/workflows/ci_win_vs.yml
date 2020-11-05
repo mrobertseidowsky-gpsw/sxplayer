@@ -20,32 +20,4 @@ jobs:
     - name: install dependencies
       shell: bash
       run: |
-        git clone https://github.com/Microsoft/vcpkg.git
-        cd vcpkg
-        ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
-        pip install pthread
-
-    - name: vscommand
-      shell: cmd
-      run: |
-        set VSCMD="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat"
-
-    - name: Setup
-      shell: cmd
-      run: |
-        set FFMPEGPATH="D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig"
-        VSCMD && meson setup builddir --backend vs --pkg-config-path FFMPEGPATH
-      
-    - name: Build
-      shell: cmd
-      run: |
-        set PLATFORM="nothing"
-        VSCMD && meson compile -C builddir -v
-
-    - name: Test
-      shell: cmd
-      run: |
-        VSCMD && meson test -C builddir
-
- 
+        vcpkg install pthread
