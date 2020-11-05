@@ -31,7 +31,7 @@ jobs:
       run: |
         "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson setup builddir --backend vs --pkg-config-path "D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig"
         ls
-        
+
     - name: Build
       shell: cmd
       run: |
@@ -40,5 +40,5 @@ jobs:
     - name: Test
       shell: cmd
       run: |
-        meson test -C builddir"
+        meson test -C builddir
 
