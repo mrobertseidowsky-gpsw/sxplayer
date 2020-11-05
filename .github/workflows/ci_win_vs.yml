@@ -43,4 +43,3 @@ jobs:
       run: |
         meson test -C builddir
 
-    pythonLocation: C:\hostedtoolcache\windows\Python\3.7.9\x64
