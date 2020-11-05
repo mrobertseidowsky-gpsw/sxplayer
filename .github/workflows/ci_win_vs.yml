@@ -27,6 +27,6 @@ jobs:
         set CC=clang
         set CXX=clang++
         set CC_LD=lld
-        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -no_logo -arch=x86
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -no_logo -arch=x86
         meson setup builddir --backend vs
  
