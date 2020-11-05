@@ -29,6 +29,5 @@ jobs:
       run: |
         set VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2019
         pip install meson
-        meson setup builddir --backend vs --pkg-config-path D:\a\sxplayer\sxplayer\packages\ffmpeg_x86-windows-static\lib\pkgconfig
-
+        meson setup builddir --backend vs --pkg-config-path D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig
         cat D:\a\sxplayer\sxplayer\build\meson-logs\meson-log.txt
