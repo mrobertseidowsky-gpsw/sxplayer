@@ -22,5 +22,4 @@ jobs:
       run: |
         pip install meson
         set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig;%PKG_CONFIG_PATH%;
-        set VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2019
         "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson setup builddir --backend vs
