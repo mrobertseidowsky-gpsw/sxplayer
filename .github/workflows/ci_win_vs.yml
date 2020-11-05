@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v2 
     - uses: actions/setup-python@v1
       with:
-        python-version: '3.8'
+        python-version: '3.7'
 
     - name: install dependencies
       shell: bash
@@ -24,11 +24,12 @@ jobs:
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
         vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
+
     - name: install vcpkg
       shell: cmd
       run: |
         set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig;%PKG_CONFIG_PATH%;
         set VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2019
         pip install meson
-        meson setup --backend vs --buildtype release builddir
-        meson compile -C builddir
+        echo %CC%
+        meson setup --backend vs -Db_vscrt=none builddir
