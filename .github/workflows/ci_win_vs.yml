@@ -17,24 +17,7 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: install dependencies
-      shell: bash
-      run: |
-        git clone https://github.com/Microsoft/vcpkg.git
-        cd vcpkg
-        ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
-        pip install meson
-
+ 
     - name: Setup
       run: |
-        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson setup builddir --backend vs --pkg-config-path "D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig"
-
-    - name: Build
-      run: |
-        meson compile -C builddir
-
-    - name: Test
-      run: |
-        meson test -C builddir"
-
+        cat "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" 
