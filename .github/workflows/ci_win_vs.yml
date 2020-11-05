@@ -27,7 +27,9 @@ jobs:
         set CC=clang
         set CXX=clang++
         set CC_LD=lld
-        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" -no_logo -arch=x86 && meson setup builddir --backend vs
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Auxiliary\Build\vcvarsall.bat" -no_logo -arch=x86 && meson setup builddir --backend vs
  
+
+
 
 
