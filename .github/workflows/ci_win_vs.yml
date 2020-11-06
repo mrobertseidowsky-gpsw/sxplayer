@@ -30,11 +30,9 @@ jobs:
     - name: Setup
       shell: cmd
       run: |
-        set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\include;%INCLUDE%;
-        set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows-static\include;%INCLUDE%;
+        set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\include;D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows-static\include;%INCLUDE%;
         echo %INCLUDE%
-        set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib;%LIB%;
-        set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows-static\lib;%LIB%;
+        set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib;D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows-static\lib;%LIB%;
         echo %LIB%
         set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig;%PKG_CONFIG_PATH%;      
         "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson setup builddir --backend vs 
@@ -44,16 +42,14 @@ jobs:
       run: |
         set PLATFORM="" 
         set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig;%PKG_CONFIG_PATH%;     
-        set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\include;%INCLUDE%;
-        set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows-static\include;%INCLUDE%;
+        set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\include;D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows-static\include;%INCLUDE%;
         echo %INCLUDE%
-        set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib;%LIB%;
-        set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows-static\lib;%LIB%;
+        set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib;D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows-static\lib;%LIB%;
         echo %LIB% 
         "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson compile -C builddir -v
     
     - name: TEST
       shell: cmd
       run: |
-        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" &&  meson test -C builddir
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson test -C builddir
  
