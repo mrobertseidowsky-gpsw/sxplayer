@@ -50,7 +50,7 @@ endif
 
 lib_deps = [
   cc.find_library('m', required: false),
-  cc.find_library('threads', dirs : "D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib"),
+  dependency('threads'),
   dependency('libavformat', version: '>= 58.12.100'),
   dependency('libavfilter', version: '>= 7.16.100'),
   dependency('libavcodec', version: '>= 58.18.100'),
@@ -126,10 +126,7 @@ pkg.generate(
 #
 # Player
 #
-
-player_deps = lib_deps
-
-player_deps += [
+player_deps = lib_deps + [
   dependency('glfw3', required: get_option('player')),
   dependency('glew', required: get_option('player')),
 ]
