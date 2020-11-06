@@ -24,7 +24,7 @@ jobs:
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
         vcpkg install pthread
-        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows
+        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]
         pip install meson
 
 
