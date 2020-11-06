@@ -46,6 +46,6 @@ jobs:
     - name: TEST
       shell: cmd
       run: |
-        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson test -C builddir
+        meson test -C builddir
  
  
