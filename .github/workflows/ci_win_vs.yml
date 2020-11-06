@@ -31,7 +31,7 @@ jobs:
       shell: cmd
       run: |   
         ls D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\include
-        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson setup builddir --backend vs --prefix="D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows" --libdir="D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib" --bindir="D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\bin" --includedir="D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\include"
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson setup builddir --backend vs --prefix=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows --libdir=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib --bindir=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\bin --includedir=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\include
 
 
     - name: BUILD
