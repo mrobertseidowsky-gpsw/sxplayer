@@ -19,6 +19,7 @@ conf_data.set('version_micro', version_array[2])
 host_system = host_machine.system()
 cc = meson.get_compiler('c')
 message(cc.get_id())
+cc.has_header('pthread.h')
 
 install_rpath = get_option('rpath') ? get_option('prefix') / get_option('libdir') : ''
 
@@ -48,15 +49,9 @@ endif
 # Dependencies, sometimes shared with the tools and tests
 #
 
-
-myLib_dep = declare_dependency(link_args : ['-LD:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib', '-lthreads'],
-                               include_directories : ['D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\include'])
-
-
-lib_deps += myLib_dep
-
 lib_deps = [
   cc.find_library('m', required: false),
+  dependency('threads'),
   dependency('libavformat', version: '>= 58.12.100'),
   dependency('libavfilter', version: '>= 7.16.100'),
   dependency('libavcodec', version: '>= 58.18.100'),
@@ -101,6 +96,9 @@ if host_system == 'darwin'
   lib_src += files('decoder_vt.c')
 endif
 
+
+myLib_dep = declare_dependency(link_args : ['-LD:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib', '-lthread'],
+                               include_directories : ['D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\include'])
 
 
 libsxplayer = library(
