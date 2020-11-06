@@ -25,7 +25,6 @@ jobs:
         ./bootstrap-vcpkg.bat -disableMetrics
         vcpkg install pthread pthreads:x86-windows-static ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
         vcpkg integrate install
-        vcpkg integrate remove 
         pip install meson
     - name: Setup
       shell: cmd
