@@ -23,13 +23,15 @@ jobs:
         git clone https://github.com/Microsoft/vcpkg.git
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install pthread:x86-windows-static
+        vcpkg install pthread
+        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
         pip install meson
 
     - name: Setup
       shell: cmd
       run: |
         set PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\include;%PATH%
+        set PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\include;%PATH%
         echo %PATH%
 
     - name: Setup
