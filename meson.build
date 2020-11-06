@@ -106,7 +106,6 @@ libsxplayer = library(
   install_rpath: install_rpath,
   version: meson.project_version(),
   link_args: lib_link_args,
-  include_directories: inc,
 )
 
 lib_header = configure_file(
