@@ -39,9 +39,7 @@ jobs:
       run: |
         set PLATFORM=""
         set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\include;%INCLUDE%;
-        set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\packages\pthreads_x86-windows-static\include;%INCLUDE%;
         set PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\bin;%PATH%;
-        set PATH=D:\a\sxplayer\sxplayer\vcpkg\packages\pthreads_x86-windows-static\bin;%PATH%;
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib;%LIB%;
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\pthreads_x86-windows-static\lib;%LIB%;
         "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson compile -C builddir
