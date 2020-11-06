@@ -23,10 +23,10 @@ jobs:
         git clone https://github.com/Microsoft/vcpkg.git
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install pthread
-         
-
+        vcpkg install pthread:x86-windows
+       
     - name: Setup
       shell: cmd
       run: |
         ls D:\a\sxplayer\sxplayer\vcpkg\installed
+ 
