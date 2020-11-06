@@ -50,7 +50,7 @@ endif
 
 lib_deps = [
   cc.find_library('m', required: false),
-  cc.find_library('threads', dirs : meson.current_source_dir() + 'vcpkg/package/x86-windows-static/lib'),
+  cc.find_library('threads', dirs : meson.current_source_dir() + '/vcpkg/package/x86-windows-static/lib'),
   dependency('libavformat', version: '>= 58.12.100'),
   dependency('libavfilter', version: '>= 7.16.100'),
   dependency('libavcodec', version: '>= 58.18.100'),
