@@ -96,6 +96,9 @@ if host_system == 'darwin'
   lib_src += files('decoder_vt.c')
 endif
 
+inc = include_directories('include', meson.current_source_dir() / 'vcpkg\installed\x86-windows-static\lib')
+
+
 libsxplayer = library(
   'sxplayer',
   lib_src,
@@ -104,6 +107,7 @@ libsxplayer = library(
   install_rpath: install_rpath,
   version: meson.project_version(),
   link_args: lib_link_args,
+  include_directories: inc,
 )
 
 lib_header = configure_file(
