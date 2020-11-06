@@ -30,9 +30,9 @@ jobs:
     - name: Setup
       shell: cmd
       run: |
-        set PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\include;%PATH%
-        set PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\include;%PATH%
-        echo %PATH%
+        set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\include;%INCLUDE%
+        set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\include;%INCLUDE%
+        echo %INCLUDE%
 
     - name: Setup
       shell: cmd
