@@ -24,5 +24,9 @@ jobs:
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
         vcpkg install pthread
+         
+
+    - name: Setup
+      shell: cmd
+      run: |
         ls D:\a\sxplayer\sxplayer\vcpkg\installed
-        
