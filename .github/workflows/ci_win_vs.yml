@@ -32,8 +32,6 @@ jobs:
       run: |
         set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\include;%INCLUDE%;
         echo %INCLUDE%
-        set PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\bin;%PATH%;
-        echo %PATH%
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib;%LIB%;
         echo %LIB%
         
