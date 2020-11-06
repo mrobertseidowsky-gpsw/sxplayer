@@ -1,4 +1,3 @@
- 
 name: 'tests Windows VS'
 
 on:
@@ -22,12 +21,11 @@ jobs:
       shell: bash
       run: |
         git clone https://github.com/Microsoft/vcpkg.git
-        cd vcpkgs
+        cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
         vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
         vcpkg install pthreads --triplet x64-windows
         pip install meson
-
     - name: Setup
       shell: cmd
       run: |
