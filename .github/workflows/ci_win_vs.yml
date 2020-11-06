@@ -23,13 +23,9 @@ jobs:
         git clone https://github.com/Microsoft/vcpkg.git
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install pthread:x86-windows-static
-        pip install meson
+        vcpkg install pthread:x86-windows-static 
 
     - name: Setup
       shell: cmd
       run: |
-        ls D:\a\sxplayer\sxplayer\vcpkg\installed
-        ls D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static
-        ls D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\include
- 
+        echo %PATH% 
