@@ -25,4 +25,11 @@ jobs:
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
         vcpkg install pthread:x86-windows-static
-       
+
+        pip install meson
+
+    - name: Setup
+      shell: cmd
+      run: |
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson setup builddir --backend vs --pkg-config-path "D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig"
+    
