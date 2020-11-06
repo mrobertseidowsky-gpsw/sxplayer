@@ -19,6 +19,7 @@ conf_data.set('version_micro', version_array[2])
 host_system = host_machine.system()
 cc = meson.get_compiler('c')
 message(cc.get_id())
+cc.has_header('pthread.h')
 
 install_rpath = get_option('rpath') ? get_option('prefix') / get_option('libdir') : ''
 
