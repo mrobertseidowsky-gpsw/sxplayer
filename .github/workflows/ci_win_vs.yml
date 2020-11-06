@@ -19,9 +19,7 @@ jobs:
 
     - name: install dependencies
       shell: bash
-      run: |
-        git clone https://github.com/Microsoft/vcpkg.git
-        cd vcpkg
-        ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install pthread
-        ls installed 
+      run: | 
+        curl -fsSL -o pthreads-w32-2-9-1-release.zip ftp://sourceware.org/pub/pthreads-win32/pthreads-w32-2-9-1-release.zip"
+        7z x pthreads-w32-2-9-1-release.zip -y -o"C:\Program Files\pthreads"
+        ls C:\Program Files\pthreadsPre-built.2\lib\
