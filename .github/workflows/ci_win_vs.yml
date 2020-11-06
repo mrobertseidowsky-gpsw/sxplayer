@@ -23,8 +23,8 @@ jobs:
         git clone https://github.com/Microsoft/vcpkg.git
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install pthread pthreads:x86-windows-static ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
-        vcpkg integrate install
+        vcpkg install pthreads:x86-windows-static
+        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
         pip install meson
 
     - name: Setup
@@ -55,5 +55,5 @@ jobs:
     - name: TEST
       shell: cmd
       run: |
-        meson test -C builddir
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" &&  meson test -C builddir
  
