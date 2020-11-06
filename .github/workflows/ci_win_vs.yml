@@ -25,5 +25,5 @@ jobs:
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
         vcpkg install pthread:x86-windows-static
-        find . -name '*.pthread*'   
+        find . -name '*.pthread'    
   
