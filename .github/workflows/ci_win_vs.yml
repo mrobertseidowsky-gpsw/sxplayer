@@ -25,7 +25,7 @@ jobs:
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
         vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
-        vcpkg install pthread
+        vcpkg install pthread:x86-windows-static
         find . -name '*pthread*'    
         pip install meson
 
@@ -38,10 +38,10 @@ jobs:
       shell: cmd
       run: |
         set PLATFORM=""
-        set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\include;%INCLUDE%;
-        set PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\bin;%PATH%;
-        set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib;%LIB%;
-        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson compile -C builddir -v
+        set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\include;%INCLUDE%;
+        set PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\bin;%PATH%;
+        set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib;%LIB%;
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson compile -C builddir
     
     - name: Test
       shell: cmd
