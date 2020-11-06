@@ -24,8 +24,8 @@ jobs:
         git clone https://github.com/Microsoft/vcpkg.git
         cd vcpkgs
         ./bootstrap-vcpkg.bat -disableMetrics
+        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
         vcpkg install pthread:x86-windows-static
-        find . -name '*pthread*'
         vcpkg install pthreads:x64-windows-static
         vcpkg install pthreads:x86-windows-static 
         vcpkg install pthreads:x64-windows
