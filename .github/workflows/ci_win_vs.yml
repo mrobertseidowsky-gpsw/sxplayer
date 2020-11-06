@@ -23,6 +23,6 @@ jobs:
         git clone https://github.com/Microsoft/vcpkg.git
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
-        pip install pthread
+        vcpkg install pthread
         find . -name '*pthread.h*'
  
