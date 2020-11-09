@@ -23,9 +23,9 @@ jobs:
         git clone https://github.com/Microsoft/vcpkg.git
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
+        cache: D:/a/sxplayer/sxplayer/vcpkg/installed
         vcpkg install pthread:x86-windows ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows
         pip install meson      
-        cache: D:/a/sxplayer/sxplayer/vcpkg/installed
         vcpkg integrate install
         vcpkg integrate project
         vcpkg integrate remove       
