@@ -6,12 +6,10 @@ on:
       - 'master'
   pull_request:
 
-    runs-on: ubuntu-20.04
-
 jobs:
 
   Install dependencies:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - run: |
@@ -21,7 +19,7 @@ jobs:
         sudo apt -y install valgrind
 
   linux:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     needs: [Install dependencies]
     steps:
       - run: |
@@ -29,7 +27,7 @@ jobs:
         meson test -C builddir -v
 
   linux memory:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     needs: [Install dependencies]
     steps:
       - run: |
