@@ -24,7 +24,7 @@ jobs:
       run: |
         meson setup --buildtype release builddir
         meson test -C builddir -v
-  
+
 jobs:
   linux memory:
  
