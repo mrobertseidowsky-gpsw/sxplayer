@@ -23,7 +23,7 @@ jobs:
         git clone https://github.com/Microsoft/vcpkg.git
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install pthread ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
+        vcpkg install pthreads ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
         pip install meson      
         find . -name '*pthread*'
 
