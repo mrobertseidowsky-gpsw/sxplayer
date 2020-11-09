@@ -23,7 +23,7 @@ jobs:
         git clone https://github.com/Microsoft/vcpkg.git
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install pthread pthreads pthreads:x86-windows-static ffmpeg[ffmpeg,ffplay,nonfree,avresample] ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
+        vcpkg install pthread pthreads pthreads:x86-windows-static ffmpeg[ffmpeg,ffplay,nonfree,avresample]
         pip install meson          
         find . -name '*ffmpeg*'
         find . -name '*libavformat*'
@@ -45,9 +45,7 @@ jobs:
         echo "a"
         ls D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib
         echo "a"
-        ls D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows-static\include
         echo "a"
-        ls D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows-static\lib
         echo "a"
         ls D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig
         echo "a"
@@ -65,12 +63,10 @@ jobs:
 
         set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\include;%INCLUDE%;
         set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\include;%INCLUDE%;
-        set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows-static\include;%INCLUDE%;
         set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows\include;%INCLUDE%;
         echo %INCLUDE%
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib;%LIB%;
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib;%LIB%;
-        set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows-static\lib;%LIB%;
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows\lib;%LIB%;
         echo %LIB%
         set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig;%PKG_CONFIG_PATH%;      
@@ -82,12 +78,10 @@ jobs:
         set PLATFORM="" 
         set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\include;%INCLUDE%;
         set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\include;%INCLUDE%;
-        set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows-static\include;%INCLUDE%;
         set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows\include;%INCLUDE%;
         echo %INCLUDE%
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib;%LIB%;
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib;%LIB%;
-        set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows-static\lib;%LIB%;
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows\lib;%LIB%;
         echo %LIB%
         set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig;%PKG_CONFIG_PATH%;      
