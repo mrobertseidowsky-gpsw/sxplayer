@@ -17,11 +17,38 @@ jobs:
       with:
         python-version: '3.x'
 
- 
+    - name: install dependencies
+      shell: bash
+      run: |
+        git clone https://github.com/Microsoft/vcpkg.git
+        cd vcpkg
+        ./bootstrap-vcpkg.bat -disableMetrics
+        vcpkg install pthread:x64-windows ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x64-windows
+        pip install meson      
+        vcpkg integrate install
+        vcpkg integrate project
+        vcpkg integrate remove       
+        find . -name '*ffmpeg*'
+        find . -name '*avcodec*'
+        find . -name '*pthread*'
+        find . -name '*.pc*'
+        find . -name '*.include*'
+        find . -name '*.lib*'
+    - name: Setup
+      shell: cmd
+      run: | 
+        set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x64-windows\lib\pkgconfig;%PKG_CONFIG_PATH%
+        "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat" && meson setup builddir --backend vs
+  
     - name: BUILD
       shell: cmd
       run: |
-        call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
+        set PLATFORM="X64" 
+        set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x64-windows\include;%INCLUDE%
+        set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x64-windows\lib;%LIB%
+        set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x64-windows\lib;%LIB%
+        "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat" && meson compile -C builddir -v 
+  
 
     - name: TEST
       shell: cmd
