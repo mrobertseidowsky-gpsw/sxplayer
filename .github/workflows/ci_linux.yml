@@ -19,7 +19,7 @@ jobs:
 
   linux:
     runs-on: ubuntu-20.04
-    needs: [Install]
+    needs: Install
     steps:
       - run: |
         meson setup --buildtype release builddir
@@ -27,7 +27,7 @@ jobs:
 
   linux memory:
     runs-on: ubuntu-20.04
-    needs: [Install]
+    needs: Install
     steps:
       - run: |
         meson setup --buildtype debugoptimized builddir-memory
