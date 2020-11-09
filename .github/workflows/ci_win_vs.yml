@@ -53,6 +53,14 @@ jobs:
         set PATH=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows\lib;%LIB%
         set PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib;%LIB%
         set VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2019
+        cp D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\bin\avcodec-58.dll D:\a\sxplayer\sxplayer\builddir\
+        cp D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\bin\avformat-58 D:\a\sxplayer\sxplayer\builddir\
+        cp D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\bin\swresample-3.dll D:\a\sxplayer\sxplayer\builddir\
+        cp D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\bin\avutil-56.dll D:\a\sxplayer\sxplayer\builddir\
+        cp D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\bin\avfilter-7.dll D:\a\sxplayer\sxplayer\builddir\
+        cp D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\bin\swscale-5.dll D:\a\sxplayer\sxplayer\builddir\
+        cp D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\bin\postproc-55.dll D:\a\sxplayer\sxplayer\builddir\
+        cp D:\a\sxplayer\sxplayer\vcpkg\packages\pthreads_x86-windows\bin\pthreadVC3.dll D:\a\sxplayer\sxplayer\builddir\
         "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson compile -C builddir -v
     
     - name: TEST
