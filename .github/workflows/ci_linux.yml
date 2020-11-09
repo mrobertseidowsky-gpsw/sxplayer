@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  Install:
+  Install_dependencies:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
@@ -19,16 +19,16 @@ jobs:
 
   linux:
     runs-on: ubuntu-20.04
-    needs: Install
+    needs: Install_dependencies
     steps:
       - run: |
           meson setup --buildtype release builddir
           meson test -C builddir -v
 
-  linux memory:
+  linux_memory:
     runs-on: ubuntu-20.04
-    needs: Install
+    needs: Install_dependencies
     steps:
       - run: |
           meson setup --buildtype debugoptimized builddir-memory
-          meson test --wrapper valgrind -C builddir-memory -v
+        
