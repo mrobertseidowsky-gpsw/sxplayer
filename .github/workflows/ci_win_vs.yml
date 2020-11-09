@@ -47,7 +47,7 @@ jobs:
         set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\include;%INCLUDE%
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib;%LIB%
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows\lib;%LIB%
-        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" D:\a\sxplayer\sxplayer\builddir\sxplayer.sln /p:Configuration=Release /p:Platform="x64" && meson compile -C builddir -v 
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" D:\a\sxplayer\sxplayer\builddir\sxplayer.sln /p:Configuration=Debug /p:Platform="x64" && meson compile -C builddir -v 
 
 
     - name: TEST
