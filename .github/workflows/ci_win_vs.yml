@@ -26,7 +26,6 @@ jobs:
         vcpkg install pthread pthreads pthreads:x86-windows-static ffmpeg[ffmpeg,ffplay,nonfree,avresample] ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
         pip install meson      
         vcpkg integrate install    
-        vcpkg integrate project   
         find . -name '*ffmpeg*'
         find . -name '*avcodec*'
         find . -name '*pthread*'
@@ -44,6 +43,7 @@ jobs:
         echo %INCLUDE%
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib;%LIB%;
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib;%LIB%;
+        set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib\manual-link;%LIB%;
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows-static\lib;%LIB%;
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows\lib;%LIB%;
         echo %LIB%
@@ -64,6 +64,7 @@ jobs:
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib;%LIB%;
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows-static\lib;%LIB%;
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows\lib;%LIB%;
+        set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib\manual-link;%LIB%;
         echo %LIB%
         set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib\pkgconfig;%PKG_CONFIG_PATH%;      
         set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig;%PKG_CONFIG_PATH%;      
