@@ -95,12 +95,7 @@ lib_link_args = cc.get_supported_link_arguments([
 if host_system == 'darwin'
   lib_src += files('decoder_vt.c')
 endif
-
-
-myLib_dep = declare_dependency(link_args : ['-LD:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib', '-lthread'],
-                               include_directories : ['D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\include'])
-
-
+ 
 libsxplayer = library(
   'sxplayer',
   lib_src,
