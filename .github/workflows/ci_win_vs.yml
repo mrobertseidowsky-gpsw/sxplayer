@@ -44,7 +44,6 @@ jobs:
       run: |
         set PLATFORM="X86" 
         set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\include;%INCLUDE%
-        set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib;%LIB%
         "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" D:\a\sxplayer\sxplayer\builddir\sxplayer.sln /p:Configuration=Release /p:Platform="x64" && meson compile -C builddir -v 
 
 
