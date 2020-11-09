@@ -50,7 +50,7 @@ jobs:
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib;%LIB%
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows\lib;%LIB%
         set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib\pkgconfig;%PKG_CONFIG_PATH%
-        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson compile -C builddir -v --prefix=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson compile -C builddir -v --prefix=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows
 
     - name: TEST
       shell: cmd
