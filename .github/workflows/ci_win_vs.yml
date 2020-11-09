@@ -35,24 +35,18 @@ jobs:
         find . -name '*.lib*'
     - name: Setup
       shell: cmd
-      run: | 
+      run: |  
         set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\include;%INCLUDE%
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib;%LIB%
-        set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows\lib;%LIB%
-        set LIBPATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib;%LIBDIR%
-        set LIBPATH=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows\lib;%LIBDIR%
         set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib\pkgconfig;%PKG_CONFIG_PATH%
         "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson setup builddir --backend vs 
   
     - name: BUILD
       shell: cmd
       run: |
-        set PLATFORM="" 
+        set PLATFORM=""  
         set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\include;%INCLUDE%
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib;%LIB%
-        set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows\lib;%LIB%
-        set LIBPATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib;%LIBDIR%
-        set LIBPATH=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows\lib;%LIBDIR%
         "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson compile -C builddir -v
     
     - name: TEST
