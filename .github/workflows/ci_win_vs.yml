@@ -23,7 +23,7 @@ jobs:
         git clone https://github.com/Microsoft/vcpkg.git
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
+        vcpkg install pthread ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
         pip install meson      
         find . -name '*pthread*'
 
@@ -37,6 +37,7 @@ jobs:
       shell: cmd
       run: |
         set PLATFORM="" 
+        set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig;%PKG_CONFIG_PATH%
         "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson compile -C builddir -v
     
     - name: TEST
