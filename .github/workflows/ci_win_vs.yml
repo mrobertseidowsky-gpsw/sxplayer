@@ -52,6 +52,7 @@ jobs:
         set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib\pkgconfig;%PKG_CONFIG_PATH%
         set PATH=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows\lib;%LIB%
         set PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib;%LIB%
+        set VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2019
         "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson compile -C builddir -v
     
     - name: TEST
