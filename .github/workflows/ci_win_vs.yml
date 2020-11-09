@@ -26,7 +26,8 @@ jobs:
         vcpkg install pthread pthreads pthreads:x86-windows-static ffmpeg[ffmpeg,ffplay,nonfree,avresample]
         pip install meson          
         find . -name '*ffmpeg*'
-        find . -name '*libavformat*'
+        find . -name '*avformat*'
+        find . -name '*avcodec*'
         find . -name '*pthread*'
         find . -name '*.pc*'
         find . -name '*.include*'
@@ -60,6 +61,7 @@ jobs:
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows\lib;%LIB%;
         echo %LIB%
         set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\lib\pkgconfig;%PKG_CONFIG_PATH%;      
+        set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib\pkgconfig;%PKG_CONFIG_PATH%;   
         "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson compile -C builddir -v
     
     - name: TEST
