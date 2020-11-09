@@ -26,6 +26,12 @@ jobs:
         vcpkg install pthread pthreads pthreads:x86-windows-static ffmpeg[ffmpeg,ffplay,nonfree,avresample] ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows-static
         vcpkg integrate install
         pip install meson          
+        find . -name '*ffmpeg*'
+        find . -name '*libavformat*'
+        find . -name '*pthread*'
+        find . -name '*.pc*'
+        find . -name '*.include*'
+        find . -name '*.lib*'
 
     - name: Setup
       shell: cmd
