@@ -23,8 +23,9 @@ jobs:
         git clone https://github.com/Microsoft/vcpkg.git
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install pthread:x32-windows ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x32-windows
+        vcpkg install pthread:x86-windows ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows
         pip install meson      
+        cache: D:/a/sxplayer/sxplayer/vcpkg/installed
         vcpkg integrate install
         vcpkg integrate project
         vcpkg integrate remove       
@@ -37,18 +38,18 @@ jobs:
     - name: Setup
       shell: cmd
       run: | 
-        set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x32-windows\lib\pkgconfig;%PKG_CONFIG_PATH%
-        "C:\Program Files (x32)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson setup builddir --backend vs
+        set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib\pkgconfig;%PKG_CONFIG_PATH%
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson setup builddir --backend vs
   
     - name: BUILD
       shell: cmd
       run: |
-        set PLATFORM="X32" 
-        set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x32-windows\include;%INCLUDE%
-        set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x32-windows\lib;%LIB%
-        set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x32-windows\lib;%LIB%
-        "C:\Program Files (x32)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson compile -C builddir -v 
-
+        set PLATFORM="X86" 
+        set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\include;%INCLUDE%
+        set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib;%LIB%
+        set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows\lib;%LIB%
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson compile -C builddir -v 
+ 
 
     - name: TEST
       shell: cmd
