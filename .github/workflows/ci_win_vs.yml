@@ -37,7 +37,6 @@ jobs:
       shell: cmd
       run: | 
         set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\include;%INCLUDE%;
-        set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\include;%INCLUDE%;
         set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows-static\include;%INCLUDE%;
         set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows\include;%INCLUDE%;
         echo %INCLUDE%
@@ -56,7 +55,6 @@ jobs:
       run: |
         set PLATFORM="" 
         set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows-static\include;%INCLUDE%;
-        set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\include;%INCLUDE%;
         set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows-static\include;%INCLUDE%;
         set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows\include;%INCLUDE%;
         echo %INCLUDE%
