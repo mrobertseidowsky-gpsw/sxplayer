@@ -44,7 +44,7 @@ jobs:
     - name: Build
       shell: bash
       run: |
-         ls D:/a/sxplayer/sxplayer/vcpk/installed
+         ls D:/a/sxplayer/sxplayer/vcpk/installed/x64-windows
          
      - name: BUILD
       shell: cmd
