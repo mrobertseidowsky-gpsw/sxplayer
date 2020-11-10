@@ -48,7 +48,7 @@ jobs:
         find . -name '*.dll*'
         ls "D:/a/sxplayer/sxplayer/builddir"
 
-        - name: Build
+    - name: Build
       shell: cmd
       run: |
         set PLATFORM="x64" 
