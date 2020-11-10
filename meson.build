@@ -156,14 +156,14 @@ endif
 #
 # Tests
 #
+subdir('builddir')
 
 if get_option('tests')
   test_prog = executable(
     'test-prog',
     files('test-prog.c'),
     dependencies: lib_deps,
-    dependencies: libsxplayer,
-    include_directories: meson.current_source_dir(),
+    link_with: libsxplayer,
     install: false,
   )
   test(
