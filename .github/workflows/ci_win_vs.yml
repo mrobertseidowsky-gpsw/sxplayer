@@ -24,7 +24,6 @@ jobs:
         git clone https://github.com/Microsoft/vcpkg.git
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
-        set VCPKG_TARGET_ARCHITECTURE=x64
         vcpkg install pthread:x64-windows ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x64-windows
         vcpkg integrate install
         pip install meson    
@@ -45,7 +44,6 @@ jobs:
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x64-windows\lib;%LIB%
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\pthreads_x64-windows\lib;%LIB%
         set LIB=D:\a\sxplayer\sxplayer\builddir;%LIB%
-        $env:CHERE_INVOKING = 'yes'
         "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson compile -C builddir -v 
  
     - name: Test
