@@ -34,27 +34,16 @@ jobs:
         find . -name '*.pc*'
         find . -name '*.include*'
         find . -name '*.lib*'
- 
-
-    - name: Build
-      shell: cmd
-      run: |
-        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\vsvars64.bat"
-
+  
     - name: Build
       shell: cmd
       run: |
         set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x64-windows\lib\pkgconfig;%PKG_CONFIG_PATH%
         "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson setup builddir --backend=vs2019
-
-    - name: BUILD
-      shell: cmd
-      run: |
         set PLATFORM="x64" 
         set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x64-windows\include;%INCLUDE%
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x64-windows\lib;%LIB%
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x64-windows\lib;%LIB%
-        $env:CHERE_INVOKING = 'yes'
         "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" x64 && meson compile -C builddir -v 
  
     - name: TEST
