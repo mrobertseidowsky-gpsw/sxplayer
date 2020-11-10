@@ -44,6 +44,7 @@ jobs:
     - name: install dependencies
       shell: bash
       run: |
+        ls 
         find . -name '*.lib*'
         find . -name '*.dll*'
         ls "D:/a/sxplayer/sxplayer/builddir"
