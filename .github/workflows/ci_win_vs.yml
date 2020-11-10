@@ -47,7 +47,7 @@ jobs:
         find . -name '*.lib*'
         find . -name '*.dll*'
         ls "D:/a/sxplayer/sxplayer/builddir"
-        
+        ls "D:/a/sxplayer/sxplayer/builddir/lib"
     - name: Build
       shell: cmd
       run: |
