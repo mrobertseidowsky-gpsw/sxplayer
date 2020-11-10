@@ -162,7 +162,7 @@ if get_option('tests')
     'test-prog',
     files('test-prog.c'),
     dependencies: lib_deps,
-    dependencies: cc.find_library('libsxplayer', dir :  meson.current_source_dir()),
+    dependencies: cc.find_library('libsxplayer', dir :  meson.current_source_dir() 'builddir'),
     install: false,
   )
   test(
