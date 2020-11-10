@@ -164,7 +164,8 @@ if get_option('tests')
     dependencies: lib_deps,
     link_with: libsxplayer,
     install: true,
-  )
+    install_rpath: install_rpath
+)
   test(
     'all',
     test_prog,
