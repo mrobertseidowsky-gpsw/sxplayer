@@ -16,7 +16,7 @@ jobs:
     - uses: actions/setup-python@v2
       with:
         python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
-        architecture: 'x86' # optional x86 or x64. Defaults to x64 if not specified
+        architecture: 'x64' # optional x86 or x64. Defaults to x64 if not specified
  
     - name: install dependencies
       shell: bash
@@ -24,7 +24,7 @@ jobs:
         git clone https://github.com/Microsoft/vcpkg.git
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install pthread:x86-windows ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows
+        vcpkg install pthread:x64-windows ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x64-windows
         pip install meson      
         vcpkg integrate install
         vcpkg integrate project
@@ -39,22 +39,22 @@ jobs:
     - name: Build
       shell: cmd
       run: |
-        set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib\pkgconfig;%PKG_CONFIG_PATH%
-        "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86 && meson setup builddir --backend vs
- 
+        set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x64-windows\lib\pkgconfig;%PKG_CONFIG_PATH%
+        "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64 && meson setup builddir --backend=vs2019
+
     - name: BUILD
       shell: cmd
       run: |
-        set PLATFORM="x86" 
-        set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\include;%INCLUDE%
-        set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib;%LIB%
-        set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows\lib;%LIB%
+        set PLATFORM="x64" 
+        set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x64-windows\include;%INCLUDE%
+        set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x64-windows\lib;%LIB%
+        set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x64-windows\lib;%LIB%
         set SET MSBuildExtensionsPath=C:\Program Files (x86)\MSBuild
-        "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86 && meson compile -C builddir -v 
+        "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64 && meson compile -C builddir -v 
  
     - name: TEST
       shell: cmd
       run: |
-        "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86 && meson test -C builddir
+        "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64 && meson test -C builddir
 
  
