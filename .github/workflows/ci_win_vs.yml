@@ -23,6 +23,7 @@ jobs:
       run: |
         git clone https://github.com/Microsoft/vcpkg.git
         cd vcpkg
+        set VCPKG_TARGET_ARCHITECTURE=x64
         ./bootstrap-vcpkg.bat -disableMetrics
         vcpkg install pthread:x64-windows ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x64-windows
         pip install meson    
