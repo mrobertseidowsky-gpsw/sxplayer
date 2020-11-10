@@ -55,7 +55,7 @@ jobs:
         set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x64-windows\include;%INCLUDE%
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x64-windows\lib;%LIB%
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x64-windows\lib;%LIB%
-        set SET MSBuildExtensionsPath=C:\Program Files (x86)\MSBuild
+        set SET MSBuildExtensionsPath="C:\Program Files (x86)\MSBuild"
         "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64 && meson compile -C builddir -v 
  
     - name: TEST
