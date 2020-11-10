@@ -20,6 +20,7 @@ host_system = host_machine.system()
 cc = meson.get_compiler('c')
 message(cc.get_id())
 cc.has_header('pthread.h')
+message('host_machine.cpu_family():'+host_machine.cpu_family())
 
 install_rpath = get_option('rpath') ? get_option('prefix') / get_option('libdir') : ''
 
