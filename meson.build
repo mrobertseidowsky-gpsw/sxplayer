@@ -156,7 +156,7 @@ endif
 #
 # Tests
 #
-subdir('builddir')
+subdir(meson.current_source_dir())
 
 if get_option('tests')
   test_prog = executable(
