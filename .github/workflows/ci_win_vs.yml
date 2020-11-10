@@ -19,14 +19,14 @@ jobs:
         architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
 
     - name: install dependencies
-      shell: cmd
+      shell: bash
       run: |
         pip install meson
 
     - name: Setup
       shell: cmd
       run: | 
-        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson setup builddir --backend vs
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Auxiliary\Build\vcvars64.bat" && meson setup builddir --backend vs
         set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib\pkgconfig;%PKG_CONFIG_PATH%
 
     - name: BUILD
