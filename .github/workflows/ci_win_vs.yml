@@ -21,7 +21,7 @@ jobs:
       - name: Build
         shell: cmd
         run: |
-          "C:\Program Files\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" /x86
+          "C:\Program Files\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
 
          
  
