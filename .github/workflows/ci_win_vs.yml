@@ -18,8 +18,14 @@ jobs:
         python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
         architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
  
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.0.2
+      with:
+        vs-version: '16.4'
+        vswhere-path: 'D:\a\sxplayer\sxplayer'
+
     - name: Setup
-      shell: cmd
+      shell: bash
       run: | 
-        "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64
+        ls .
 
