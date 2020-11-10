@@ -40,7 +40,7 @@ jobs:
       shell: cmd
       run: |
         set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x64-windows\lib\pkgconfig;%PKG_CONFIG_PATH%
-        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64 && meson setup builddir --backend vs
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64 && meson setup builddir --backend vs --prefix D:\a\sxplayer\sxplayer
         
     
     - name: BUILD
@@ -51,7 +51,7 @@ jobs:
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x64-windows\lib;D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x64-windows\lib;D:\a\sxplayer\sxplayer\builddir\.;%LIB%
         set LIBPATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x64-windows\lib;D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x64-windows\lib;D:\a\sxplayer\sxplayer\builddir\.;%LIBPATH%
         $env:CHERE_INVOKING = 'yes'
-        set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\builddir;%PKG_CONFIG_PATH%
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\15.0\Bin\MSBuild.exe sxplayer.vcxproj /p:Configuration=Realease /p:Platform=Win64 
         "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64 && meson compile -C builddir -v 
  
     - name: TEST
