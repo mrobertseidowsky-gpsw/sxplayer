@@ -163,9 +163,8 @@ if get_option('tests')
     files('test-prog.c'),
     dependencies: lib_deps,
     link_with: libsxplayer,
-    install: true,
-    install_rpath: install_rpath
-)
+    install: false,
+  )
   test(
     'all',
     test_prog,
