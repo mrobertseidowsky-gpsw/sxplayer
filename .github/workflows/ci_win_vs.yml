@@ -20,43 +20,12 @@ jobs:
  
     - name: install dependencies
       shell: bash
-      run: |
-        git clone https://github.com/Microsoft/vcpkg.git
-        cd vcpkg
-        ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install pthread:x64-windows ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x64-windows
+      run: | 
         pip install meson      
-        vcpkg integrate install
-        vcpkg integrate project
-        find . -name '*ffmpeg*'
-        find . -name '*avcodec*'
-        find . -name '*pthread*'
-        find . -name '*.pc*'
-        find . -name '*.include*'
-        find . -name '*.lib*'
  
 
     - name: Build
       shell: cmd
-      run: |
-        set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x64-windows\lib\pkgconfig;%PKG_CONFIG_PATH%
-        "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" x64
+      run: | 
         "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64 && meson setup builddir --backend=vs2019
-        
-    - name: BUILD
-      shell: cmd
-      run: |
-        set PLATFORM="x64" 
-        set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x64-windows\include;%INCLUDE%
-        set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x64-windows\lib;%LIB%
-        set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x64-windows\lib;%LIB%
-        set SET MSBuildExtensionsPath=C:\Program Files (x86)\MSBuild
-        "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" x64
-        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64 && meson compile -C builddir -v 
- 
-    - name: TEST
-      shell: cmd
-      run: |
-        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64 && meson test -C builddir
-
- 
+         
