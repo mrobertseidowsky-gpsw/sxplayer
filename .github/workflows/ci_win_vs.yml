@@ -13,23 +13,44 @@ jobs:
 
     steps: 
     - uses: actions/checkout@v2 
-    - uses: actions/setup-python@v1
+    - uses: actions/setup-python@v2
       with:
-        python-version: '3.x'
+        python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+        architecture: 'x86' # optional x64 or x86. Defaults to x64 if not specified
 
     - name: install dependencies
-      shell: bash
+      shell: cmd
       run: |
         git clone https://github.com/Microsoft/vcpkg.git
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install pthread
+        vcpkg install pthread:x86-windows ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x86-windows
         pip install meson      
         vcpkg integrate install
         vcpkg integrate project
- 
+        vcpkg integrate remove       
+        find . -name '*ffmpeg*'
+        find . -name '*avcodec*'
+        find . -name '*pthread*'
+        find . -name '*.pc*'
+        find . -name '*.include*'
+        find . -name '*.lib*'
     - name: Setup
       shell: cmd
       run: | 
-         "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson setup builddir --backend vs
-   
+        set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib\pkgconfig;%PKG_CONFIG_PATH%
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson setup builddir --backend vs
+  
+    - name: BUILD
+      shell: cmd
+      run: |
+        set PLATFORM="X86" 
+        set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\include;%INCLUDE%
+        set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib;%LIB%
+        set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows\lib;%LIB%
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson compile -C builddir -v
+
+    - name: TEST
+      shell: cmd
+      run: |
+        meson test -C builddir
