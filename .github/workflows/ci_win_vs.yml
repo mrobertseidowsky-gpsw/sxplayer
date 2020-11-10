@@ -46,7 +46,8 @@ jobs:
       run: |
         find . -name '*.lib*'
         find . -name '*.dll*'
-
+        ls "D:/a/sxplayer/sxplayer/builddir"
+        
     - name: Build
       shell: cmd
       run: |
@@ -54,7 +55,7 @@ jobs:
         set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x64-windows\include;%INCLUDE%
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x64-windows\lib;%LIB%
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x64-windows\lib;%LIB%
-        set LIB=D:\a\sxplayer\sxplayer\builddir;%LIB%
+        set LIB=D:\a\sxplayer\sxplayer\builddir\;%LIB%
         "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" x64 && meson compile -C builddir -v 
  
     - name: TEST
