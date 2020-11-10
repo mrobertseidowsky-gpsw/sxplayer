@@ -162,7 +162,7 @@ if get_option('tests')
     'test-prog',
     files('test-prog.c'),
     dependencies: lib_deps,
-    link_with: libsxplayer,
+    dependencies: libsxplayer,
     include_directories: meson.current_source_dir(),
     install: false,
   )
