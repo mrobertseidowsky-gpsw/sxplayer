@@ -162,7 +162,7 @@ if get_option('tests')
     'test-prog',
     files('test-prog.c'),
     dependencies: lib_deps,
-    dependencies: libsxplayer,
+    link_with : shared_library('sxplayer'),
     install: false,
   )
   test(
