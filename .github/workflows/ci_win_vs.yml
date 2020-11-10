@@ -43,7 +43,7 @@ jobs:
         "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" x64
         "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64 && meson setup builddir --backend=vs2019
         
-     - name: BUILD
+    - name: BUILD
       shell: cmd
       run: |
         set PLATFORM="x64" 
