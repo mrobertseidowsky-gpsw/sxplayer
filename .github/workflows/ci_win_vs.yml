@@ -21,5 +21,8 @@ jobs:
     - name: install dependencies
       shell: cmd
       run: |
-        pip3 install meson      
+        git clone https://github.com/Microsoft/vcpkg.git
+        cd vcpkg
+        ./bootstrap-vcpkg.bat -disableMetrics
+        vcpkg install meson
          
