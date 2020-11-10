@@ -41,7 +41,7 @@ jobs:
       run: |
         set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\lib\pkgconfig;%PKG_CONFIG_PATH%
         "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" x86
-        "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86 && meson setup builddir --backend=vs2019
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x86 && meson setup builddir --backend=vs2019
         
     - name: BUILD
       shell: cmd
@@ -52,11 +52,11 @@ jobs:
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x86-windows\lib;%LIB%
         set SET MSBuildExtensionsPath=C:\Program Files (x86)\MSBuild
         "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" x86
-        "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86 && meson compile -C builddir -v 
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x86 && meson compile -C builddir -v 
  
     - name: TEST
       shell: cmd
       run: |
-        "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86 && meson test -C builddir
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x86 && meson test -C builddir
 
  
