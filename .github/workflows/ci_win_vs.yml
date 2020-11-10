@@ -57,10 +57,10 @@ jobs:
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x64-windows\lib;%LIB%
         set LIB=D:\a\sxplayer\sxplayer\builddir;%LIB%
         set INCLUDE=D:\a\sxplayer\sxplayer\builddir;%INCLUDE%
-        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" x64 && meson compile -C builddir -v 
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson compile -C builddir -v 
  
     - name: TEST
       shell: cmd
       run: |
-        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" x64 && meson test -C builddir
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson test -C builddir
  
