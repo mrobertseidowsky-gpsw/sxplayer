@@ -20,6 +20,7 @@ jobs:
  
     - name: Build
       shell: bash
+      run: |
         pip install meson
 
     - name: Build
