@@ -18,26 +18,8 @@ jobs:
         python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
         architecture: 'x64' # optional x86 or x64. Defaults to x64 if not specified
  
-    - name: install dependencies
-      shell: bash
-      run: |
-        git clone https://github.com/Microsoft/vcpkg.git
-        cd vcpkg
-        ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install pthread:x64-windows
-        pip install meson      
-        vcpkg integrate install
-        vcpkg integrate project
-        find . -name '*ffmpeg*'
-        find . -name '*avcodec*'
-        find . -name '*pthread*'
-        find . -name '*.pc*'
-        find . -name '*.include*'
-        find . -name '*.lib*'
- 
 
     - name: Build
       shell: cmd
       run: |
-        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
-    
+        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvars64.bat" 
