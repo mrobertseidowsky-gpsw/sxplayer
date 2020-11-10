@@ -21,6 +21,6 @@ jobs:
     - name: Setup
       shell: bash
       run: | 
-        ls "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/Tools"
+        ls "C:/Program Files (x86)/Microsoft Visual Studio/2019/"
 
 
