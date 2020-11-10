@@ -22,10 +22,11 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
       with:
         vs-version: '16.4'
-        vswhere-path: 'D:\a\sxplayer\sxplayer'
-
+ 
     - name: Setup
       shell: bash
       run: | 
-        ls .
+        ls "C:/Program Files (x86)""
+        find . -name '*.vswhere.exe*'
+
 
