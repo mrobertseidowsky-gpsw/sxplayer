@@ -28,6 +28,7 @@ jobs:
         vcpkg install pthread ffmpeg[ffmpeg,ffplay,nonfree,avresample]
         vcpkg integrate install
         vcpkg integrate project
+        vcpkg integrate remove
         pip install meson    
   
     - name: Setup
