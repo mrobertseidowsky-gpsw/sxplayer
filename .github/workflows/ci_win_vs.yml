@@ -18,7 +18,17 @@ jobs:
         python-version: '3.x'
 
     - name: install dependencies
-      shell: cmd
+      shell: bash
       run: |
-        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Auxiliary\Build\vcvarsall.bat" x64
-         
+        git clone https://github.com/Microsoft/vcpkg.git
+        cd vcpkg
+        ./bootstrap-vcpkg.bat -disableMetrics
+        vcpkg install pthread:x64-windows 
+        pip install meson      
+        vcpkg integrate install
+        vcpkg integrate project
+    - name: Setup
+      shell: cmd
+      run: | 
+        "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.10.25017\bin\HostX86\x64\link.exe" && meson setup builddir --backend vs
+   
