@@ -21,4 +21,5 @@ jobs:
     - name: Setup
       shell: cmd
       run: | 
-        %comspec% /k ""C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat"" amd64_arm
+        "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\cl.exe"
+
