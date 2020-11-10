@@ -25,6 +25,7 @@ jobs:
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
         set VCPKG_DEFAULT_TRIPLET=x64-windows
+        set VCPKG_TARGET_ARCHITECTURE=x64
         vcpkg install pthread ffmpeg[ffmpeg,ffplay,nonfree,avresample]
         vcpkg integrate install
         vcpkg integrate project
