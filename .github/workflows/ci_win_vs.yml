@@ -26,7 +26,7 @@ jobs:
         ./bootstrap-vcpkg.bat -disableMetrics
         set VCPKG_DEFAULT_TRIPLET=x64-windows
         vcpkg install pthread ffmpeg[ffmpeg,ffplay,nonfree,avresample]
-        vcpkg integrate install
+        vcpkg integrate project
         pip install meson    
   
     - name: Setup
