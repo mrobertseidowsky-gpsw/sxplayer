@@ -27,6 +27,7 @@ jobs:
         vcpkg install pthread:x64-windows ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x64-windows
         pip install meson      
         vcpkg integrate install
+        vcpkg integrate project
  
     - name: Build
       shell: cmd
@@ -43,5 +44,5 @@ jobs:
     - name: TEST
       shell: cmd
       run: |
-        "C:\Program Files (x64)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64 && meson test -C builddir -v
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64 && meson test -C builddir -v
  
