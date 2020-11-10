@@ -23,7 +23,7 @@ jobs:
       run: |
         git clone https://github.com/Microsoft/vcpkg.git
         cd vcpkg
-        set VCPKG_TARGET_ARCHITECTURE=x64
+        set VCPKG_DEFAULT_TRIPLET=x64-windows
         ./bootstrap-vcpkg.bat -disableMetrics
         vcpkg install pthread:x64-windows ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x64-windows
         pip install meson    
@@ -39,6 +39,7 @@ jobs:
       run: |
         set PLATFORM="" 
         set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x64-windows\include;%INCLUDE%
+        set INCLUDE=D:\a\sxplayer\sxplayer\builddir;%INCLUDE%
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x64-windows\lib;%LIB%
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x64-windows\lib;%LIB%
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\pthreads_x64-windows\lib;%LIB%
