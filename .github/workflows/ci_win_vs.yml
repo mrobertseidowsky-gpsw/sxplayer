@@ -19,10 +19,9 @@ jobs:
         architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
  
     - name: Build
-      shell: cmd
+      shell: bash
       run: |
-        cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\"
-        .\MSBuild.exe --help
+        ls "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC"
 
          
  
