@@ -24,7 +24,8 @@ jobs:
         git clone https://github.com/Microsoft/vcpkg.git
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install --triplet x64-windows pthread ffmpeg[ffmpeg,ffplay,nonfree,avresample]
+        set VCPKG_DEFAULT_TRIPLET=x64-windows
+        vcpkg install pthread ffmpeg[ffmpeg,ffplay,nonfree,avresample]
         pip install meson    
   
     - name: Setup
