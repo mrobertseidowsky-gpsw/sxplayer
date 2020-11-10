@@ -40,6 +40,7 @@ jobs:
       shell: cmd
       run: |
         set PLATFORM="x86" 
+        set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x86-windows\include;D:\a\sxplayer\sxplayer\builddir\.;%INCLUDE%
         "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x86 && meson compile -C builddir -v 
  
     - name: TEST
