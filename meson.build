@@ -163,7 +163,7 @@ if get_option('tests')
     files('test-prog.c'),
     dependencies: lib_deps,
     link_with: libsxplayer,
-    dirs: meson.current_source_dir(),
+    dir: meson.current_source_dir(),
     install: false,
   )
   test(
