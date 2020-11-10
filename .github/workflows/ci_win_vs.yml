@@ -27,8 +27,6 @@ jobs:
         set VCPKG_TARGET_ARCHITECTURE=x64
         vcpkg install pthread:x64-windows ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x64-windows
         vcpkg integrate install
-        vcpkg integrate project
-        vcpkg integrate remove
         pip install meson    
   
     - name: Setup
@@ -41,8 +39,13 @@ jobs:
       shell: cmd
       run: |
         set PLATFORM="" 
+        set INCLUDE=D:\a\sxplayer\sxplayer\vcpkg\installed\x64-windows\include;%INCLUDE%
         set INCLUDE=D:\a\sxplayer\sxplayer\builddir;%INCLUDE%
+        set LIB=D:\a\sxplayer\sxplayer\vcpkg\installed\x64-windows\lib;%LIB%
+        set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x64-windows\lib;%LIB%
+        set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\pthreads_x64-windows\lib;%LIB%
         set LIB=D:\a\sxplayer\sxplayer\builddir;%LIB%
+        $env:CHERE_INVOKING = 'yes'
         "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" && meson compile -C builddir -v 
  
     - name: Test
