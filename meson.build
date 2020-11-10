@@ -120,6 +120,7 @@ endif
 pkg = import('pkgconfig')
 pkg.generate(
   libsxplayer,
+  name: 'libsxplayer',  # not specifying the name would fallback on "sxplayer.pc" instead of "libsxplayer.pc"
   description: 'Stupeflix Player library',
 )
 
