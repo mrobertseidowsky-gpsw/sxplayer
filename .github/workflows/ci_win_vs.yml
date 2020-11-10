@@ -27,9 +27,7 @@ jobs:
         vcpkg install pthread:x64-windows ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x64-windows
         pip install meson      
         vcpkg integrate install
-        vcpkg integrate project
  
-
     - name: Build
       shell: cmd
       run: |
