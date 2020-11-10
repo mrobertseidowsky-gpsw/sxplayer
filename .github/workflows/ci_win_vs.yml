@@ -28,7 +28,6 @@ jobs:
         pip install meson      
         vcpkg integrate install
         vcpkg integrate project
-        vcpkg integrate remove       
         find . -name '*ffmpeg*'
         find . -name '*avcodec*'
         find . -name '*pthread*'
