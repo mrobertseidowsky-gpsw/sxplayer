@@ -19,7 +19,7 @@ jobs:
         architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
  
     - name: Setup
-      shell: bash
+      shell: cmd
       run: | 
-        ls "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC"
+        "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64
 
