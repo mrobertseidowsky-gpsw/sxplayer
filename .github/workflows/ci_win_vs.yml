@@ -24,7 +24,7 @@ jobs:
         git clone https://github.com/Microsoft/vcpkg.git
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg install pthread:x64-windows
+        vcpkg install pthread:x64-windows ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x64-windows
         pip install meson      
         vcpkg integrate install
         vcpkg integrate project
@@ -40,13 +40,9 @@ jobs:
     - name: Build
       shell: cmd
       run: |
-        "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x64 && meson setup builddir --backend vs
-    
-    - name: Build
-      shell: bash
-      run: |
-         ls D:/a/sxplayer/sxplayer/vcpk/installed/x64-windows
-
+        set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x64-windows\lib\pkgconfig;%PKG_CONFIG_PATH%
+        "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x64 && meson setup builddir --backend=vs2019
+         
     - name: BUILD
       shell: cmd
       run: |
@@ -56,10 +52,9 @@ jobs:
         set LIB=D:\a\sxplayer\sxplayer\vcpkg\packages\ffmpeg_x64-windows\lib;%LIB%
         "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x64 && meson compile -C builddir -v 
  
-
     - name: TEST
       shell: cmd
       run: |
-        meson test -C builddir
+        "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x64 && meson test -C builddir
 
  
