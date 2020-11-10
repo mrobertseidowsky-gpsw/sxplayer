@@ -27,8 +27,9 @@ jobs:
         pip install meson      
         vcpkg integrate install
         vcpkg integrate project
+ 
     - name: Setup
       shell: cmd
       run: | 
-        "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.10.25017\bin\HostX86\x64\link.exe" && meson setup builddir --backend vs
+        "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.16.27023\bin\Hostx86\x86\cl.exe" && meson setup builddir --backend vs
    
