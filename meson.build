@@ -152,4 +152,23 @@ if player_deps_found
   )
 endif
 
- 
+
+#
+# Tests
+#
+
+if get_option('tests')
+  test_prog = executable(
+    'test-prog',
+    files('test-prog.c'),
+    dependencies: lib_deps,
+    link_with: libsxplayer,
+    install: false,
+  )
+  test(
+    'all',
+    test_prog,
+    args: files('media.mkv', 'image.jpg'),
+    timeout: 24*60*60,
+  )
+endif
