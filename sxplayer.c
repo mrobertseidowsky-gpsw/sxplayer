@@ -31,7 +31,7 @@
 #include <libavutil/rational.h>
 #include <libavutil/time.h>
 
-#include "sxplayer.h.in"
+#include "sxplayer.h"
 #include "async.h"
 #include "log.h"
 #include "internal.h"
