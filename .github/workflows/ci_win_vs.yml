@@ -19,8 +19,8 @@ jobs:
         architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
  
     - name: Setup
-      shell: cmd
+      shell: bash
       run: | 
-        ls "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\"
+        ls "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/Tools"
 
 
