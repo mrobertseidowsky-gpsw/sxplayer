@@ -17,29 +17,21 @@ jobs:
       with:
         python-version: '3.x' 
         architecture: 'x64'
+  
 
-    - name: install dependencies
-      shell: bash
+    - name: Setup
+      shell: cmd
       run: |
-        git clone https://github.com/Microsoft/vcpkg.git
-        cd vcpkg
-        ./bootstrap-vcpkg.bat -disableMetrics
-        vcpkg integrate install 
-        pip install meson      
+        set VSCMD="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64"
 
-    - name: Build
+    - name: Setup
       shell: cmd
       run: |
-        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64 && \^
-        meson setup builddir --backend vs --buildtype release --default-library static
-        
-    - name: BUILD
+        VSCMD ^
+        meson setup --help
+
+    - name: Setup
       shell: cmd
       run: |
-        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64 && meson compile -C builddir  
- 
-    - name: TEST
-      shell: cmd
-      run: |
-        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64 && meson test -C builddir 
- 
+        VSCMD ^
+        meson setup --help
