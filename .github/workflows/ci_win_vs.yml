@@ -21,19 +21,7 @@ jobs:
         python-version: '3.x' 
         architecture: 'x64'
 
-    - name: Setup
+    - name: Install dependencies
       shell: bash
       run: |
-        pip install meson
-
-    - name: Setup
-      shell: cmd
-      run: |
-        "${env.VSCMD}" ^
-        meson setup --help
-
-    - name: Setup
-      shell: cmd
-      run: |
-        "${{env.VSCMD}}" ^
-        meson setup --help
+        git clone https://github.com/Microsoft/vcpkg
