@@ -29,11 +29,11 @@ jobs:
     - name: Setup
       shell: cmd
       run: |
-        "${{ env.VSCMD }}" ^
+        "${{env.VSCMD}}" ^
         meson setup --help
 
     - name: Setup
       shell: cmd
       run: |
-        "${{ env.VSCMD }}" ^
+        "${{env.VSCMD}}" ^
         meson setup --help
