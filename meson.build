@@ -163,6 +163,7 @@ if get_option('tests')
     files('test-prog.c'),
     dependencies: lib_deps,
     link_with: libsxplayer,
+    include_directories : 'builddir',
     install: false,
   )
   test(
