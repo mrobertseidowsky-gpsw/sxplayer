@@ -53,30 +53,31 @@ jobs:
         python-version: '3.x' 
         architecture: 'x64'
 
-    - name: install dependencies
+    - name: Install dependencies
       shell: bash
       run: |
         git clone https://github.com/Microsoft/vcpkg.git
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
         vcpkg install pthread:x64-windows ffmpeg[ffmpeg,ffplay,nonfree,avresample]:x64-windows
-        pip install meson      
         vcpkg integrate install 
+        pip install meson
+
+    - name: Setup
+      shell: cmd
+      run: |
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64 && ^
+        meson setup builddir --backend vs --buildtype release --default-library static ^
+        --pkg-config-path "D:\a\sxplayer\sxplayer\vcpkg\installed\x64-windows\lib\pkgconfig"
 
     - name: Build
       shell: cmd
       run: |
-        set PKG_CONFIG_PATH=D:\a\sxplayer\sxplayer\vcpkg\installed\x64-windows\lib\pkgconfig;%PKG_CONFIG_PATH%
-        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64 && meson setup builddir --backend vs2019 --buildtype release --default-library static
-        
-    - name: BUILD
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64 && ^
+        meson compile -C builddir  
+ 
+    - name: Test
       shell: cmd
       run: |
-        set PLATFORM="" 
-        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64 && meson compile -C builddir  
- 
-    - name: TEST
-      shell: cmd
-      run: |
-        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64 && meson test -C builddir 
- 
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64 && ^
+        meson test -C builddir 
