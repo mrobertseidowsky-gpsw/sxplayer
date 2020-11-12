@@ -7,7 +7,7 @@ on:
   pull_request:
 
 env:
-  VSCMD: '"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64"'
+  VSCMD: '"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat x64"'
 
 jobs:
   windows_vs:
