@@ -1,9 +1,9 @@
-name: 'tests Windows'
+name: Download
 
 on:
   push:
     branches:
-      - 'master'
+      - master
   pull_request:
 
 jobs:
@@ -145,14 +145,24 @@ jobs:
   msvc-shared:
 
     runs-on: windows-latest
-
     steps:
-    - uses: actions/checkout@v2
+      - name: Wait
+        run: sleep 60
 
-    - uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
-        architecture: 'x64'
+  download-latest:
+    runs-on: windows-latest
+    needs: wait
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Download artifact1
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: ci_ffmpeg_build.yml
+          name: artifact1
+          path: artifact1
+      - name: Test
+        run: cat artifact1/sha | grep $GITHUB_SHA
 
     - name: Install dependencies
       shell: bash

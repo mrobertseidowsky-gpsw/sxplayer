@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  msvc:
+  upload:
 
     runs-on: windows-latest
 
@@ -19,14 +19,14 @@ jobs:
         python-version: '3.x'
         architecture: 'x64'
 
-    - name: Install dependencies
-      shell: bash
+    - name: Dump
       run: |
-        git clone --depth 1 https://github.com/Microsoft/vcpkg
-        touch ffmpeg_build.json
-
-    - name: Upload the results
+        mkdir artifact1
+        echo $GITHUB_SHA > artifact1/sha
+    - name: Upload
       uses: actions/upload-artifact@v2
       with:
-        name: ffmpeg_build
-        path: ffmpeg_build.json
+        name: artifact1
+        path: artifact1
+
+ 
