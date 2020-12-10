@@ -20,8 +20,10 @@ jobs:
         architecture: 'x64'
 
     - name: Dump
+      shell: bash
       run: |
         mkdir artifact1
+        echo $GITHUB_SHA
         echo $GITHUB_SHA > artifact1/sha
     - name: Upload
       uses: actions/upload-artifact@v2

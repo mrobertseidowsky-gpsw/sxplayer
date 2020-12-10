@@ -149,7 +149,7 @@ jobs:
       - name: Wait
         run: sleep 60
 
-  download-latest:
+  download-latest-artifact:
     runs-on: windows-latest
     needs: wait
     steps:
@@ -162,6 +162,7 @@ jobs:
           name: artifact1
           path: artifact1
       - name: Test
+        shell: bash
         run: cat artifact1/sha | grep $GITHUB_SHA
 
     - name: Install dependencies
