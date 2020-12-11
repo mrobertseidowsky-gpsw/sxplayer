@@ -164,7 +164,7 @@ jobs:
 
       - name: Test artifact_sha1
         shell: bash
-        run: cat artifact_sha1\sha | grep $GITHUB_SHA
+        run: ls artifact_sha1
 
       - name: Download artifact_ffmpeg
         uses: dawidd6/action-download-artifact@v2
