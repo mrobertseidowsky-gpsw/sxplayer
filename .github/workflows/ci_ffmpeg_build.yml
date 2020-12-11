@@ -7,14 +7,26 @@ on:
   pull_request:
 
 jobs:
-  upload:
+  uploaddependencies:
 
     runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v2
  
-    - name: Dump dependencies
+    - name: Dump dependencies artifact_sha1
+      shell: bash
+      run: |
+        mkdir artifact_sha1
+        echo $GITHUB_SHA > artifact_sha1/sha
+
+    - name: 'Upload artifact_sha1'
+      uses: actions/upload-artifact@v2
+      with:
+        name: artifact_sha1
+        path: artifact_sha1
+
+    - name: Dump dependencies artifact_ffmpeg
       shell: bash
       run: |
         git clone --depth 1 https://github.com/Microsoft/vcpkg
@@ -22,19 +34,9 @@ jobs:
         ./bootstrap-vcpkg.bat -disableMetrics
         vcpkg install pthread:x64-windows 
         vcpkg integrate install
-        mkdir artifact_sha1
-        echo $GITHUB_SHA > artifact_sha1/sha
-        mkdir artifact_ffmpeg
-
-    - name: 'Upload artifact_sha1'
-      uses: actions/upload-artifact@v2
-      with:
-        name: artifact_sha1
-        path: artifact_sha1
-  
-    - name: 'Upload artifact_ffmpeg'
+ 
+      - name: 'Upload artifact_ffmpeg'
       uses: actions/upload-artifact@v2
       with:
         name: artifact_ffmpeg
         path: D:\a\sxplayer\sxplayer\vcpkg
-  
