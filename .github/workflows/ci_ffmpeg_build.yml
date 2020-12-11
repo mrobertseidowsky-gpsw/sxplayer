@@ -27,13 +27,13 @@ jobs:
       mkdir artifact_ffmpeg
 
    - name: Upload artifact_sha1
-      uses: actions/upload-artifact@v2
-      with:
-        name: artifact_sha1
-        path: artifact_sha1
+    uses: actions/upload-artifact@v2
+    with:
+      name: artifact_sha1
+      path: artifact_sha1
 
    - name: Upload artifact_ffmpeg
-      uses: actions/upload-artifact@v2
-      with:
-        name: artifact_ffmpeg
-        path: D:\a\sxplayer\sxplayer\vcpkg
+    uses: actions/upload-artifact@v2
+    with:
+      name: artifact_ffmpeg
+      path: D:\a\sxplayer\sxplayer\vcpkg
