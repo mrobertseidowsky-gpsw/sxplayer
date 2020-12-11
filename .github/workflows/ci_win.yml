@@ -155,6 +155,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+        architecture: 'x64'
+
       - name: Download artifact_sha1
         uses: dawidd6/action-download-artifact@v2
         with:
@@ -170,13 +175,13 @@ jobs:
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: ci_ffmpeg_build.yml
-          name: artifact_ffmpeg
-          path: artifact_ffmpeg
+          name: vcpkg
+          path: vcpkg
 
       - name: Unzip artifact_ffmpeg
         shell: bash
         run: |
-          ls artifact_ffmpeg
+          ls vcpkg
 
       - uses: actions/checkout@v2
 
@@ -190,11 +195,22 @@ jobs:
         run: |
           pip install meson
 
-      - name: Setup
-        shell: cmd
-        run: |
-          "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64 && ^
-          meson setup builddir --backend vs --buildtype release --default-library static"
+    - name: Setup
+      shell: cmd
+      run: |
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64 && ^
+        meson setup builddir --backend vs --buildtype release --default-library static ^
+        --pkg-config-path "D:\a\sxplayer\sxplayer\vcpkg\installed\x64-windows\lib\pkgconfig"
+    - name: Build
+      shell: cmd
+      run: |
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64 && ^
+        meson compile -C builddir
+    - name: Test
+      shell: cmd
+      run: |
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64 && ^
+        meson test -C builddir
 
     - name: Install dependencies
       shell: bash
