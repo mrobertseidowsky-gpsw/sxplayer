@@ -151,19 +151,55 @@ jobs:
 
   download-latest-artifact:
     runs-on: windows-latest
+
     needs: wait
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Download artifact1
+      
+      - name: Download artifact_sha1
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: ci_ffmpeg_build.yml
-          name: artifact1
-          path: artifact1
-      - name: Test
+          name: artifact_sha1
+          path: artifact_sha1
+
+      - name: Test artifact_sha1
         shell: bash
-        run: cat artifact1/sha | grep $GITHUB_SHA
+        run: cat artifact_sha1/sha | grep $GITHUB_SHA
+
+      - name: Download artifact_ffmpeg
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: ci_ffmpeg_build.yml
+          name: artifact_ffmpeg
+          path: artifact_ffmpeg
+
+      - name: Unzip artifact_ffmpeg
+        shell: bash
+        run: |
+          mkdir vcpkg
+          unzip artifact_ffmpeg.zip -d vcpkg
+          ls vcpkg
+
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+          architecture: 'x64'
+
+      - name: Install dependencies
+        shell: bash
+        run: |
+          pip install meson
+
+      - name: Setup
+        shell: cmd
+        run: |
+          "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64 && ^
+          meson setup builddir --backend vs --buildtype release --default-library static"
 
     - name: Install dependencies
       shell: bash
