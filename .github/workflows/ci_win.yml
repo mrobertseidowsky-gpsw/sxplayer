@@ -150,10 +150,7 @@ jobs:
         run: sleep 60
 
   download-latest-artifact:
-    runs-on: windows-latest
-
-    needs: wait
-    
+    runs-on: windows-latest  
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -167,7 +164,7 @@ jobs:
 
       - name: Test artifact_sha1
         shell: bash
-        run: cat artifact_sha1/sha | grep $GITHUB_SHA
+        run: cat artifact_sha1\sha | grep $GITHUB_SHA
 
       - name: Download artifact_ffmpeg
         uses: dawidd6/action-download-artifact@v2
@@ -179,9 +176,7 @@ jobs:
       - name: Unzip artifact_ffmpeg
         shell: bash
         run: |
-          mkdir vcpkg
-          unzip artifact_ffmpeg.zip -d vcpkg
-          ls vcpkg
+          ls artifact_ffmpeg
 
       - uses: actions/checkout@v2
 
