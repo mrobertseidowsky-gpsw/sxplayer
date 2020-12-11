@@ -155,10 +155,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       
-    - uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
-        architecture: 'x64'
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+          architecture: 'x64'
 
       - name: Download artifact_sha1
         uses: dawidd6/action-download-artifact@v2
@@ -182,8 +182,6 @@ jobs:
         shell: bash
         run: |
           ls vcpkg
-
-      - uses: actions/checkout@v2
 
       - uses: actions/setup-python@v2
         with:
