@@ -35,8 +35,8 @@ jobs:
         vcpkg install pthread:x64-windows 
         vcpkg integrate install
  
-      - name: 'Upload artifact_ffmpeg'
-      uses: actions/upload-artifact@v2
-      with:
-        name: artifact_ffmpeg
-        path: D:\a\sxplayer\sxplayer\vcpkg
+    - name: 'Upload artifact_ffmpeg'
+    uses: actions/upload-artifact@v2
+    with:
+      name: artifact_ffmpeg
+      path: D:\a\sxplayer\sxplayer\vcpkg
