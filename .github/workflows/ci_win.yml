@@ -192,6 +192,10 @@ jobs:
         shell: bash
         run: |
           pip install meson
+          git clone --depth 1 https://github.com/Microsoft/vcpkg
+          cd vcpkg
+          ./bootstrap-vcpkg.bat -disableMetrics
+          vcpkg integrate install
 
       - name: Setup
         shell: cmd
