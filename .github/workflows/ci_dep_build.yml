@@ -24,3 +24,4 @@ jobs:
       with:
         name: vcpkg
         path: D:\a\sxplayer\sxplayer\vcpkg
+
