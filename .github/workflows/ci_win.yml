@@ -115,7 +115,6 @@ jobs:
     - name: Install dependencies
       shell: bash
       run: |
-        git clone --depth 1 https://github.com/Microsoft/vcpkg
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
         vcpkg integrate install
@@ -166,11 +165,10 @@ jobs:
         workflow: ci_dep_build.yml
         name: vcpkg
         path: vcpkg
-        
+
     - name: Install dependencies
       shell: bash
       run: |
-        git clone --depth 1 https://github.com/Microsoft/vcpkg
         cd vcpkg
         ./bootstrap-vcpkg.bat -disableMetrics
         vcpkg integrate install
