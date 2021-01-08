@@ -93,7 +93,7 @@ jobs:
           path: builddir/meson-logs
 
 
-  msvc-static3:
+  msvc-static4:
 
     runs-on: windows-latest
 
@@ -150,7 +150,7 @@ jobs:
         path: builddir/meson-logs
 
 
-  msvc-shared3:
+  msvc-shared4:
 
     runs-on: windows-latest
 
